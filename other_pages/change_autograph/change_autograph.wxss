@@ -1,0 +1,48 @@
+page{
+  box-shadow:0rpx 6rpx 15rpx RGBA(165, 165, 165, 0.1) inset; 
+  background: #f8f8f8;
+}
+.inputs{
+  width: 100%;
+  height: 420rpx;
+  margin-top: 60rpx;
+  background-color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+.inputs>textarea{
+  color: #292929;
+  font-size: 28rpx;
+  display: block;
+  height:360rpx;
+  width: 646rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+}
+.btn{
+  width: 620rpx;
+  height: 82rpx;
+  position: fixed;
+  left: 65rpx;
+  bottom: 85rpx;
+  box-shadow: #999 0 8px 15px -10px;
+   background:linear-gradient(to left, #05c4f0 , #3888f8);
+   border-radius: 6rpx;
+
+}
+.btn>text{
+  font-size: 36rpx;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 82rpx;
+}
+.num{
+  position: absolute;
+  right:30rpx;
+  bottom: 18rpx; 
+}
+.num>text{
+  color: #959595;
+  font-size: 20rpx;
+}

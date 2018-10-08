@@ -1,0 +1,58 @@
+<view class='shbj ' >
+  <view class='share_tips'>
+    <text>(选中不放可以拖拽排序，第一张将设为封面)</text>
+  </view>
+  <view class="upload_img" style="height:{{img_list.length < 3 ? '180rpx':img_list.length > 5 ? '600rpx':'390rpx' }}">
+    <block wx:for="{{img_list}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+      <view style="left:{{y.left}}rpx;top:{{y.top}}rpx" bindlongtap='longtap' bindtap='tap' bindtouchend='end' bindtouchstart='start' bindtouchmove='ballmove' class="img_list {{y.move ? 'moveing':''}}" data-id="{{x}}" bindchange="move" >
+        <image src='{{y.url}}'></image>
+        <view class='img_fm'  wx:if="{{y.type}}">
+          <text>正面</text>
+        </view>
+      </view>
+    </block>
+    <view class="upload_btn" bindtap='upload' style="display:{{img_list.length == 9 ? 'none':'flex'}};left:{{img_list.length%3*210}}rpx;top:{{ts_top}}rpx;">
+      <image src='../../img/release_add.png'></image>
+    </view>
+  </view>
+  <view class='texts'>
+    <textarea placeholder="关于这么优秀的发型，你想说点什么..." placeholder-class="textsd"></textarea>
+    <text>{{textlength}}/140</text>
+  </view>
+  <view class='radios'>
+    <checkbox-group bindchange="checkboxChange">
+      <label class="checkbox" >
+        <checkbox color="#00C3F0"  value="1" checked="{{checked}}"/>申请成为换发模特
+      </label>
+    </checkbox-group>
+  </view>
+  <view style="display:{{dis_type ? 'block':'none'}}">
+    <view class='layer_tips'>
+      <text>*请务必上传同一款发型的美照</text>
+      <text>*至少有一张正面的完整的发型特写(单击图片可设置)</text>
+    </view>
+    <view class='layer_label'>
+      <block wx:for="{{label_list}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+        <view class='label_for'>
+          <view class='label'>
+            <text class='label_text'>{{y.title}}</text>
+          </view>
+          <view class='label_list_for'>
+            <block wx:for="{{y.children}}" wx:for-index="xs" wx:for-item="ys" wx:key="xs">
+            <view class='active{{ys.type ? "active":""}}' bindtap='labelBtn' data-id="{{x}}" data-ids="{{xs}}" >
+              <text>{{ys.title}}</text>
+            </view>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='btn' bindtap='goToindex'>
+    <text>发布</text>
+  </view>
+  <view class='del {{!long_del?"dels":""}}'>
+    <image src='../../img/delete.png'></image>
+    <text>拖动到此处删除</text>
+  </view>  
+</view>

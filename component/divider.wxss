@@ -1,0 +1,25 @@
+/* component/divider.wxss */
+.divider{
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+  overflow: hidden;
+}
+.divider>text{
+  font-size: 24rpx;
+  color: #999;
+}
+.tips_left{
+  width: 200rpx;
+  height: 2rpx;
+  background-color: #999;
+}
+.tips_right{
+  width: 200rpx;
+  height: 2rpx;
+  background-color: #999;
+}

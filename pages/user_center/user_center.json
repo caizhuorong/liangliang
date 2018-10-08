@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "个人资料",
+  "usingComponents": {
+    "title": "/component/title/title",
+    "label": "/component/label/label"
+  }
+}

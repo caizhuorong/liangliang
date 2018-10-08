@@ -1,0 +1,11 @@
+<view class='content'>
+  <text>选择你的喜好，最多5项</text>
+  <view class='layer_label_main'>
+    <block wx:for="{{label_list}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+      <view class="{{y.staut ? 'label_active':''}} " bindtap='changeChose' data-id="{{x}}" >{{y.label}}</view>
+    </block>
+  </view>
+</view>
+<view class='btn'>
+  <text>确认</text>
+</view>

@@ -1,0 +1,30 @@
+<view>
+  <view class='logo'>
+    <image src='../../img/my_hair_icon.png'></image>
+    <text class='text1'>发型纪</text>
+    <text class='text2'>Ver2.0.0</text>
+  </view>
+  <view class="content_border"></view>
+  <view class='info'>
+    <view>
+      <text>官方网站：https://www.lianglianglive.com</text>
+    </view>
+    <view>
+      <text>客服微信：量量看</text>
+    </view>
+    <view>
+      <text>客服电话：4000-365-724</text>
+    </view>
+  </view>
+  <view class="content_border"></view>
+  <view class='footer'>
+    <view>
+      <text>用户协议</text>
+      <image src='../../img/my_icon_more.png'></image>
+    </view>
+    <view>
+      <text>隐私条款</text>
+      <image src='../../img/my_icon_more.png'></image>
+    </view>
+  </view>
+</view>

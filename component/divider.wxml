@@ -1,0 +1,5 @@
+<view class="divider">
+  <view class="tips_left"></view>
+  <text>{{text}}</text>
+  <view class="tips_right"></view>
+</view>

@@ -1,0 +1,99 @@
+<!--pages/index/index.wxml-->
+<view class='bj'>
+   <view style='position:relative;'>
+    <swiper autoplay="true"  class="banner" indicator-dots indicator-color="rgba(255,255,255,.3)" indicator-active-color="#fff">
+      <block wx:for="{{imgUrls}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+        <swiper-item>
+          <image src="{{y}}" class="slide_image"/>
+        </swiper-item>
+      </block>
+    </swiper > 
+  </view>
+  <view class='active_list'>
+    <view class='active_item'>
+      <image src="../../img/home_icon_one.png"></image>
+      <text>好友邀请</text>
+    </view>
+    <view class='active_item'>
+      <image src="../../img/home_icon_two.png"></image>
+      <text>发型设计</text>
+    </view>
+    <view class='active_item'>
+      <image src='../../img/home_icon_three.png'></image>
+      <text>AI检测</text>
+    </view>
+    <view class='active_item'>
+      <image src='../../img/home_icon_four.png'></image>
+      <text>发型师认证</text>
+    </view>
+  </view>
+  <view>
+    <title text="推荐发型师" />
+    <scroll-view class="scroll-view_H" scroll-x style="width:710rpx;">
+      <block wx:for="{{head_img}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+        <view class='scr_itme'>
+          <image src="{{y.url}}"></image>
+          <text>{{y.name}}</text>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <view >
+    <title text="推荐发型" />
+    <view class="contents">
+      <view class="left">
+        <block wx:for="{{note}}" wx:key="">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+        </block>
+      </view>
+      <view class="right">
+        <block wx:for="{{note}}" wx:key="">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class='statement'>
+    <view  bindtap='goToabout'><text>Powered by</text><text class='name'>量量科技</text></view>
+    <text>免责声明：部分图片来自网络,版权归原作者所有。如有侵权请联系删除。</text>
+  </view>
+</view>
+
+<template name="item">
+  <navigator url="../heart_detail/hear_detail" open-type="navigate" >
+    <view class="item" >
+      <image class="item-img" src="{{url}}" mode="widthFix"></image>
+      <image class="item-imgs" src='../../img/square_icon_more_pic.png' ></image>
+      <view class="name">
+        <image class="item-ava" src="{{avatar}}"></image>    
+        <text class="name-title">{{name}}</text>
+        <view class="heart_">
+          <image class="heart" src="../../img/square_icon_look.png"></image>
+          <text>{{heart_num}}</text>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</template>
+
+<view class='dialog-container' wx:if="{{showDialog}}">
+  <view class='dialog-mask'></view>
+  <view class='dialog-info'>
+    <view class='dialog-title'>登录提示</view>
+    <view class='dialog-content'>我们希望获取您的头像和昵称信息，以便记录您的发型设计记录。</view>
+    <view class='dialog-footer'>
+      <button class='dialog-btn' open-type="getUserInfo" bindgetuserinfo='getUserInfo'>知道了</button>
+    </view>
+  </view>
+</view>
+
+<view class='dialog-container' wx:if="{{showCameraDialog}}">
+  <view class='dialog-mask'></view>
+  <view class='dialog-info'>
+    <view class='dialog-title'>提示</view>
+    <view class='dialog-content'>我们希望获取您的摄像头。</view>
+    <view class='dialog-footer'>
+      <button class='dialog-btn' open-type="openSetting" bindopensetting="openSetting" >去设置</button>
+    </view>
+  </view>
+</view>

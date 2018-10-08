@@ -1,0 +1,18 @@
+<view>
+  <view class='textar'>
+    <textarea bindinput="change" placeholder='请提出你的意见和反馈' maxlength="500" auto-focus ></textarea>
+    <view>
+      <text>{{num}}/500</text>
+    </view>
+  </view>
+  <view class='inp'>
+    <input type='number' maxlength="11" placeholder='请留下你的手机号码,方便我们联系你' ></input>
+  </view>
+  <view class='btn'>
+    <text>提交</text>
+  </view>
+  <view class='tips'>
+    <image src='../../img/home_icon_telephone.png'></image>
+    <text>拨打客服电话：4000-365-724</text>
+  </view>
+</view>

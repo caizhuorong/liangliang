@@ -1,0 +1,43 @@
+<view>
+  <view class='nav'>
+    <view class='{{left ? "":"active"}}' bindtap='change'>
+      <text>晒过的发型</text>
+    </view>
+    <view bindtap='changes' class='{{left ? "active":""}}'>
+      <text>收藏的发型</text>
+    </view>
+    <view class='line_stor {{left ? "nav_left":"nav_right"}}' ></view>
+  </view>
+  <view>
+    <view class="contents">
+        <view class="left">
+          <block wx:for="{{note}}" wx:key="">
+            <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+          </block>
+        </view>
+        <view class="right">
+          <block wx:for="{{note}}" wx:key="">
+            <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+          </block>
+        </view>
+      </view>
+  </view>
+</view>
+
+
+<template name="item">
+  <navigator url="../heart_detail/hear_detail" open-type="navigate" >
+    <view class="item" >
+      <image class="item-img" src="{{url}}" mode="widthFix"></image>
+      <image class="item-imgs" src='../../img/square_icon_more_pic.png' ></image>
+      <view class="name">
+        <image class="item-ava" src="{{avatar}}"></image>    
+        <text class="name-title">{{name}}</text>
+        <view class="heart_">
+          <image class="heart" src="../../img/square_icon_look.png"></image>
+          <text>{{heart_num}}</text>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</template>

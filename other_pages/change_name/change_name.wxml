@@ -1,0 +1,6 @@
+<view class='inputs'>
+  <input type='text' placeholder='请输入昵称(2-24个字符)'></input>
+</view>
+<view class='btn'>
+  <text>确认</text>
+</view>

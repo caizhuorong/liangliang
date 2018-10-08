@@ -1,0 +1,9 @@
+<view class='inputs'>
+  <textarea placeholder="吸引人的个性签名会让更多的人关注你哦~"  maxlength="140" auto-focus bindinput="val" />
+  <view class='num'>
+    <text>{{num}}/140</text>
+  </view>
+</view>
+<view class='btn'>
+  <text>确认</text>
+</view>

@@ -1,0 +1,98 @@
+<!--pages/heart_detail/hear_detail.wxml-->
+<view>
+  <view class="tips_top">
+    <image src="{{info.thisStylist.personIcon}}"></image>
+    <text>{{info.thisStylist.nick}}</text>
+    <view bindtap='followType' style='background:{{!zg_type ? "#DCDCDC":"#ffbd5c"}}'>{{zg_type ? '关注':'已关注'}}</view>
+  </view>
+  <view style='position:relative;'>
+    <swiper autoplay="true"  class="banner" bindchange="changeSwiper">
+      <block wx:for="{{imgUrls}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+        <swiper-item>
+          <image src="{{y}}" class="slide_image"/>
+        </swiper-item>
+      </block>
+    </swiper > 
+    <view class="swiper_position">
+      <text>{{curret+1}}/{{imgUrls.length}}</text>
+    </view>
+    <view class='icon_bj icon_left'>
+      <view class='icon_img_right {{ !zan_type ? "heartAnimation":"" }}' bindtap='zanfn'></view>
+    </view>
+    <view class='icon_bj icon_right'>
+      <view class='icon_img_right {{ !follow_type ? "heartAnimation":"" }}' bindtap='followfn'></view>
+    </view>
+  </view>
+  <view class='tips_text' wx:if="{{isTemplate != 0}}">
+    <view>
+      <text>该发型暂不提供试发功能，我们会根据用户的需要提前安排制作。</text>
+    </view>
+    <view>
+      <text>我想试发(123)</text>
+    </view>
+  </view>
+  <view class="content_text">
+    <text>{{content}}</text>
+  </view>
+  <view class='content_label'>
+    <block wx:for="{{labels}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+      <text>#{{y.tagLabel}}</text>
+    </block>  
+  </view>                      
+  <view class='content_time' >
+    <image src='../../img/details_icon_time.png'></image>
+    <text>{{uploadtime}}</text>
+  </view>
+  <view class="content_border"></view>
+  <view class='content_imgs'>
+    <view class='tips_icon'></view>
+    <text>联系发型师</text>
+    <navigator url="../../other_pages/heart_man/heart_man?no={{no}}" open-type="navigate"  >
+      <view class='content_img_list'>
+        <block wx:for="{{content_imgs}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+          <image src='{{y}}' wx:if="{{x < 11}}" ></image>
+        </block>
+      </view>
+      <image  class='content_imgs_more' src='../../img/details_icon_more_stylist.png' wx:if="{{content_imgs.length >= 11}}"></image>
+    </navigator>
+  </view>
+  <view class='content_border'></view>
+  <view>
+    <title text="相关推荐" />
+    <view class="contents">
+        <view class="left">
+          <block wx:for="{{note}}" wx:key="">
+            <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+          </block>
+        </view>
+        <view class="right">
+          <block wx:for="{{note}}" wx:key="">
+            <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+          </block>
+        </view>
+      </view>
+  </view>
+  <view class='content_btn_position'>
+    <view class='content_btn_row'>
+      <view bindtap='goTotakephoto'>尝试发型</view>
+      <view wx:if="{{isTemplate != 0}}" style="color:#C6C6C6" bindtap='goTotakephoto'>暂不提供试发功能</view>
+      <view bindtap='ican'>我也能剪</view>
+    </view>
+  </view>
+</view>
+<template name="item">
+  <navigator url="../heart_detail/hear_detail" open-type="navigate" >
+    <view class="item" >
+      <image class="item-img" src="{{url}}" mode="widthFix"></image>
+      <image class="item-imgs" src='../../img/square_icon_more_pic.png' ></image>
+      <view class="name">
+        <image class="item-ava" src="{{avatar}}"></image>    
+        <text class="name-title">{{name}}</text>
+        <view class="heart_">
+          <image class="heart" src="../../img/square_icon_look.png"></image>
+          <text>{{heart_num}}</text>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</template>

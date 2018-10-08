@@ -1,0 +1,87 @@
+{
+  "pages":[
+    
+    "pages/index/index",
+    "pages/user_center/user_center",
+    "pages/release/release",
+    "pages/my_heart/my_heart",
+    "pages/feedback/feedback",
+    "pages/about/about",
+    "pages/heart_design/heart_design",
+    "pages/user/user",
+    "pages/heart_detail/hear_detail",
+    "pages/square/square",
+    "pages/design/design"
+  ],
+  "subPackages":[
+    {
+      "root":"other_pages",
+      "pages":[
+        "change_code/change_code",
+        "change_price/change_price",
+        "heart_man/heart_man",
+        "change_work/change_work",
+        "change_title/change_title",
+        "change_tel/change_tel",
+        "change_service/change_service",
+        "change_style/change_style",
+        "change_speciality/change_speciality",
+        "change_autograph/change_autograph",
+        "heart_center/heart_center",
+        "change_name/change_name",
+        "change_like/change_like",
+        "upload/upload",
+        "takephoto/takephoto",
+        "lookPhoto/lookPhoto",
+        "pictureDescription/pictureDescription",
+        "error/error"
+      ]
+    }
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black",
+    "onReachBottomDistance":100
+  },
+  "tabBar":{
+    "color":"#1b1b1b",
+    "selectedColor":"#1b1b1b",
+    "backgroundColor":"#ffffff",
+    "borderStyle":"black",
+    "position":"bottom",
+    "list":[
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/home_icon_home_unselect.png",
+        "selectedIconPath": "img/home_icon_home_select.png"
+      },
+      {
+        "pagePath":"pages/square/square",
+        "text":"广场",
+        "iconPath":"img/home_icon_square_unselect.png",
+        "selectedIconPath":"img/home_icon_square_select.png"
+      },
+      {
+        "pagePath": "pages/heart_design/heart_design",
+        "text": "设计",
+        "iconPath": "img/home_icon_design_unselect.png",
+        "selectedIconPath": "img/home_icon_design_select.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "img/home_icon_my_unselect.png",
+        "selectedIconPath": "img/home_icon_my_select.png"
+      }
+    ]
+  },
+  "networkTimeout":{
+    "request":50000,
+    "connectSocket":50000,
+    "uploadFile":50000,
+    "downloadFile":50000
+  }
+}

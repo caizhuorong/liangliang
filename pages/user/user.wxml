@@ -1,0 +1,80 @@
+<view class='user'>
+  <view class='user_tips' style="display:{{tips_type ? 'flex':'none'}}">
+    <image class='tips_icon' src="../../img/my_icon_tips.png"></image>
+    <text class='tips_text'>号外号外！AI大乐为发型师量身定制了很多功能哦~</text>
+    <image bindtap='closeTips' class='tips_close' src='../../img/square_icon_delete.png'></image>
+  </view>
+  <view class='user_content'>
+    <view class='user_img'>
+      <image class='big_img' src='../../img/home_icon_five.png'></image>
+      <image class='small_img' src='../../img/home_icon_male.png'></image>
+    </view>
+    <view class='user_info'>
+      <view class='user_row' style='margin-bottom:30rpx;'>
+        <view class='user_name'>
+          <text>羊毛老师</text>
+           <image src='../../img/my_icon_edit.png'></image>
+        </view>
+        <view class='user_icon'>
+          <text>发型设计师</text>
+        </view>
+      </view>
+      <view class='user_row' style='margin-bottom:30rpx;'>
+        <view class='user_label_item'>
+          <text>获赞</text>
+          <text>300w</text>
+        </view>
+        <view class='user_label_item'>
+          <text>粉丝</text>
+          <text>1002</text>
+        </view>
+        <view class='user_label_item'>
+          <text>关注</text>
+          <text>155</text>
+        </view>
+      </view>
+      <view  class='user_row'>
+        <text class='user_text'>添加个人描述，可以让大家更好地认识你</text>
+      </view>
+    </view>
+  </view>
+  <view class='content_border'></view>
+  <view class='user_list'>
+    <view class='user_item'>
+      <view class='title'>
+        <image src='../../img/my_icon_result.png'></image>
+        <text>AI分析结果</text>
+      </view>
+      <view class='user_icon_jt'>
+        <image src='../../img/my_icon_more.png'></image>
+      </view>
+    </view>
+    <view class='user_item' bindtap='goTomyHeart'>
+      <view class='title'>
+        <image src='../../img/my_icon_hair.png'></image>
+        <text>我的发型</text>
+      </view>
+      <view class='user_icon_jt'>
+        <image src='../../img/my_icon_more.png'></image>
+      </view>
+    </view>
+    <view class='user_item' bindtap='goTofeedback'>
+      <view class='title'>
+        <image src='../../img/my_icon_advice.png'></image>
+        <text>意见反馈</text>
+      </view>
+      <view class='user_icon_jt'>
+        <image src='../../img/my_icon_more.png'></image>
+      </view>
+    </view>
+    <view class='user_item' bindtap='goToabout'>
+      <view class='title' >
+        <image src='../../img/my_icon_us.png'></image>
+        <text>关于我们</text>
+      </view>
+      <view class='user_icon_jt'>
+        <image src='../../img/my_icon_more.png'></image>
+      </view>
+    </view>
+  </view>
+</view>

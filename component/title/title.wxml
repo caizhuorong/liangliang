@@ -1,0 +1,4 @@
+<view class="content_recommend">
+  <view class="tips_icon"></view>
+  <text>{{text}}</text>
+</view>

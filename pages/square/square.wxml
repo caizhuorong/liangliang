@@ -1,0 +1,153 @@
+<!--index.wxml-->
+<view class="content" style="background-color:{{tips_show?'#f8f8f8':'#fff'}};">
+  <view class='nav_bg'>
+    <view class='nav_tab' >
+      <view class="{{curr == 0 ? 'nav_active nav_list':'nav_list' }}" bindtap='currTab' data-curr="0">
+        <text>关注</text>
+        <view class='nav_line'></view>
+      </view>
+      <view class="{{curr == 1 ? 'nav_active nav_list':'nav_list' }}" bindtap='currTab' data-curr="1">
+        <text>推荐</text>
+        <view class='nav_line'></view>
+      </view>
+      <view class="{{curr == 2 ? 'nav_active nav_list':'nav_list' }}" bindtap='currTab' data-curr="2">
+        <text>发现</text>
+        <view class='nav_line'></view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{curr == 0}}" style="margin-top:65rpx;">
+    <view class='tips_text'  wx:if="{{tips_show }}">
+      <text>你还没有关注的人，来看看AI大乐为您推荐的发型老师吧~</text>
+      <image src='../../img/square_icon_delete.png' bindtap='closeImg'></image>
+    </view>
+    <view class="follow_bj" wx:if="{{tips_show}}" style="background-color:{{tips_show?'#f8f8f8':'#fff'}};">
+      <block wx:for="{{follow_list}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+        <view class='follow_list'>
+          <image src='{{y.img_url}}'></image>
+          <view class='follow_text'>
+            <text class='follow_name' >{{y.name}}</text>
+            <text class='follow_label'>{{y.label}}</text>
+          </view>
+          <view bindtap='changeFollow' data-id="{{y.id}}" data-ids="{{x}}" class="{{y.stuat ? 'follow_staut':'follow_staut follow_nostaut'}}" >{{y.stuat ? '关注':'已关注'}}</view>
+        </view>
+      </block>
+    </view>
+    <view class="follow_bj" wx:if="{{!tips_show}}" style="background-color:{{tips_show?'#f8f8f8':'#fff'}};">
+      <view class="contents" style="padding-top:0rpx;width:94%;" >
+        <view class="left">
+          <block wx:for="{{note}}" wx:key="{{x}}">
+            <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+          </block>
+        </view>
+        <view class="right">
+          <block wx:for="{{note}}" wx:key="{{x}}">
+            <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:elif="{{curr == 1}}" class="contentbj"  >
+    <view class="recommend" style="margin-top:45rpx;">
+      <view bindtap='chooseType' data-type="1">
+        <text class="{{curr_type == 1 ? 'choose_true':''}}" >综合</text>
+      </view>
+      <view  bindtap='chooseType' data-type="2">
+        <text class="{{curr_type == 2 ? 'choose_true':''}}" >人气</text>
+      </view>
+      <view bindtap='chooseType' data-type="3">
+        <text class="{{curr_type == 3 ? 'choose_true':''}}">最新</text>
+      </view>
+      <view class="ts" bindtap='chooseType' data-type="4">
+        <text>筛选</text>
+        <view class="{{choose_type ? 'sjxs':'sjx'}}" ></view>
+      </view>
+    </view>
+    <view >
+      <view class="contents">
+        <view class="left">
+          <block wx:for="{{note}}" wx:key="">
+            <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+          </block>
+        </view>
+        <view class="right">
+          <block wx:for="{{note}}" wx:key="">
+            <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="contentbj" >
+  <view class="recommend" style="margin-top:45rpx;">
+      <view bindtap='chooseType' data-type="0">
+        <text class="{{curr_type == 0 ? 'choose_true':''}}" >综合</text>
+      </view>
+      <view  bindtap='chooseType' data-type="1">
+        <text class="{{curr_type == 1 ? 'choose_true':''}}" >人气</text>
+      </view>
+      <view bindtap='chooseType' data-type="2">
+        <text class="{{curr_type == 2 ? 'choose_true':''}}">最新</text>
+      </view>
+      <view class="ts" bindtap='chooseType' data-type="3">
+        <text>筛选</text>
+        <view class="{{choose_type ? 'sjxs':'sjx'}}" ></view>
+      </view>
+    </view>
+    <view >
+      <view class="contents">
+        <view class="left">
+          <block wx:for="{{note}}" wx:key="">
+            <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+          </block>
+        </view>
+        <view class="right">
+          <block wx:for="{{note}}" wx:key="">
+            <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+  <divider text="{{loading_text}}" style="display:{{displaytype?'flex':'none'}}" />
+  <view class='fexd_img' bindtap='gotorelease'>
+    <image src='../../img/square_icon_release.png'></image>
+    <text>晒发型</text>
+  </view>
+</view>
+<view class="layer_bj" style="display:{{ choose_type ? 'block':'none'}}" >
+  <scroll-view class='layer_content' scroll-y>
+    <block wx:for="{{label_list}}"  wx:for-index="x" wx:for-item="y" wx:key="x">
+      <view class='layer_label' >
+        <text>{{y.title}}</text>
+        <view class="layer_label_main">
+          <block wx:for="{{y.children}}" wx:for-index="xs" wx:for-item="ys" wx:key="xs" >
+            <view class="{{ys.staut ? 'label_active':''}} " bindtap='changeChose' data-id="{{xs}}" data-ids="{{x}}">{{ys.label}}</view>
+          </block>
+        </view>
+      </view>
+      <view class='layer_line' ></view>
+    </block>
+  </scroll-view >
+  <view class="layer_btn">
+    <view class="layer_btn_cancel" bindtap='layer_cancel'>重置</view>
+    <view class="layer_btn_qd" bindtap='layer_qd'>确定</view>
+  </view>
+</view>
+<template name="item">
+  <navigator url="../heart_detail/hear_detail?userid={{id}}&isTemplate={{isTemplate}}" open-type="navigate" >
+    <view class="item" >
+      <image class="item-img" src="{{url}}" mode="widthFix"></image>
+      <image wx:if="{{type}}" class="item-imgs" src='../../img/square_icon_more_pic.png' ></image>
+      <view class="name">
+        <image class="item-ava" src="{{avatar}}"></image>    
+        <text class="name-title">{{name}}</text>
+        <view class="heart_">
+          <image class="heart" src="../../img/square_icon_look.png"></image>
+          <text>{{heart_num}}</text>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</template>

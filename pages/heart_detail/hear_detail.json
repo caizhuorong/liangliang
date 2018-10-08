@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "发型详情",
+  "usingComponents": {
+    "title": "/component/title/title"
+  }
+}

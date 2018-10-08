@@ -1,0 +1,12 @@
+<navigator url='{{url}}'>  
+  <view class='label_content' style="border-bottom:{{end != 1 ? ' 2rpx solid #dadada':''}}">
+    <view class='label_title'>
+      <text>{{title}}{{type}}</text>
+    </view>
+    <view class='label_value'>
+      <text wx:if="{{type != 1}}">{{value}}</text>
+      <image wx:if="{{type == 1}}" class='ava' src='{{value}}'></image>
+      <image src='../../img/my_icon_more.png' class='more'></image>
+    </view>
+  </view>
+</navigator>

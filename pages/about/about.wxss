@@ -1,0 +1,82 @@
+.logo{
+  height: 430rpx;
+  width: 100%;
+  box-shadow:0rpx 6rpx 15rpx RGBA(165, 165, 165, 0.1) inset;
+  overflow: hidden;
+}
+.logo>image{
+  width: 190rpx;
+  height: 190rpx;
+  margin: 0 auto;
+  margin-top: 102rpx;
+  display: block;
+}
+.text1{
+  display: block;
+  margin-top: 18rpx;
+  font-size: 32rpx;
+  color: #292929;
+  text-align: center;
+}
+.text2{
+  padding-top: 11rpx;
+  font-size: 20rpx;
+  color: #292929;
+  text-align: center;
+  display: block
+}
+.content_border{
+  width: 100%;
+  height: 10rpx;
+  background-color: #f8f8f8;
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width:686rpx;
+  margin: 0 auto;
+}
+.info>view{
+  width: 100%;
+  height: 120rpx;
+  border-bottom: 2rpx solid #dadada;
+  text-align: left;
+  line-height: 120rpx;
+}
+.info>view:nth-child(3){
+  border-bottom: none;
+}
+.info>view>text{
+  font-size: 28rpx;
+  color: #292929;
+  padding-left: 30rpx;
+}
+.footer{
+  width: 686rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items: center;
+}
+.footer>view{
+  width: 100%;
+  border-bottom: 2rpx solid #dadada;
+  height: 120rpx;
+  text-align: left;
+  line-height: 120rpx;
+}
+.footer>view>text{
+  font-size: 28rpx;
+  color: #292929;
+  padding-left: 30rpx;
+}
+.footer>view>image{
+  width: 14rpx;
+  height: 25rpx;
+  float: right;
+  margin-right: 30rpx;
+  margin-top: 47.5rpx;
+}

@@ -1,0 +1,129 @@
+<view class='shaow'>
+  <view class='pic' style='background-image:url({{heat_info.resultFileUrl}})' >
+    <image class='pic_url' src='{{heat_info.resultHairFileUrl}}'></image>
+    <view class='left_icon' >
+      <image src='../../img/home_icon_three.png'></image>
+      <image src='../../img/home_icon_three.png'></image>
+      <image src='../../img/home_icon_three.png'></image>
+    </view>
+    <view class='right_icon'>
+      <view>
+        <image src='../../img/design_icon_share.png'></image>
+        <text>分享</text>
+      </view>
+      <view>
+        <image src='../../img/design_icon_photo.png'></image>
+        <text>换照片</text>
+      </view>
+    </view>
+  </view>
+  <view class='pic_bottom' style="bottom:{{bottom_scroll ? '200rpx':'0rpx'}}">
+    <view class='icon_img_right {{ follow_type ? "heartAnimation":"" }}' bindtap='followfn'></view>
+    <view class='bottom_view'>
+      <view class='bottom_sex' bindtap='changSex'>
+        <image src='{{sex_type ? "../../img/home_icon_male.png":"../../img/design_icon_male_unselect.png"}}'></image>
+        <image src='{{sex_type ? "../../img/design_icon_female_unselect.png":"../../img/home_icon_female.png"}}'></image>
+      </view>
+      <view class='dirvid'></view>
+      <scroll-view class="scroll-view_H" scroll-x style="width:538rpx;">
+        <block wx:for="{{head_img}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+          <view class='scr_itme {{y.type ? "label_active":""}}' bindtap='labelChange' data-index="{{x}}">
+            <text>{{y.name}}</text>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class='pic_content'>
+      <scroll-view class="scroll_s" scroll-y style="width:100%;" bindscroll="varilgun">
+        <view class="scroll_big">
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+        </view>
+        <view class="scroll_big">
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+        </view>
+        <view class="scroll_big">
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+        </view>
+        <view class="scroll_big">
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+          <view class="srcoll_s_item" style="background:#fff;" >
+            <view class="red_dian"></view>
+            <image  src="../../img/loading.gif"></image>               
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
