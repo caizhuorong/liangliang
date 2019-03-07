@@ -1,0 +1,47 @@
+.trams{
+  width: 440rpx;
+  height: 500rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -220rpx;
+  margin-top: -250rpx;
+  background-color: #fff;
+  border-radius: 8rpx;
+}
+.trams_img{
+  width: 360rpx;
+  height: 360rpx;
+  margin: 0 auto;
+  margin-top: 38rpx;
+  background-color: #bfbfbf;
+}
+.trams_img>image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.trams_bj{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+  background:rgba(0,0,0,.4);
+  z-index: 99
+}
+.trams_text{
+  width: 100%;
+  text-align: center;
+  font-size: 34rpx;
+  color: #000;
+  margin-top: 34rpx;
+}
+.trams_img_hidden{
+  width: 1rpx;
+  height: 1rpx;
+  opacity: 0;
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+}

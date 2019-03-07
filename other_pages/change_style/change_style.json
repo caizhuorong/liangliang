@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "擅长风格",
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer"
+  }
+}

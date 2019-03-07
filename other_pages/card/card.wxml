@@ -1,0 +1,39 @@
+<view class='nav'>
+  <view class='{{curr == 0 ? "active":""}}' bindtap='change' data-id="0">
+    <text class='{{curr == 0 ? "theme_colors":""}}'>未使用({{lstUnusedNum}})</text>
+  </view>
+  <view bindtap='change' class='{{curr == 1 ? "active":""}}' data-id="1">
+    <text class='{{curr == 1 ? "theme_colors":""}}'>使用记录({{lstUsedNum}})</text>
+  </view>
+  <view bindtap='change' class='{{curr == 2 ? "active":""}}' data-id="2">
+    <text class='{{curr == 2 ? "theme_colors":""}}'>已过期({{lstOverdueNum}})</text>
+  </view>
+  <view class='line_stor theme_color {{curr == 0 ? "nav_left": curr== 1?"nav_mindle":"nav_right"}}' ></view>
+</view>
+<view class="content">
+  <view class="item_bj" style="{{curr == 0 ? 'background-image: url(https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img52.png)':'background-image: url(https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img53.png)'}}" wx:for="{{note}}" wx:for-index="x" wx:for-item="y" wx:key="x" bindtap="{{curr == 0 ? 'goToPay':''}}">
+    <view class="item_price">
+      <text class="price_text1  {{curr== 0 ?'red_color':'e9e9e9_color'}}" wx:if="{{y.couponType ==2 ?true:false}}">￥</text>
+      <text class="price_text2 {{curr== 0 ?'red_color':'e9e9e9_color'}}">{{y.couponType == 1 ? y.discount*10 : y.subtraction}}</text>
+      <text class="price_text3 {{curr== 0 ?'red_color':'e9e9e9_color'}}" wx:if="{{y.couponType ==1 ?true:false}}">折</text>
+    </view>
+    <view class="item_text">
+      <text class="red_color {{curr== 0 ?'red_color':'e9e9e9_color'}}">{{y.couponName}}</text>
+      <text class="red_color {{curr== 0 ?'red_color':'e9e9e9_color'}}">{{y.amountOfMoney == null ? '无门槛使用':'满'+y.amountOfMoney +'元可用'}}</text>
+    </view>
+    <view class="item_do">
+      <text class="{{curr == 0 ? 'reds_color':'whites_color'}}">{{curr == 0 ? '立即使用':curr == 2?'已过期':'已使用'}}</text>
+    </view>
+    <view class="item_date">
+      <text class="white_color">有效期：{{y.startTime}}至{{y.endTime}}</text>
+    </view>
+    
+    <view class="item_card">
+      <text class="white_color">{{y.couponType == 1?'打折券':'现金券'}}</text>
+    </view>
+    <view class="item_new" wx:if="{{y.readFlag == 1 ?false:true}}">
+      <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon29.png'></image>
+    </view>
+  </view>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

@@ -1,0 +1,10 @@
+{
+  "backgroundTextStyle":"light",
+  "navigationBarTitleText": "拍照",
+  "disableScroll": true,
+  "usingComponents": {
+    "meloading": "/component/meloading/meloading",
+    "sharelayer": "/component/share_layer/share_layer",
+    "transformComponent": "/component/transformComponent/transformComponent"
+  }
+}

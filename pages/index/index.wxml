@@ -1,56 +1,58 @@
-<!--pages/index/index.wxml-->
+<import src="../../component/template/template.wxml"/>
 <view class='bj'>
-   <view style='position:relative;'>
+  <view class="banner_img_zwt" wx:if="{{data.lstSHairCarousel.length == undefined}}"></view>
+  <view style='position:relative;' wx:if="{{data.lstSHairCarousel.length > 1}}">
     <swiper autoplay="true"  class="banner" indicator-dots indicator-color="rgba(255,255,255,.3)" indicator-active-color="#fff">
-      <block wx:for="{{imgUrls}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+      <block wx:for="{{data.lstSHairCarousel}}" wx:for-index="x" wx:for-item="y" wx:key="x">
         <swiper-item>
-          <image src="{{y}}" class="slide_image"/>
+          <image src="{{y.url}}" class="slide_image" data-url="{{y.link}}"  bindtap='gotomore'/>
         </swiper-item>
       </block>
-    </swiper > 
+    </swiper >
+  </view>
+  <view wx:if="{{data.lstSHairCarousel.length == 1}}" class='banner_img' data-url="{{data.lstSHairCarousel[0].link}}"  bindtap='gotomore'>
+    <image src="{{data.lstSHairCarousel[0].url}}"></image>
   </view>
   <view class='active_list'>
-    <view class='active_item'>
-      <image src="../../img/home_icon_one.png"></image>
-      <text>好友邀请</text>
-    </view>
-    <view class='active_item'>
-      <image src="../../img/home_icon_two.png"></image>
-      <text>发型设计</text>
-    </view>
-    <view class='active_item'>
-      <image src='../../img/home_icon_three.png'></image>
-      <text>AI检测</text>
-    </view>
-    <view class='active_item'>
-      <image src='../../img/home_icon_four.png'></image>
-      <text>发型师认证</text>
-    </view>
+    <form report-submit="true" class='active_item'  bindsubmit="gotosj">
+      <view class='active_item'>
+        <image src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_19.png"></image>
+        <text>发型设计</text>
+        <button class='getFormId' form-type="submit"></button>
+      </view>
+    </form>
+    <form report-submit="true" class='active_item'  bindsubmit="gotoAi">
+      <view class='active_item'>
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_20.png'></image>
+        <text>脸型分析</text>
+        <button class='getFormId' form-type="submit"></button>
+      </view>
+    </form>
   </view>
+  <!-- <view style="margin-top:65rpx;">
+    <block wx:for="{{data.lstSHairActive}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+      <image mode="widthFix" class="scr_itme" src="{{y.url}}" data-url="{{y.link}}" bindtap='active_goto' ></image>
+    </block>
+  </view> -->
   <view>
-    <title text="推荐发型师" />
-    <scroll-view class="scroll-view_H" scroll-x style="width:710rpx;">
-      <block wx:for="{{head_img}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
-        <view class='scr_itme'>
-          <image src="{{y.url}}"></image>
-          <text>{{y.name}}</text>
+    <title text="每日上新" margintop="45" url="../../others_pages/square_results/square_results?tag=NEW&sex={{sex}}&title=每日上新" more="1"   widths="88" wx:if="{{note.length!=0}}"/>
+    <view style="width:100%;height:10rpx;"></view>
+    <view class="contents" wx:for="{{note}}" wx:key="x" wx:for-index="x" wx:for-item="y">
+      <navigator url="../heart_detail/hear_detail?templateNo={{y.id}}&isTemplate={{y.isTemplate}}" open-type="navigate" >
+        <view class="item" >
+         <form  report-submit="true"  bindsubmit="templateClick" >
+            <image class="item-img" lazy-load="true" src="{{y.url == undefined ? 'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png':y.url }}" mode="widthFix"></image>
+            <image class="item-imgs" lazy-load="true" wx:if="{{y.filePaths >=2}}" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/square_icon_more_pic.png' ></image>
+            <view class="name">
+              <view class="heart_">
+                <image class="heart" lazy-load="true" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_18.png"></image>
+                <text>{{y.heart_num == null ? 0:y.heart_num}}</text>
+              </view>
+            </view>
+            <button class='getFormId' form-type="submit"></button>
+          </form>
         </view>
-      </block>
-    </scroll-view>
-  </view>
-  <view >
-    <title text="推荐发型" />
-    <view class="contents">
-      <view class="left">
-        <block wx:for="{{note}}" wx:key="">
-          <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
-        </block>
-      </view>
-      <view class="right">
-        <block wx:for="{{note}}" wx:key="">
-          <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
-        </block>
-      </view>
+      </navigator>
     </view>
   </view>
   <view class='statement'>
@@ -58,35 +60,7 @@
     <text>免责声明：部分图片来自网络,版权归原作者所有。如有侵权请联系删除。</text>
   </view>
 </view>
-
-<template name="item">
-  <navigator url="../heart_detail/hear_detail" open-type="navigate" >
-    <view class="item" >
-      <image class="item-img" src="{{url}}" mode="widthFix"></image>
-      <image class="item-imgs" src='../../img/square_icon_more_pic.png' ></image>
-      <view class="name">
-        <image class="item-ava" src="{{avatar}}"></image>    
-        <text class="name-title">{{name}}</text>
-        <view class="heart_">
-          <image class="heart" src="../../img/square_icon_look.png"></image>
-          <text>{{heart_num}}</text>
-        </view>
-      </view>
-    </view>
-  </navigator>
-</template>
-
-<view class='dialog-container' wx:if="{{showDialog}}">
-  <view class='dialog-mask'></view>
-  <view class='dialog-info'>
-    <view class='dialog-title'>登录提示</view>
-    <view class='dialog-content'>我们希望获取您的头像和昵称信息，以便记录您的发型设计记录。</view>
-    <view class='dialog-footer'>
-      <button class='dialog-btn' open-type="getUserInfo" bindgetuserinfo='getUserInfo'>知道了</button>
-    </view>
-  </view>
-</view>
-
+<getuserinfo showDialog='{{showDialog}}' showDialogs='{{showDialogs}}' scene="{{scene}}" bindmyevent="onMyEvent" param="{{param}}" bindpoints="points" bindgiftlayer="giftlayer" bindactivelayer="activelayer" bindnoticelayer="noticelayer" bindtemplateNotice="templateNotice"></getuserinfo>
 <view class='dialog-container' wx:if="{{showCameraDialog}}">
   <view class='dialog-mask'></view>
   <view class='dialog-info'>
@@ -97,3 +71,21 @@
     </view>
   </view>
 </view>
+<view class='mask' wx:if="{{first_img_show}}">
+  <image class='mask_img1' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img10_new.png'></image>
+  <!-- <image class='mask_img2' bindtap='colseFirstShow'  src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/icon/close.png'></image> -->
+  <view class='mask_btns' bindtap='colseFirstShow'>我知道了</view>
+</view>
+
+<view class="indextm" wx:if="{{data.lstSHairCarousel.length == undefined}}">
+
+</view>
+
+<meloading meloadingshow="{{me_loading_type}}" meloadingvalue="{{meloadingvalue}}"></meloading>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer>
+<giftlayer giftShow="{{giftShow}}" giftLayerBanner="{{giftLayerBanner}}"></giftlayer>
+<active_20181224_layer activeShow="{{activeShow}}" activeInfo="{{activeInfo}}"></active_20181224_layer>
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}" wx:if="{{tabShowType}}"/>
+<noticelayer noticeShow="{{noticeShow}}" noticeLayerBanner="{{noticeLayerBanner}}"></noticelayer>
+<new_year_theme templateNotice="{{templateNotice}}" now="{{now}}" newYearTag="{{newYearTag}}" templateNoticeTagsLabel="{{templateNoticeTagsLabel}}"></new_year_theme>
+<view class="tarb"></view>

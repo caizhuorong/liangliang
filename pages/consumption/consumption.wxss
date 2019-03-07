@@ -1,0 +1,70 @@
+page{
+  box-shadow:0rpx 6rpx 15rpx RGBA(165, 165, 165, 0.1) inset;
+}
+.follow_bj{
+  overflow: hidden;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.follow_list{
+  display: flex;
+  flex-direction:row;
+  width: 686rpx;
+  margin: 0 auto;
+  margin-top: 10rpx;
+  background: #fff;
+  height:146rpx; 
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  flex-grow:0;
+  border-bottom:1rpx solid #eee;
+}
+.follow_clo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 20rpx;
+}
+.follow_clo>text:nth-child(1){
+font-size: 32rpx;
+color:#292929;
+margin-bottom: 10rpx;
+display: block;
+}
+.follow_clo>text:nth-child(2){
+  font-size: 24rpx;
+  color:#959595;
+  display: block;
+}
+.follow_row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+   margin-right: 20rpx;
+}
+.follow_row>text{
+  font-size: 36rpx;
+  color: #292929;
+  display: block;
+}
+.error{
+  display: flex;
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+  width:100%;
+  height: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.error>text{
+  font-size: 36rpx;
+  color: #959595;
+}

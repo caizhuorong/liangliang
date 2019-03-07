@@ -1,0 +1,98 @@
+<view class='view_bj'>
+  <view class="view_ruadis">
+  </view>
+   <view class="view_rudis1">
+    </view>
+    <view class="view_rudis2" style="font-size:{{fS}}rpx;">{{info.points}}</view>
+  <view class="view_title">我的积分</view>
+</view>
+<view class="int_tips">
+  <view class="int_nav">
+    <view data-curr="1" bindtap='sdile_nav'>赚取积分</view>
+    <view data-curr="2" bindtap='sdile_nav'>积分记录</view>
+    <view data-curr="3" bindtap='sdile_nav'>积分兑换</view>
+  </view>
+  <view class="int_sdile" style="left:{{curr == 1 ? '0%':curr== 2 ?'33.33%':'66.66%'}}">{{curr_text}}</view>
+</view>
+<view>
+</view>
+ <view class='content_border' ></view>
+ <view class="content_bj" wx:if="{{curr != 1 ?false:true}}">
+  <view class="content">
+      <view class="content_title">
+        <text>每日任务</text>
+      </view>
+  </view>
+    <view class='content_item' wx:for="{{info.lstPoints}}" wx:for-index="x" wx:for-item="y" wx:key="x" wx:if="{{y.taskFlag == 0 ?true:false}}">
+      <view class="content_img">
+        <text>+{{y.points}}</text>
+      </view>
+      <view class="content_label">
+        <text class="label">{{y.name}}</text>
+        <text class="labels" style="color:{{y.code == 'PT0005|PP00001' ? 'red':'#959595'}}">{{y.label}}</text>
+      </view>
+      <view class="content_btn theme_color" wx:if="{{y.isFinished == 0 ? true:false}}" data-url="{{y.buttonLink}}"  bindtap='buttonLink'>
+        <text>{{y.buttonCaption}}</text>
+        <button open-type="share" class='share-btn' wx:if="{{y.code == 'PT0005|PP00001' ? true:false}}"></button>
+      </view>
+      <view class="content_btns" wx:if="{{y.isFinished == 1 ?true:false}}">
+        <view class="content_btnss">
+          <text>完成</text>
+        </view>
+      </view>
+    </view>
+  </view>
+<view class='content_border' ></view>
+<view class="content_bj" wx:if="{{curr != 1 ?false:true}}">
+  <view class="content">
+    <view class="content_title">
+      <text>新手任务</text>
+    </view>
+  </view>
+  <view class='content_item' wx:for="{{info.lstPoints}}" wx:for-index="x" wx:for-item="y" wx:key="x" wx:if="{{y.taskFlag != 0 ? true:false }}">
+      <view class="content_img">
+        <text>+{{y.points}}</text>
+      </view>
+      <view class="content_label">
+        <text class="label">{{y.name}}</text>
+        <text class="labels">{{y.label}}</text>
+      </view>
+        <view class="content_btn theme_color" wx:if="{{y.isFinished == 0 ? true:false}}" data-url="{{y.buttonLink}}" bindtap='buttonLink'>
+          <text>{{y.buttonCaption}}</text>
+          <button open-type="share" class='share-btn' wx:if="{{y.code == 'PT0005|PP00001' ? true:false}}"></button>
+        </view>
+      <view class="content_btns" wx:if="{{y.isFinished == 1 ?true:false}}">
+        <view class="content_btnss">
+          <text>完成</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--积分记录-->
+  <view class="content_bj" wx:if="{{curr == 2}}">
+    <view class='content_item1' wx:for="{{info.lstHistory}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+      <view class="content_label1">
+        <text class="label1">{{y.name}}</text>
+        <text class="labels1">{{y.happenTime}}</text>
+      </view>
+      <view class="content_btnss1 ">
+        <text class="{{y.points > 0 ? 'theme_colors':'content_btnss1_color'}}">{{y.points > 0 ?'+'+y.points:y.points}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!--积分兑换-->
+  <view class="content_bj" wx:if="{{curr != 3 ?false:true}}">
+    <view class='content_item1'  wx:for="{{info.exchanges}}" wx:for-index="x" wx:for-item="y" wx:key="x" wx:if="{{y.taskFlag != 0 ? true:false }}">
+      <view class="content_label1" style="width:491rpx;">
+        <text class="label1">{{y.name}}</text>
+        <text class="labels1">{{y.points}}积分兑换</text>
+      </view>
+      <view class="content_btn theme_color {{info.points < y.points ? 'content_btn_no':''}}" data-id="{{y.code}}" data-points="{{y.points}}" bindtap="{{info.points < y.points ? '':'exchange'}}">
+        <text>兑换</text>
+      </view>
+    </view>
+  </view>
+ <view class="footer">最终解释权归量量科技所有</view>
+ <sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

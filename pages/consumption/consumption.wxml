@@ -1,0 +1,17 @@
+<view class="follow_bj" >
+  <block wx:for="{{list}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+    <view class='follow_list' >
+     <view class='follow_clo'>
+       <text>{{y.name}}{{y.label == null ||y.label == false ?'' : '('+ y.label +')' }}</text>
+       <text>{{y.statusTime}}</text>
+     </view>
+     <view class='follow_row'>
+       <text>￥{{y.amountOfMoneyReal == null ? y.amountOfMoney:y.amountOfMoneyReal}}</text>
+     </view>
+    </view>
+  </block>
+</view>
+<view class="error" wx:if="{{isnolist}}">
+  <text>暂无消费记录</text>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

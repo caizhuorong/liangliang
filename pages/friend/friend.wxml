@@ -1,0 +1,49 @@
+<view style="width:100%;height:auto;overflow: hidden;">
+<view class='top'>
+  <image class='top_bj' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_pic_2.png'></image>
+  <view class='top_num'>
+    <text>已用：{{friend_info.usedCount == null ?0:friend_info.usedCount}}</text>
+    <text>共计：{{friend_info.totalCount == null ?0: friend_info.totalCount}}</text>
+  </view>
+  <view class='top_content'>
+    <view class="text">
+      <text class='texts'>剩余可用发型</text>
+      <text class="textb">{{friend_info.totalCount  - friend_info.usedCount}}</text>
+    </view>
+  </view>
+  <view class='top_bottom'>
+    <view bindtap='gotolist'>
+      <text>邀请好友(人)</text>
+      <text style="font-size:36rpx;font-weight:bold">{{friend_info.invitedUserCount == null ? 0:friend_info.invitedUserCount}}</text>
+    </view>
+    <view>
+      <text>助力解锁(款)</text>
+      <text style="font-size:36rpx;font-weight:bold">{{friend_info.rewardTemplateCount == null ? 0:friend_info.rewardTemplateCount}}</text>
+    </view>
+  </view>
+</view>
+<swiper autoplay interval="1500" duration="300" vertical class='vertical'>
+  <block wx:for="{{friend_info.invitationListNewest}}" wx:for-index="x" wx:for-item="y" wx:key="{{y.id}}">
+    <swiper-item>
+      <view class='verticalls' data-id="{{y.no}}" >
+        <image src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon1.png" class="slide-image"/>
+        <view>{{y.userNick == null ? '':y.userNick}}邀请了{{y.invitationUserNick == null ? '':y.invitationUserNick}}</view>
+        <view style="margin-left:50rpx;">刚刚</view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+<view style="margin-top:65rpx;margin-bottom:120rpx;">
+  <block wx:for="{{friend_info.lstSHairActive}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+    <view class='scr_itme' style="width:{{y.paddingFlag == 0 ?'686rpx;':'750rpx;'}}">
+      <image mode="widthFix"  src="{{y.url}}"></image>
+    </view>
+  </block>
+</view>
+<view class='btn theme_color'>
+  <text>立即邀请好友</text>
+   <button open-type="share" class='share-btn'></button>
+</view>
+</view>
+<canvas canvas-id="friend" style="width:552px;height:882px;position:fixed;top:90000px;left:0px;" class='can' /> 
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

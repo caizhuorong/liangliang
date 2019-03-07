@@ -1,0 +1,49 @@
+<view class="pay_bj">
+  <view class="content">
+    <view class="top1">
+      <text>发型购买</text>
+      <image src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img50.png" bindtap='looktip'></image>
+    </view>
+    <view class="pay_content" data-name="{{pay_list[0].name}}" data-label="{{pay_list[0].label}}" data-nowprice="{{pay_list[0].priceNow}}" data-code="{{pay_list[0].goodsCode}}" bindtap='pay'>
+      <view class="pay_item" >
+        <view class="label">{{pay_list[0].name}}<text wx:if="{{pay_list[0].label == '' ? false:true}}">({{pay_list[0].label}})</text></view>
+        <view class="now_price" style='flex:3;'>￥{{pay_list[0].priceNow}}</view>
+      </view>
+      <view class="btn">购买</view>
+    </view>
+  </view>
+  <block wx:for="{{pay_list}}" wx:key="" wx:for-index="x" wx:for-item="y" wx:if="{{x >=1 }}">
+    <view class="content3">
+    <view class="pay_content1" data-name="{{y.name}}" data-label="{{y.label}}" data-nowprice="{{y.priceNow}}" data-code="{{y.goodsCode}}" bindtap='pay'>
+      <view class="pay_item1" >
+        <view class="label">{{y.name}}<text wx:if="{{y.label == '' ? false:true}}">({{y.label}})</text></view>
+        <view class="now_price" style='flex:3;'>￥{{y.priceNow}}</view>
+        <text class="synopsis">({{y.synopsis}})</text>  
+       <view class="btn" >购买</view>
+      </view>
+    </view>
+  </view>
+  </block>
+  <view style='width:100%;height:10rpx;margin-top:50rpx;background-color: #f8f8f8;'></view>
+  <text style="width:100%;margin:0 auto;font-size:32rpx;color:#292929;margin-top:49rpx;text-align:center;display:block;">免费途径</text>
+  <view class="content2">
+     <view class="unlock">
+        <text class="unlock_text">邀请好友，发型免费送</text>
+        <text class="unlock_text1">当日首次分享可解锁2款发型\n成功邀请好友再送5款发型</text>
+        <view class="unlock_btn">
+        分享
+         <button open-type="share" class='share-btn'></button>
+        </view>
+     </view>
+  </view>
+</view>
+<view class='mask' bindtap='closeMask' wx:if="{{mask}}">
+  <view class='tips_content'>
+    <view class='tips_title'>
+      <view class="tips_label">礼包购买规则说明</view>
+      <text class='tips_text'>1.用户可购买发型礼包，用于解锁新发型\n2.礼包有[尝鲜包]和[畅玩包]两种规格，[尝鲜包]内含30款发型，具体款式不限；[畅玩包]内含60款发型，具体款式不限\n3.付款成功后礼包将自动存入“我的-可用发型”中，并可在“我的-购买记录”内查看\n4.购买的礼包无使用期限，永久有效\n5.礼包购买为[发型纪]推出的促销活动，活动有效期截止2019年5月31日\n6.最终解释权归量量科技所有</text>
+    </view>
+        <view bindtap='closeMask' class='tips_btn'>我知道了</view>
+    </view>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

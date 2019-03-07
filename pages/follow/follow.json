@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "关注",
+    "usingComponents": {
+      "divider": "/component/divider",
+      "sharelayer": "/component/share_layer/share_layer"
+    }
+}

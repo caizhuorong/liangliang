@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "发型设计",
+  "disableScroll": true,
+  "usingComponents": {
+    "index": "/component/toindex/toindex",
+    "transformComponent":"/component/transformComponent/transformComponent"
+  }
+}

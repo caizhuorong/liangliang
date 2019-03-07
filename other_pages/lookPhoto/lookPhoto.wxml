@@ -1,0 +1,37 @@
+<!--pages/takePhoto/takePhoto.wxml-->
+<!-- <import src="../../we-cropper/we-cropper.wxml" /> -->
+<view class='page-visible'>
+  <view class="msg">
+    <view class="msg_list" wx:for="{{msgList}}" wx:for-item="y" wx:for-index="x" wx:key="x">
+      <view class="msg_list_num">{{x+1}}</view>
+      <view class="msg_list_text">{{y}}</view>
+    </view>
+  </view>
+  <view class='page-container'>
+    <view class='img_view'>
+      <view class='camera_img_view'>
+        <image src="{{takePhotoImgUrl}}" class='camera_img' style="width:{{deviceWidth}}px;height:{{deviceHeight}}px" bindload='bindGetPhoto' mode='widthFix'></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='canvas-view' wx:if="{{isCanvas}}">
+  <canvas canvas-id='myCanvas' class='myCanvas' style="width:{{imgWidth}}rpx;height:{{imgHeight}}rpx" wx:if="isCanvas"></canvas>
+</view>
+  <view class='row footer'>
+    <view class="row-flex" bindtap='bindRetake'>
+      <view class="blu-border">
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img45.png' style="width:64rpx;height:33rpx;"></image>
+      </view>
+    </view>
+    <view class='row-flex'>
+      <view class='footer-text' bindtap='{{errtype ? "uploadFaceFiles":"bindNext"}}'>下一步</view>
+    </view>
+    <view class="row-flex" >
+      <view></view>
+    </view>
+  </view>
+  <!-- <image src="{{takePhotoImgUrl}}"></image> -->
+  <meloading meloadingshow="{{me_loading_type}}" meloadingvalue="{{meloadingvalue}}"></meloading>
+  <sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer>
+  <transformComponent tramsHidden="{{tramsHidden}}" sex="{{sex}}"></transformComponent>

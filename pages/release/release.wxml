@@ -1,10 +1,11 @@
-<view class='shbj ' >
+<view class='shbj' style="height:{{move_type?'100%;':'auto;'}}" >
   <view class='share_tips'>
-    <text>(选中不放可以拖拽排序，第一张将设为封面)</text>
+    <text>(默认第一张照片为封面，单击照片可以进行设置操作)</text>
   </view>
   <view class="upload_img" style="height:{{img_list.length < 3 ? '180rpx':img_list.length > 5 ? '600rpx':'390rpx' }}">
     <block wx:for="{{img_list}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
-      <view style="left:{{y.left}}rpx;top:{{y.top}}rpx" bindlongtap='longtap' bindtap='tap' bindtouchend='end' bindtouchstart='start' bindtouchmove='ballmove' class="img_list {{y.move ? 'moveing':''}}" data-id="{{x}}" bindchange="move" >
+      <!-- <view style="left:{{y.left}}rpx;top:{{y.top}}rpx" bindlongtap='longtap' bindtap='tap' bindtouchend='end' bindtouchstart='start' bindtouchmove='ballmove' class="img_list {{y.move ? 'moveing':''}}" data-id="{{x}}" bindchange="move" > -->
+      <view style="left:{{y.left}}rpx;top:{{y.top}}rpx" bindtap='tap'  class="img_list {{y.move ? 'moveing':''}}" data-id="{{x}}">
         <image src='{{y.url}}'></image>
         <view class='img_fm'  wx:if="{{y.type}}">
           <text>正面</text>
@@ -12,47 +13,72 @@
       </view>
     </block>
     <view class="upload_btn" bindtap='upload' style="display:{{img_list.length == 9 ? 'none':'flex'}};left:{{img_list.length%3*210}}rpx;top:{{ts_top}}rpx;">
-      <image src='../../img/release_add.png'></image>
+      <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/release_add.png'></image>
     </view>
   </view>
   <view class='texts'>
-    <textarea placeholder="关于这么优秀的发型，你想说点什么..." placeholder-class="textsd"></textarea>
+    <textarea hidden='{{textare}}' class="textarea" maxlength="140" placeholder="关于这么优秀的发型，你想说点什么..." auto-height placeholder-class="textsd" bindinput='value'></textarea>
     <text>{{textlength}}/140</text>
+    <view class='textarea_line'></view>
   </view>
-  <view class='radios'>
+  <!-- <view class='radios'>
     <checkbox-group bindchange="checkboxChange">
       <label class="checkbox" >
-        <checkbox color="#00C3F0"  value="1" checked="{{checked}}"/>申请成为换发模特
+        <checkbox color="#00C3F0"  value="1" />申请成为换发模特
       </label>
     </checkbox-group>
-  </view>
+  </view> -->
+  <view style="width:100%;height:50rpx;"></view>
   <view style="display:{{dis_type ? 'block':'none'}}">
     <view class='layer_tips'>
       <text>*请务必上传同一款发型的美照</text>
       <text>*至少有一张正面的完整的发型特写(单击图片可设置)</text>
     </view>
+
     <view class='layer_label'>
-      <block wx:for="{{label_list}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+    
+      <!-- <block wx:for="{{label_list}}" wx:for-index="x" wx:for-item="y" wx:key="x">
         <view class='label_for'>
           <view class='label'>
-            <text class='label_text'>{{y.title}}</text>
+            <text class='label_text'>{{y.title}}<text wx:if="{{y.inputFlag == 1}}" class='inputflag'>*</text></text>
           </view>
-          <view class='label_list_for'>
+          <view class='layer_label_main'>
             <block wx:for="{{y.children}}" wx:for-index="xs" wx:for-item="ys" wx:key="xs">
-            <view class='active{{ys.type ? "active":""}}' bindtap='labelBtn' data-id="{{x}}" data-ids="{{xs}}" >
-              <text>{{ys.title}}</text>
+            <view class="{{ys.type ? 'label_active':''}} " bindtap='labelBtn' data-type="{{ys.exclusiveFlag}}"  data-id="{{x}}" data-ids="{{xs}}" >
+              {{ys.title}}
             </view>
             </block>
           </view>
+        </view> -->
+
+      <block wx:for="{{label_list}}"  wx:for-index="x" wx:for-item="y" wx:key="x">
+      <view class='layer_label' >
+        <text>{{y.title == null ? '':y.title}}<text wx:if="{{y.inputFlag == 1}}" class='inputflag'>*</text></text>
+        <view class="layer_label_main">
+          <block wx:for="{{y.children}}" wx:for-index="xs" wx:for-item="ys" wx:key="xs" >
+            <view class="{{ys.type ? 'label_active':''}} " bindtap='labelBtn' data-type="{{ys.exclusiveFlag}}" data-id="{{x}}" data-ids="{{xs}}">{{ys.title == null ?'':ys.title}}</view>
+          </block>
         </view>
-      </block>
+      </view>
+      <view class='layer_line' ></view>
+    </block>
+
+
     </view>
   </view>
   <view class='btn' bindtap='goToindex'>
     <text>发布</text>
   </view>
-  <view class='del {{!long_del?"dels":""}}'>
-    <image src='../../img/delete.png'></image>
+  <!-- <view class='del {{!long_del?"dels":""}}'>
+    <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/delete.png'></image>
     <text>拖动到此处删除</text>
-  </view>  
+  </view>   -->
 </view>
+<view class='mask' hidden='{{btn_type}}'></view>
+<view class='btn_content {{btn_type ? "hiden_content":"show_content"}}'>
+  <view catchtap='setfm'>设为封面</view>
+  <!-- <view catchtap='setzm'>设为正面</view> -->
+  <view catchtap='del'>删除照片</view>
+  <view catchtap='cancel' style="margin-top:20rpx;" bindtap='cancel'>取消</view>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

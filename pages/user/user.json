@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "我的"
+  "navigationBarTitleText": "我的",
+  "enablePullDownRefresh":true,
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer"
+  }
 }

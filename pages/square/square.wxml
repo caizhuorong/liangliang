@@ -1,39 +1,39 @@
-<!--index.wxml-->
-<view class="content" style="background-color:{{tips_show?'#f8f8f8':'#fff'}};">
+<import src="../../component/template/template.wxml"/>
+<view class="content" style="background-color:{{tips_show?'#f8f8f8':'#fff'}};{{choose_type ? ' position:fixed;':''}}">
   <view class='nav_bg'>
     <view class='nav_tab' >
-      <view class="{{curr == 0 ? 'nav_active nav_list':'nav_list' }}" bindtap='currTab' data-curr="0">
+      <!-- <view class="{{curr == 0 ? 'nav_active nav_list':'nav_list' }}" bindtap='currTab' data-curr="0">
         <text>关注</text>
-        <view class='nav_line'></view>
-      </view>
+        <view class="nav_line {{curr == 0 ? 'theme_color':'' }}"></view>
+      </view> -->
       <view class="{{curr == 1 ? 'nav_active nav_list':'nav_list' }}" bindtap='currTab' data-curr="1">
-        <text>推荐</text>
-        <view class='nav_line'></view>
+        <text>女士</text>
+        <view class="nav_line {{curr == 1 ? 'theme_color':'' }}"></view>
       </view>
       <view class="{{curr == 2 ? 'nav_active nav_list':'nav_list' }}" bindtap='currTab' data-curr="2">
-        <text>发现</text>
-        <view class='nav_line'></view>
+        <text>男士</text>
+        <view class="nav_line {{curr == 2 ? 'theme_color':'' }}"></view>
       </view>
     </view>
   </view>
-  <view wx:if="{{curr == 0}}" style="margin-top:65rpx;">
+  <!-- <view wx:if="{{curr == 0}}" style="margin-top:100rpx;">
     <view class='tips_text'  wx:if="{{tips_show }}">
       <text>你还没有关注的人，来看看AI大乐为您推荐的发型老师吧~</text>
-      <image src='../../img/square_icon_delete.png' bindtap='closeImg'></image>
-    </view>
-    <view class="follow_bj" wx:if="{{tips_show}}" style="background-color:{{tips_show?'#f8f8f8':'#fff'}};">
+      <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/square_icon_delete.png' bindtap='closeImg'></image>
+    </view> -->
+    <!-- <view class="follow_bj" wx:if="{{follow_list.length != 0}}" style="background-color:{{follow_list.length != 0?'#f8f8f8':'#fff'}};">
       <block wx:for="{{follow_list}}" wx:for-index="x" wx:for-item="y" wx:key="x">
-        <view class='follow_list'>
-          <image src='{{y.img_url}}'></image>
+        <view class='follow_list' >
+          <image src='{{y.img_url}}' lazy-load="true" bindtap='goToHairMan' data-id="{{y.id}}" data-isStylist="{{y.isStylist}}"></image>
           <view class='follow_text'>
-            <text class='follow_name' >{{y.name}}</text>
-            <text class='follow_label'>{{y.label}}</text>
+            <text class='follow_name' >{{y.name == null ?'':y.name}}</text>
+            <text class='follow_label'>{{y.label == null ?'':y.label}}</text>
           </view>
-          <view bindtap='changeFollow' data-id="{{y.id}}" data-ids="{{x}}" class="{{y.stuat ? 'follow_staut':'follow_staut follow_nostaut'}}" >{{y.stuat ? '关注':'已关注'}}</view>
+          <view bindtap="{{y.stuat ? 'changeFollow':'delFollow'}}" data-id="{{y.id}}" data-ids="{{x}}" class="{{y.stuat ? 'follow_staut':'follow_staut follow_nostaut'}}" >{{y.stuat ? '关注':'已关注'}}</view>
         </view>
       </block>
-    </view>
-    <view class="follow_bj" wx:if="{{!tips_show}}" style="background-color:{{tips_show?'#f8f8f8':'#fff'}};">
+    </view> -->
+    <!-- <view class="follow_bj" wx:if="{{!tips_show}}" style="background-color:{{tips_show?'#f8f8f8':'#fff'}};">
       <view class="contents" style="padding-top:0rpx;width:94%;" >
         <view class="left">
           <block wx:for="{{note}}" wx:key="{{x}}">
@@ -46,26 +46,34 @@
           </block>
         </view>
       </view>
-    </view>
-  </view>
-  <view wx:elif="{{curr == 1}}" class="contentbj"  >
-    <view class="recommend" style="margin-top:45rpx;">
-      <view bindtap='chooseType' data-type="1">
-        <text class="{{curr_type == 1 ? 'choose_true':''}}" >综合</text>
-      </view>
-      <view  bindtap='chooseType' data-type="2">
-        <text class="{{curr_type == 2 ? 'choose_true':''}}" >人气</text>
-      </view>
-      <view bindtap='chooseType' data-type="3">
-        <text class="{{curr_type == 3 ? 'choose_true':''}}">最新</text>
-      </view>
-      <view class="ts" bindtap='chooseType' data-type="4">
-        <text>筛选</text>
-        <view class="{{choose_type ? 'sjxs':'sjx'}}" ></view>
-      </view>
-    </view>
-    <view >
+    </view> 
+  </view>-->
+  <view wx:if="{{curr == 1 || curr ==2 }}" class="contentbj"  >
+    <!-- <view > -->
       <view class="contents">
+        <block wx:for="{{lstSHairTagPage}}" wx:for-item="y" wx:for-index="x" wx:key="x">
+          <block wx:if="{{y.tagListType == '0' }}">
+            <title text="{{y.label}}" margintop="45" url="../../others_pages/square_results/square_results?tag={{y.conditions}}&title={{y.label}}&sex={{sex}}" more="1" />
+            <view class="week_hot" data-tag="{{y.conditions}}" bindtap='goSquareResultsss' data-label="{{y.label}}" data-sex="{{sex}}">
+              <image src="{{y.background}}" mode="widthFix"></image>
+            </view>
+          </block>
+          <block wx:if="{{y.tagListType == 1}}">
+            <title text="{{y.label}}" margintop="45" url="../../others_pages/square_results/square_results?tag={{y.tagList}}&title={{y.label}}&sex={{sex}}" more="1"  condition="{{y.tagList}}"/>
+            <view class="week_hot" data-tag="{{y.tagList}}" bindtap='goSquareResultss' data-label="{{y.label}}" data-sex="{{sex}}">
+              <image src="{{y.background}}"  mode="widthFix"></image>
+            </view>
+          </block>
+          <block wx:if="{{y.tagListType == 2}}">
+            <title text="{{y.label}}" margintop="45" url="../../others_pages/square_results/square_results" more="0" />
+              <view class="themes">
+                <view class="themes_item" wx:for="{{y.tagList}}" wx:for-index="xs" wx:for-item="ys" wx:key="xs" data-tag="{{ys}}" bindtap='goSquareResults' data-label="{{y.tagListLabel[xs]}}" data-sex="{{sex}}">
+                  <text>{{y.tagListLabel[xs]}}</text>
+                </view>
+              </view>
+          </block>
+        </block>
+        <title text="发型库" margintop="45" url="../../others_pages/square/square" sex="{{curr == 2 ? '0':curr}}" more="0" widths="95" />
         <view class="left">
           <block wx:for="{{note}}" wx:key="">
             <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
@@ -77,24 +85,9 @@
           </block>
         </view>
       </view>
-    </view>
+    <!-- </view> -->
   </view>
   <view wx:else class="contentbj" >
-  <view class="recommend" style="margin-top:45rpx;">
-      <view bindtap='chooseType' data-type="0">
-        <text class="{{curr_type == 0 ? 'choose_true':''}}" >综合</text>
-      </view>
-      <view  bindtap='chooseType' data-type="1">
-        <text class="{{curr_type == 1 ? 'choose_true':''}}" >人气</text>
-      </view>
-      <view bindtap='chooseType' data-type="2">
-        <text class="{{curr_type == 2 ? 'choose_true':''}}">最新</text>
-      </view>
-      <view class="ts" bindtap='chooseType' data-type="3">
-        <text>筛选</text>
-        <view class="{{choose_type ? 'sjxs':'sjx'}}" ></view>
-      </view>
-    </view>
     <view >
       <view class="contents">
         <view class="left">
@@ -111,43 +104,55 @@
     </view>
   </view>
   <divider text="{{loading_text}}" style="display:{{displaytype?'flex':'none'}}" />
-  <view class='fexd_img' bindtap='gotorelease'>
-    <image src='../../img/square_icon_release.png'></image>
+  <!-- <view class='fexd_img' bindtap='gotorelease'>
+    <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/square_icon_release.png'></image>
     <text>晒发型</text>
+  </view> -->
+  <view class='fexd_img theme_color' bindtap='chooseType' data-type="4">
+    <text>快速筛选</text>
   </view>
 </view>
-<view class="layer_bj" style="display:{{ choose_type ? 'block':'none'}}" >
-  <scroll-view class='layer_content' scroll-y>
-    <block wx:for="{{label_list}}"  wx:for-index="x" wx:for-item="y" wx:key="x">
-      <view class='layer_label' >
-        <text>{{y.title}}</text>
-        <view class="layer_label_main">
-          <block wx:for="{{y.children}}" wx:for-index="xs" wx:for-item="ys" wx:key="xs" >
-            <view class="{{ys.staut ? 'label_active':''}} " bindtap='changeChose' data-id="{{xs}}" data-ids="{{x}}">{{ys.label}}</view>
-          </block>
+<view class="layer_bj" style="left:{{ choose_type ? '0rpx;':' 750rpx;'}}" bindtouchstart='touchStart' bindtouchend='touchEnd' bindtap='chooseTypeLeft' bindtouchmove='moveChooseTypeLeft'>
+  <view class="layer_s">
+    <scroll-view class='layer_content' scroll-y="true">
+      <block wx:for="{{label_list}}"  wx:for-index="x" wx:for-item="y" wx:key="x">
+        <view class='layer_label' >
+          <text>{{y.title == null ? '':y.title}}</text>
+          <view class="layer_label_main">
+            <block wx:for="{{y.children}}" wx:for-index="xs" wx:for-item="ys" wx:key="xs" >
+              <view class="{{ys.staut ? 'label_active':''}} " bindtap='changeChose' data-id="{{xs}}" data-ids="{{x}}">{{ys.label == null ?'':ys.label}}</view>
+            </block>
+          </view>
         </view>
-      </view>
-      <view class='layer_line' ></view>
-    </block>
-  </scroll-view >
-  <view class="layer_btn">
+        <view class='layer_line' ></view>
+      </block>
+    </scroll-view >
+  </view>
+  <view class="layer_btn" style="left:{{ choose_type ? '110rpx;':' 750rpx;'}}" >
     <view class="layer_btn_cancel" bindtap='layer_cancel'>重置</view>
-    <view class="layer_btn_qd" bindtap='layer_qd'>确定</view>
+    <view class="layer_btn_qd theme_color" bindtap='layer_qd'>确定</view>
   </view>
 </view>
 <template name="item">
-  <navigator url="../heart_detail/hear_detail?userid={{id}}&isTemplate={{isTemplate}}" open-type="navigate" >
+  <navigator url="../heart_detail/hear_detail?templateNo={{id}}&isTemplate={{isTemplate}}" open-type="navigate" >
     <view class="item" >
-      <image class="item-img" src="{{url}}" mode="widthFix"></image>
-      <image wx:if="{{type}}" class="item-imgs" src='../../img/square_icon_more_pic.png' ></image>
-      <view class="name">
-        <image class="item-ava" src="{{avatar}}"></image>    
-        <text class="name-title">{{name}}</text>
-        <view class="heart_">
-          <image class="heart" src="../../img/square_icon_look.png"></image>
-          <text>{{heart_num}}</text>
+      <form  report-submit="true"  bindsubmit="templateClick" >
+        <image class="item-img" lazy-load="true" src="{{url?url:'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png'}}" mode="widthFix"></image>
+        <image wx:if="{{type}}" lazy-load="true" class="item-imgs" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/square_icon_more_pic.png' ></image>
+        <image wx:if="{{new}}" lazy-load="true" class="new" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon29.png'></image>
+        <view class="name">
+          <image class="item-ava" lazy-load="true" src="{{avatar?avatar:'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png'}}"></image>    
+          <text class="name-title">{{name == null ? '':name}}</text>
+          <view class="heart_">
+            <image class="heart" lazy-load="true" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/square_icon_look.png"></image>
+            <text>{{heart_num == null ? '':heart_num }}</text>
+          </view>
         </view>
-      </view>
+        <button class='getFormId' form-type="submit"></button>
+      </form>
     </view>
   </navigator>
 </template>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
+<view class="tarb"></view>

@@ -1,3 +1,4 @@
+@import '../../app.wxss';
 .btn{
   width: 620rpx;
   height: 82rpx;
@@ -5,9 +6,7 @@
   left: 65rpx;
   bottom: 85rpx;
   box-shadow: #999 0 8px 15px -10px;
-   background:linear-gradient(to left, #05c4f0 , #3888f8);
    border-radius: 6rpx;
-
 }
 .btn>text{
   font-size: 36rpx;
@@ -41,7 +40,7 @@ page{
   flex-wrap:wrap;
   align-items: center;
   margin: 0 auto;
-  margin-top: 22rpx;
+  margin-top: 40rpx;
   margin-bottom: 80rpx;
 }
 .layer_label_main>view{
@@ -54,11 +53,16 @@ page{
   text-align: center;
   color: #959595;
   line-height: 44rpx;
+  border-radius: 6rpx;
 }
 .layer_label_main>view:nth-child(4n){
   margin-right: 0rpx;
 }
 .label_active{
-  color: #05C4F0 !important;
-  background-color:#D2F7FF !important; 
+  color: #292929 !important;
+  font-weight: bold;
+  border:1rpx solid #292929;
+  width:126rpx !important;
+  height: 40rpx !important;
+  line-height: 40rpx !important;
 }

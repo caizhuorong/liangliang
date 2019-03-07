@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "订单详情",
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer"
+  }
+}

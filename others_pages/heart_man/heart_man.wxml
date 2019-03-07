@@ -1,0 +1,54 @@
+<view class="bj">
+  <view class='choose' bindtap='chooseType'>
+    <view>{{label_title}}</view>
+    <view class="{{choose_type ? 'sjxs':'sjx'}}"  ></view>
+  </view>
+  <view class='man_list'>
+  </view>
+  <view class='choose_layer_bj' wx:if="{{choose_type}}" bindtap='chooseLabels'>
+    <view class='choose_layer'>
+      <view data-title="按人气-从高到低" data-index="1" bindtap='chooseLabel'>按人气-从高到低</view>
+      <view data-title="按价格-从低到高" data-index="2" bindtap='chooseLabel'>按价格-从低到高</view>
+      <view data-title="按价格-从高到低" data-index="4" bindtap='chooseLabel'>按价格-从高到低</view>
+      <view data-title="按距离-从近到远" data-index="3" bindtap='chooseLabel'>按距离-从近到远</view>
+    </view>
+  </view>
+  <view class='man_content_list'>
+    <block wx:for="{{man_list}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+      <navigator url="../../others_pages/heart_center/heart_center?id={{y.userId}}" >
+        <view class="list_man">
+          <view class='list_man_avauts'>
+            <image class="list_man_avaut" src='{{y.personIcon?y.personIcon:"https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png"}}'></image>
+          </view>
+          <view class='center_conent'>
+            <view class="content_name">{{y.nick}}</view>
+            <view class='row_list1'>
+              <image  src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/list_icon_store.png"></image>
+              <text>{{y.sHairStore.storeName}}</text>
+            </view>
+            <view class='row_list2'>
+              <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/list_icon_map.png'></image>
+              <text>{{y.address}}</text>
+            </view>
+          </view>
+          <view class='coun_list'>
+            <view class='row_list3'>
+              <image src="{{label_index == 1 ? 'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/list_icon_sentiment_select.png':'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/list_icon_sentiment_unselect.png'}} " ></image>
+              <text>{{y.praiseCount == null ? 0:y.praiseCount}}</text>
+            </view>
+            <view class='row_list4'>
+              <image src="{{label_index == 2 || label_index == 4 ?'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/list_icon_price_select.png':'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/list_icon_price_unselect.png'}}"></image>
+              <text>{{y.price == null ? 0:y.price}}元</text>
+            </view>
+            <view class='row_list5'>
+              <image src="{{label_index == 3 ? 'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/list_icon_position_select.png':'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/list_icon_position_unselect.png'}}"></image>
+              <text>{{y.distance == null ? 0:y.distance }}km</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</view>
+<divider text="{{loading_text}}" style="display:{{displaytype?'flex':'none'}}" />
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

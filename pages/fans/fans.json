@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "粉丝",
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer"
+  }
+}

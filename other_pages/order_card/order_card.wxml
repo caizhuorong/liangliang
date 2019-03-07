@@ -1,0 +1,23 @@
+<view class="content">
+  <view class="item_bj" style="{{y.show? 'background-image: url(https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img52.png)':'background-image: url(https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img53.png)'}}" wx:for="{{note}}" wx:for-index="x" wx:for-item="y" wx:key="x" bindtap='{{y.show ? "goToOrder":""}}' data-no="{{y.no}}">
+    <view class="item_price">
+      <text class="price_text1  {{y.show ?'red_color':'e9e9e9_color'}}" wx:if="{{y.couponType ==2 ?true:false}}">￥</text>
+      <text class="price_text2 {{y.show ?'red_color':'e9e9e9_color'}}">{{y.couponType == 1 ? y.discount*10 : y.subtraction}}</text>
+      <text class="price_text3 {{y.show ?'red_color':'e9e9e9_color'}}" wx:if="{{y.couponType ==1 ?true:false}}">折</text>
+    </view>
+    <view class="item_text">
+      <text class="red_color {{y.show ?'red_color':'e9e9e9_color'}}">{{y.couponName}}</text>
+      <text class="red_color {{y.show ?'red_color':'e9e9e9_color'}}">{{y.amountOfMoney == null ? '无门槛使用':'满'+y.amountOfMoney +'元可用'}}</text>
+    </view>
+    <view class="item_do">
+      <text class="{{y.show ? 'reds_color':'whites_color'}}">立即使用</text>
+    </view>
+    <view class="item_date">
+      <text class="white_color">有效期：{{y.startTime}}至{{y.endTime}}</text>
+    </view>
+    <view class="item_card">
+      <text class="white_color">{{y.couponType == 1?'打折券':'现金券'}}</text>
+    </view>
+  </view>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

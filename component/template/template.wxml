@@ -1,0 +1,14 @@
+<template name="tabBar">
+<view class="tabBar">
+  <block wx:for="{{tabBar}}" wx:for-item="item" wx:key="tabBar">
+    <view class="tabBar-item" >
+      <navigator open-type='switchTab' url="{{item.pagePath}}"  class="navig">
+        <form report-submit="true" class='active_itemss'  bindsubmit="templateClick">
+          <button class='getFormId' form-type="submit"></button>
+            <view class="iis" ><image class="icon" src='{{item.iconPath}}'></image></view>
+        </form>
+      </navigator>
+    </view>
+  </block>
+</view>
+</template>

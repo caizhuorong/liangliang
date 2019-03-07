@@ -1,0 +1,10 @@
+<view class='page-container'>
+  <image src='{{imgurl}}' class='error-img'></image>
+  <view class='error-text1'>{{title}}</view>
+  <block wx:for='{{notice}}' wx:for-index="index" wx:for-item="item" wx:key="item" >
+    <view class='error-text2'>{{item}}</view>
+  </block>
+    <view class='btn' bindtap='back' wx:if="{{isError}}">
+      <text>{{btntitle}}</text>
+  </view>
+</view>

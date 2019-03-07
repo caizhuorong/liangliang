@@ -1,8 +1,8 @@
 <view>
   <view class='logo'>
-    <image src='../../img/my_hair_icon.png'></image>
+    <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_hair_icon.png'></image>
     <text class='text1'>发型纪</text>
-    <text class='text2'>Ver2.0.0</text>
+    <text class='text2'>Ver1.5.2</text>
   </view>
   <view class="content_border"></view>
   <view class='info'>
@@ -12,19 +12,19 @@
     <view>
       <text>客服微信：量量看</text>
     </view>
-    <view>
+    <view bindtap='makephone' data-num="4000-365-724">
       <text>客服电话：4000-365-724</text>
     </view>
   </view>
   <view class="content_border"></view>
   <view class='footer'>
-    <view>
-      <text>用户协议</text>
-      <image src='../../img/my_icon_more.png'></image>
-    </view>
-    <view>
-      <text>隐私条款</text>
-      <image src='../../img/my_icon_more.png'></image>
-    </view>
+      <view bindtap="gotouser_protocol">
+        <text>服务协议</text>
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png'></image>
+      </view>
+      <view bindtap="gotouser_protocol">
+         <official-account></official-account>
+      </view>
   </view>
 </view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

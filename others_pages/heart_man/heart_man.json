@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "发型师",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "divider": "/component/divider",
+    "sharelayer": "/component/share_layer/share_layer"
+  }
+}

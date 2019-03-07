@@ -1,0 +1,6 @@
+<view class="loading-mask"  wx:if="{{meloadingshow == 0 ?false:true}}">
+  <view class="loading_view">
+    <image class="loading-img" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/loading2.gif'></image>
+    <text class="loadgin_text">{{meloadingvalue}}</text>
+  </view>
+</view>

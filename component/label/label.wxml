@@ -1,12 +1,22 @@
-<navigator url='{{url}}'>  
-  <view class='label_content' style="border-bottom:{{end != 1 ? ' 2rpx solid #dadada':''}}">
+<navigator url='{{url}}' wx:if="{{url != '' }}">  
+  <view class='label_content' style="border-bottom:{{end != 1 ? ' 1px solid #eee;':''}} {{type == 1 ? 'height:130rpx;':''}}" >
     <view class='label_title'>
-      <text>{{title}}{{type}}</text>
+      <text>{{title}}</text>
     </view>
-    <view class='label_value'>
+    <view class='label_value'  >
       <text wx:if="{{type != 1}}">{{value}}</text>
       <image wx:if="{{type == 1}}" class='ava' src='{{value}}'></image>
-      <image src='../../img/my_icon_more.png' class='more'></image>
+      <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png' class='more'></image>
     </view>
   </view>
 </navigator>
+  <view class='label_content' wx:if="{{url == '' }}" style="border-bottom:{{end != 1 ? ' 1px solid #eee;':''}} {{type == 1 ? 'height:130rpx;':''}}" >
+    <view class='label_title'>
+      <text>{{title}}</text>
+    </view>
+    <view class='label_value'  >
+      <text wx:if="{{type != 1}}">{{value}}</text>
+      <image wx:if="{{type == 1}}" class='ava' src='{{value}}'></image>
+      <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png' class='more'></image>
+    </view>
+  </view>

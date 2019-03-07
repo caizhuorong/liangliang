@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "解锁发型",
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer"
+  }
+}

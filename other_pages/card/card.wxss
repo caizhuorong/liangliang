@@ -1,0 +1,161 @@
+@import '../../app.wxss';
+@font-face{
+  font-family: "STHupo";
+  src:url("https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/font/hw2_min.ttf");
+}
+.nav{
+  width: 100%;
+  height: 92rpx;
+  box-shadow:0rpx 6rpx 15rpx RGBA(165, 165, 165, 0.1) inset;
+  border-bottom: 2rpx solid #dadada;
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 9;
+  background-color: #fff;
+}
+.nav>view{
+  width:33.3%;
+  height: 92rpx;
+  text-align: center;
+  line-height: 92rpx;
+  float: left;
+}
+.nav>view>text{
+  font-size: 28rpx;
+  color: #292929;
+}
+
+.line_stor{
+  width: 64rpx !important;
+  height: 4rpx !important;
+  background-color: #05C4F0;
+  position: absolute;
+  bottom: -1rpx;
+}
+.nav_left{
+  left:93rpx
+}
+
+.nav_mindle{
+  left:343rpx;
+
+}
+.nav_right{
+ left:593rpx
+}
+.content{
+  width: 662rpx;
+  margin:0 auto;
+  margin-top: 142rpx;
+}
+.item_bj{
+  width: 100%;
+  height: 238rpx;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 44rpx;
+}
+.item_price{
+  width: 220rpx;
+  height: 163rpx;
+  line-height: 163rpx;
+  float: left;
+  margin-left: 25rpx;
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  margin-top: 5rpx;
+}
+.price_text1{
+  font-size: 32rpx;
+  text-align: left;
+  display: block;
+  float: left;
+  line-height:222rpx;
+}
+.price_text2{
+  font-family: 'STHupo';
+  font-size: 140rpx;
+  letter-spacing:-15rpx;
+}
+.price_text3{
+  font-size:24rpx;
+  padding-left:10rpx;
+  text-align:center;
+  display:block;
+  float:left;
+  line-height:222rpx;
+}
+.item_text{
+  width: 222rpx;
+  margin-top: 54rpx;
+  float: left;
+}
+.item_text>text{
+  display: block;
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+.item_date{
+  width: 461rpx;
+  text-align: center;
+  float: left;
+}
+.item_date>text{
+  font-size: 20rpx;
+  display: block;
+  line-height: 55rpx;
+}
+.item_do{
+  width: 184rpx;
+  height: 167rpx;
+  text-align: center;
+  float: left;
+  margin-left: 5rpx;
+}
+.item_do>text{
+  font-size: 30rpx;
+  line-height: 220rpx;
+}
+.item_card{
+  width: 173rpx;
+  height: 53rpx;
+  text-align: center;
+  float: left;
+  margin-left:21rpx;
+
+}
+.item_card>text{
+  line-height: 53rpx;
+  font-size: 24rpx;
+  display: block;
+}
+.item_new{
+  width: 54rpx;
+  height: 54rpx;
+  transform:rotate(90deg);
+  position: absolute;
+  right: 9rpx;
+  top: 0rpx;
+}
+.item_new>image{
+  width: 54rpx;
+  height: 54rpx;
+}
+.red_color{
+  color: #FDF1BE;
+}
+.reds_color{
+  color:#FF4603;
+}
+.white_color{
+  color: #fff;
+}
+.whites_color{
+  color: #bfbfbf;
+}
+.e9e9e9_color{
+  color:#e9e9e9;
+}

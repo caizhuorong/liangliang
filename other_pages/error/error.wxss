@@ -1,0 +1,46 @@
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ flex-direction:column;
+
+}
+
+.error-img {
+  width: 320rpx;
+  height: 240rpx;
+  margin: 316rpx 195rpx 44rpx;
+}
+
+.error-text1 {
+  font-size: 36rpx;
+  color: rgba(34, 34, 34, 1);
+  margin-bottom:22rpx;
+
+}
+
+.error-text2 {
+  font-size: 24rpx;
+  color: rgba(156, 156, 156, 1);
+  height:30rpx;
+  line-height:30rpx;
+
+}
+
+.btn{
+  width: 620rpx;
+  height: 82rpx;
+  margin: 0 auto;
+  margin-top: 70rpx;
+  box-shadow: #999 0 8px 15px -10px;
+   background:linear-gradient(to left, #05c4f0 , #3888f8);
+   border-radius: 6rpx;
+
+}
+.btn>text{
+  font-size: 36rpx;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 82rpx;
+}

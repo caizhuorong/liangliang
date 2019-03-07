@@ -1,0 +1,118 @@
+@font-face{
+  font-family: "STHupo";
+  src:url("https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/font/hw2_min.ttf");
+}
+.content{
+  width: 644rpx;
+  margin:0 auto;
+  margin-top: 52rpx;
+}
+.item_bj{
+  width: 100%;
+  height: 220rpx;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 44rpx;
+}
+.item_price{
+  width: 210rpx;
+  height: 163rpx;
+  line-height: 163rpx;
+  float: left;
+  margin-left: 25rpx;
+}
+.price_text1{
+  font-size: 32rpx;
+  width: 30rpx;
+  text-align: left;
+  display: block;
+  float: left;
+  line-height:217rpx;
+}
+.price_text2{
+  width: 170rpx;
+  font-family: 'STHupo';
+  font-size: 140rpx;
+  letter-spacing:-15rpx;
+  text-align: center;
+  display: block;
+  float: left;
+}
+.price_text3{
+  width:30rpx;
+  font-size:24rpx;
+  padding-left:5rpx;
+  text-align:center;
+  display:block;
+  float:left;
+  line-height:217rpx;
+}
+.item_text{
+  width: 222rpx;
+  margin-top: 45rpx;
+  float: left;
+}
+.item_text>text{
+  display: block;
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+.item_date{
+  width: 461rpx;
+  text-align: center;
+  float: left;
+}
+.item_date>text{
+  font-size: 20rpx;
+  display: block;
+  line-height: 55rpx;
+}
+.item_do{
+  width: 184rpx;
+  height: 167rpx;
+  text-align: center;
+  float: left;
+}
+.item_do>text{
+  font-size: 30rpx;
+  line-height: 220rpx;
+}
+.item_card{
+  width: 173rpx;
+  height: 53rpx;
+  text-align: center;
+  float: left;
+}
+.item_card>text{
+  line-height: 53rpx;
+  font-size: 24rpx;
+  display: block;
+}
+.item_new{
+  width: 54rpx;
+  height: 54rpx;
+  transform:rotate(90deg);
+  position: absolute;
+  right: 9rpx;
+  top: 0rpx;
+}
+.item_new>image{
+  width: 54rpx;
+  height: 54rpx;
+}
+.red_color{
+  color: #FDF1BE;
+}
+.reds_color{
+  color:#FF4603;
+}
+.white_color{
+  color: #fff;
+}
+.whites_color{
+  color: #bfbfbf;
+}
+.e9e9e9_color{
+  color:#e9e9e9;
+}

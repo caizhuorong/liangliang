@@ -4,12 +4,29 @@
  overflow: hidden;
 }
 .banner{
-  width: 720rpx;
-  height: 360rpx;
+  width: 750rpx;
+  height: 420rpx;
   margin: 0 auto;
-  margin-top: 25rpx;
-  border-radius: 8rpx;
   overflow: hidden;
+}
+
+.banner_img{
+   width: 750rpx;
+  height: 420rpx;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.banner_img_zwt{
+   width: 750rpx;
+  height: 420rpx;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #eee;
+}
+.banner_img>image{
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .slide_image{
   width: 100%;
@@ -18,86 +35,77 @@
 }
 .active_list{
   display: flex;
+  width: 686rpx;
+   margin: 0 auto;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 60rpx;
 }
+.formid_button{
+  width: 100%;
+  height: 100%;
+  position:absolute;
+  left: 0rpx;
+  top: 0rpx;
+  opacity:0;
+}
 .active_item{
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .active_item>image{
-  width: 107rpx;
-  height: 78rpx;
+  width: 160rpx;
+  height: 160rpx;
   margin-bottom: 25rpx;
 }
 .active_item>text{
   font-size: 28rpx;
   color: #292929;
 }
-
-.scroll-view_H{
-  height: 230rpx;
-  overflow:hidden;
-  margin-left: 40rpx;
-  white-space:nowrap;
-
-}
 .scr_itme{
-  width: 170rpx;
-  height: 220rpx;
-  margin-right: 40rpx;
-  display: inline-block;
-}
-.scr_itme>image{
-  width: 170rpx;
-  height: 170rpx;
-  margin-bottom: 10rpx;
-  border-radius: 50%;
-}
-.scr_itme>text{
-  font-size: 28rpx;
-  color: #292929;
+  width: 686rpx;
+  margin: 0 auto;
+  border-radius: 8rpx;
+  margin-bottom: 90rpx;
+  overflow: hidden;
   display: block;
-  text-align: center;
-
+  box-shadow:0rpx 15rpx 15rpx -5rpx RGBA(165,165,165, .6);  
 }
 .contents{
-  margin: 0rpx 20rpx;
+  margin: 0rpx 45rpx;
   text-align: justify;
 }  
 .item{
   background-color: #fff;
-  margin: 1%; 
-  margin-bottom: 20rpx;
+  margin-bottom: 65rpx;
   display: inline-block;
   width:100%;
   border-radius: 8rpx;
-  overflow: hidden;
-   box-shadow: #999 0 8px 30px -10px;
+  /* overflow: hidden; */
+   /* box-shadow: 0rpx 8rpx 40rpx rgba(153,153,153, .5); */
+   /* box-shadow:0rpx 0rpx 10rpx rgba(153,153,153, .5);   */
    position: relative;
 }
-.item-ava{
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 20rpx;
-}
+
 .heart{
   width: 22rpx;
   height: 14rpx;
   margin-right: 8rpx;
+
 }
-.heart_{
+.heart_s{
   display: flex;
   align-items: center;
 }
 .item-img{
-  width: 100%
-  
+  width: 100%;
+  border-radius: 8rpx;  
+  box-shadow: 0rpx 8rpx 40rpx rgba(153,153,153, .4);
 }
 .item-imgs{
   width: 38rpx;
@@ -121,44 +129,27 @@
 }
 .item .name{
   display: flex;
-  padding: 0 20rpx;
+  padding: 0 30rpx;
   margin-top: 20rpx;
   padding-bottom: 22rpx;
   align-items: center;
   font-size: 22rpx;
   color: #1e1e1e;
   font-family: 'PingFang SC-Medium';
+  position: absolute;
+  right: 0rpx;
+  bottom:0rpx;
 }
 
 .item-title-box{
   display: flex;
   position: relative;
 }
-.name-title{
-  flex: 1;
-  margin-left: 18rpx;
-  margin-right: 20rpx;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden;
-  font-size: 24rpx;
-  color: #292929;
-}
+
 .name text:last-child{
-  color: #292929;
-  line-height: 10rpx;
-  
+  color: #fff;
 }
-.left,.right{
-  display: inline-block;
-  vertical-align: top;
-  width: 49%;
-}
-.right{
-  float: right;
-}
+
 .statement{
   width: 100%;
   display: flex;
@@ -177,4 +168,63 @@
 .name{
   font-size: 22rpx;
   color: #05C4F0 !important;
+}
+.mask{
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.4);
+}
+.mask_img1{
+  width: 609rpx;
+  height: 592rpx;
+  position: absolute;
+  left:70rpx;
+  top: 200rpx;
+}
+.mask_img2{
+  width: 62rpx;
+  height: 62rpx;
+  position: absolute;
+  top: 850rpx;
+  left: 340.5rpx;
+}
+.mask_btns{
+   position: absolute;
+  top:695rpx;
+  left:235rpx;
+  width: 280rpx;
+  height: 74rpx;
+  text-align: center;
+  line-height: 74rpx;
+  box-shadow:0rpx 5rpx 12rpx RGBA(0, 0, 0, 0.35);  
+  background-color: #fff;
+  border-radius: 8rpx;
+  color: #212121;
+  font-size: 30rpx;
+}
+.new{
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  width: 54rpx;
+  height: 54rpx;
+}
+.getFormId{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  opacity: 0;
+}
+.indextm{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+  z-index: 99;
 }

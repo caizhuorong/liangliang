@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "拍照说明",
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "图片选择",
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer"
+  }
+}

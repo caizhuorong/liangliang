@@ -1,0 +1,6 @@
+<navigator url="{{url}}" open-type="switchTab" wx:if="{{show != 'true'?true:false }}">
+ <view class='fexd_img theme_color'>
+    <image src='{{url == "../../pages/index/index" ? "https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/to_index_new.png":"https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon32.png"}}'></image>
+    <text>{{url == '../../pages/index/index' ? '首页':'广场'}}</text>
+  </view>
+</navigator>

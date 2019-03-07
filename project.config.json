@@ -1,5 +1,5 @@
 {
-	"description": "项目配置文件。",
+	"description": "项目配置文件",
 	"packOptions": {
 		"ignore": []
 	},
@@ -8,12 +8,16 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
-	"appid": "wx0e7c13336e9d87cd",
-	"projectname": "ll_hairface",
+	"libVersion": "2.6.0",
+	"appid": "wx61b17482ec5d3054",
+	"projectname": "czr",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
 	"isGameTourist": false,
 	"condition": {
 		"search": {
@@ -24,13 +28,130 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 15,
+			"list": [
+				{
+					"id": 0,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": "scene=taojinsha&IdentityID=09545F00B378EA2A1236BBC3EB5CB462&IdentityToken=759DB343218915532F9990210E6A5D2246E6F0F906601990109A94E5D8376DBE727691D28ED06DD35CE51769B79960CC",
+					"scene": "1008"
+				},
+				{
+					"id": 1,
+					"name": "test",
+					"pathName": "pages/test/test",
+					"query": "shareUserId=983f7718ec85d532cdf0313649fae23e&share=true&from=user&scene=pages/test/test",
+					"scene": 1011
+				},
+				{
+					"id": 2,
+					"name": "heart_detail",
+					"pathName": "pages/heart_detail/hear_detail",
+					"query": "shareUserId=5d8956547a1148192f4779efb3e392b3&isTemplate=1&templateNo=1844",
+					"scene": 1007
+				},
+				{
+					"id": 3,
+					"name": "AI",
+					"pathName": "pages/AIanalysis/AIanalysis",
+					"query": "shareUserId=1f55b48185cdf58fa751e1a848a5dbd1&from=user&share=true\t",
+					"scene": "1007"
+				},
+				{
+					"id": 4,
+					"name": "heart_center",
+					"pathName": "others_pages/heart_center/heart_center",
+					"query": "shareUserId=5621dfb6c93328018c7cb2d2ff70f4dc&isStylist=0&id=5621dfb6c93328018c7cb2d2ff70f4dc",
+					"scene": "1007"
+				},
+				{
+					"id": -1,
+					"name": "my_heart",
+					"pathName": "pages/my_heart/my_heart",
+					"query": "",
+					"scene": "1008"
+				},
+				{
+					"id": 6,
+					"name": "active_20181217",
+					"pathName": "pages/active_20181217/active_20181217",
+					"query": "shareUserId=5d8956547a1148192f4779efb3e392b3",
+					"scene": "1007"
+				},
+				{
+					"id": 7,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": "scene=12312312",
+					"scene": "1011"
+				},
+				{
+					"id": 8,
+					"name": "H5_active",
+					"pathName": "other_pages/H5_active/H5_active",
+					"query": "scene=taojinsha&IdentityID=09545F00B378EA2A1236BBC3EB5CB462&IdentityToken=759DB343218915532F9990210E6A5D2246E6F0F906601990109A94E5D8376DBE727691D28ED06DD35CE51769B79960CC",
+					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "heart_designs",
+					"pathName": "pages/heart_designs/heart_designs",
+					"query": "scene=taojinsha&IdentityID=09545F00B378EA2A1236BBC3EB5CB462&IdentityToken=759DB343218915532F9990210E6A5D2246E6F0F906601990109A94E5D8376DBE727691D28ED06DD35CE51769B79960CC",
+					"scene": "1008"
+				},
+				{
+					"id": 10,
+					"name": "test",
+					"pathName": "pages/test/test",
+					"query": "shareUserId=b30b96272b2bf9657470879b2c3d3005&share=true&from=user&scene=pages/test/test",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "heart_designs_share",
+					"pathName": "pages/heart_designs_share/heart_designs_share",
+					"query": "scene=taojinsha&shareImgUrl=https://faceswap-test.lianglianglive.com/file/faceswap/result/20190129/bcb79a5a3e37294ff60d520e7e9bebb5_331_swapnew5D5B2.jpg&shareUserId=b30b96272b2bf9657470879b2c3d3005&templateNo=592",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "heart_designs_share",
+					"pathName": "pages/heart_designs_share/heart_designs_share",
+					"query": "shareUserId=b30b96272b2bf9657470879b2c3d3005&templateNo=templateNo&scene=pages/index/index/&shareImgUrl=https://faceswap-test.lianglianglive.com/file/faceswap/result/20190129/bcb79a5a3e37294ff60d520e7e9bebb5_615_swapnew788AF.jpg",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "heart_designs_share",
+					"pathName": "pages/heart_designs_share/heart_designs_share",
+					"query": "/pages/heart_designs_share/heart_designs_share?shareUserId=5621dfb6c93328018c7cb2d2ff70f4dc&isTemplate=1&templateNo=650&scene=pages/heart_designs/heart_designs&shareImgUrl=https://faceswap.lianglianglive.com/file/faceswap/result/20190211/6e563e1af60523f02c65e914676c4002_650_swapnew4B989.jpg",
+					"scene": null
+				},
+				{
+					"id": 14,
+					"name": "active_article_base",
+					"pathName": "pages/active_article_base/active_article_base",
+					"query": "shareTitle=123123&url=https%3A%2F%2Fotherservice.lianglianglive.com%2Fwx_webview%2Factive_20190222%2Findex.html%3Fa%3D1&title=324234",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "active_20190222",
+					"pathName": "pages/active_20190222/active_20190222",
+					"query": "",
+					"scene": null
+				}
+			]
 		}
 	}
 }

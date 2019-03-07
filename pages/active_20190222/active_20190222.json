@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "葬爱家族召集令",
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer",
+      "getuserinfo": "/component/getuserinfo/getuserinfo"
+  }
+}

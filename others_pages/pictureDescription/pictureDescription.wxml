@@ -1,0 +1,44 @@
+<!--pages/ pictureDescription/pictureDescription.wxml-->
+<view class='title'>正确示范</view>
+<image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_pic_one.png' class='title-img'></image>
+<view class='row'>
+  <image src='' class='img-right' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_pic_right.png'></image>
+  <view class='text'>请确认您当前的环境光照充足，能拍出清晰照片</view>
+</view>
+<view class='row'>
+  <image src='' class='img-right' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_pic_right.png'></image>
+  <view class='text'>请摘下眼镜，保证脸部前面无遮挡</view>
+</view>
+<view class='row'>
+  <image src='' class='img-right' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_pic_right.png'></image>
+  <view class='text'>请将头发拨至耳后，并将眉毛全部露出</view>
+</view>
+<view class='row'>
+  <image src='' class='img-right' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_pic_right.png'></image>
+  <view class='text'>头部正面向镜头，并微微笑一个</view>
+</view>
+
+<view class='line'></view>
+<view class='title'>错误拍照</view>
+
+<view class='row'>
+<view class='row-flex'>
+<image class='error-img' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_pic_two.png'></image>
+<text class='error-text'>光线过暗 or 光线不均匀</text>
+</view>
+<view class='row-flex'>
+<image class='error-img' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_pic_three.png'></image>
+<text class='error-text'>眼镜遮挡 or 手遮挡脸部</text>
+</view>
+</view>
+<view class='row'>
+<view class='row-flex'>
+<image class='error-img' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_pic_four.png'></image>
+<text class='error-text'>低头 or 脸部侧歪</text>
+</view>
+<view class='row-flex'>
+<image class='error-img' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_pic_five.png'></image>
+<text class='error-text'>刘海遮挡眉毛 or 头发遮挡眉毛</text>
+</view>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

@@ -1,0 +1,19 @@
+<view class='content'>
+  <text>请输入你的身高/体重</text>
+  <view class='price'>
+    <view class='price_content'>
+      <text>身高:</text>
+      <input type="digit" bindinput="input1" value="{{value1}}"></input>
+      <text>cm</text>
+    </view>
+    <view class='price_content'>
+      <text>体重:</text>
+      <input type="digit" bindinput="input2" value="{{value2}}"></input>
+      <text>kg</text>
+    </view>
+  </view>
+</view>
+<view class='btn theme_color' bindtap='btn'>
+  <text>确认</text>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

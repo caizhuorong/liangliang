@@ -1,0 +1,118 @@
+
+.share-outer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+.share-view {
+  position: fixed;
+  top: 50rpx;
+  left: 35rpx;
+  width: 680rpx;
+  height: 1018rpx;
+  background-color: #fff;
+  z-index: 99;
+  border-radius:6rpx;
+}
+
+.share-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+  outline: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  opacity: 0;
+}
+
+.share-title {
+  width:680rpx;
+  height: 849rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-family: MicrosoftYaHei;
+  color: rgba(48, 48, 48, 1);
+  margin: 17rpx auto 0rpx;
+  overflow:hidden;
+
+}
+.share-canvas-img{
+  width:680rpx;
+  height:1103rpx;
+}
+.share-flex {
+  flex-flow: column;
+  height: 152rpx;
+}
+
+.share-rela {
+  position: relative;
+}
+
+.share-img {
+  width: 46rpx;
+  height: 36rpx;
+  margin-bottom: 29rpx;
+}
+
+.share-img2 {
+  width: 44rpx;
+  height: 36rpx;
+  margin-bottom: 29rpx;
+}
+
+.share-text {
+  font-size: 30rpx;
+  color: rgba(48, 48, 48, 1);
+}
+
+.canvas-view {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 720rpx;
+  height:1168rpx;
+  background: #fff;
+  z-index: 1;
+  /* visibility: hidden; */
+}
+
+.myCanvas {
+  width: 720rpx;
+  height:1168rpx;
+  border: 1px solid #d2d2d2;
+  border-radius: 10rpx;
+   /* visibility: hidden; */
+}
+
+.myCanvasImg-view {
+  position: relative;
+ width: 720rpx;
+  height:1168rpx;
+  /* display: none; */
+}
+
+.myCanvasImg-view view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 720rpx;
+  height: 1168rpx;
+}
+
+.myCanvasImg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 720rpx;
+  height: 1168rpx;
+  /* display: none; */
+}

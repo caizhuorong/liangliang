@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "身高/体重",
+    "usingComponents": {
+      "sharelayer": "/component/share_layer/share_layer"
+    }
+}

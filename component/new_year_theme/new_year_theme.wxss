@@ -1,0 +1,69 @@
+.new_th_bj{
+  width:100%;
+  height: 100%;
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+  z-index: 10;
+  background: rgba(0,0,0,.6);
+}
+.new_th{
+  width: 583rpx;
+  height: 1040rpx;
+  background: url('https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_1.png');
+  background-size:cover; 
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -291rpx;
+  margin-top: -520rpx;
+  z-index: 11;
+}
+.new_th_content{
+  width: 500rpx;
+  height: 800rpx;
+  margin: 0 auto;
+  margin-top: 219rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.new_th_item{
+  width: 200rpx;
+  height: 177rpx;
+  margin-left: 35rpx;
+  display: block;
+  position: relative;
+}
+.netop_img{
+  width: 200rpx;
+  height: 132rpx;
+  display: block;
+}
+.netop_imgs{
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  width: 200rpx;
+  height: 132rpx;
+  display: block;
+}
+.text_img{
+  width: 200rpx;
+  height: 30rpx;
+  margin-top: 14rpx;
+}
+.new_icon{
+  width: 143rpx;
+  height: 100rpx;
+  position: fixed;
+  right: 0rpx;
+  top: 630rpx;
+}
+.new_icon>image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}

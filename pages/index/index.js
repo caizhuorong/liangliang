@@ -1,24 +1,28 @@
 const app = getApp();
-const login = require('../../config').login;
-const getCarouselList = require('../../config').getCarouselList;
+const version = require('../../config.js').version;
+let user_id = wx.getStorageSync('userInfo').userId;
 const smallProgramNo = require('../../config.js').smallProgramNo;
 const organizationNo = require('../../config.js').organizationNo;
 const insertScanHistory = require('../../config.js').insertScanHistory;
 const getSystemNotice = require('../../config.js').getSystemNotice;
-const version = require('../../config.js').version;
-//引入图片预加载组件
-const ImgLoader = require('../../img-loader/img-loader.js');
-
+const selectHomepageContents = require('../../config.js').selectHomepageContents;
+const nonspecificSharePage = require('../../config.js').nonspecificSharePage;
+const faceSwap = require('../../config.js').faceSwap;
+let setInter="";
+const util = require('../../utils/util.js');
+let template = require('../../component/template/template.js');
+const saveFormId = require('../../config.js').saveFormId;
+import { uploadErrorInfoFn, formIdPost, getUrl, queryString, delNull, baseShare, numto, mathRandom} from '../../utils/util.js';
+import { getSystemNoticeTitle, selectHomepageContentsTitle } from '../../config.js';
+let goOnload= false;
+let gotoxcxs = true;
 Page({
   data: {
-    indexBgImg: {
-      // url: "../../img/hair_home_bg.png",
-      // link: ""
-    },
     userInfo: {},
+    showDialogs:false,
     hasUserInfo: false,
-    //判断小程序的API，回调，参数，组件等是否在当前版本可用。
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    canIUse: wx.canIUse('button.open-type.getPhoneNumber'),
     showDialog: false,
     showCameraDialog: false,
     backgroundImgs: [],
@@ -29,362 +33,436 @@ Page({
     duration: 500, //幻灯片切换时长
     haveRequest: false,
     scene: "", //用来存储
-    goOnload: false,
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    head_img:[
-      {
-        url:'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        name:'小A老师'
-      },
-      {
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        name: '小A老师'
-      },
-      {
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        name: '小A老师'
-      },
-      {
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        name: '小A老师'
-      },
-      {
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        name: '小A老师'
-      },
-      {
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        name: '小A老师'
-      },
-      {
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        name: '小A老师'
-      },
-      {
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        name: '小A老师'
-      },
-    ],
-    note: [
-      {
-        name: '大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼',
-        heart_num: '1',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        name: '大脸猫爱吃鱼',
-        heart_num: '212312',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        name: '大脸猫爱吃鱼',
-        heart_num: '3',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      }, {
-        name: '大脸猫爱吃鱼',
-        heart_num: '4',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        name: '大脸猫爱吃鱼',
-        heart_num: '5',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        name: '大脸猫爱吃鱼',
-        heart_num: '6',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        name: '大脸猫爱吃鱼',
-        heart_num: '7',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://img4.imgtn.bdimg.com/it/u=2748975304,2710656664&fm=26&gp=0.jpg',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      }, {
-        name: '大脸猫爱吃鱼',
-        heart_num: '8',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://img2.imgtn.bdimg.com/it/u=1561660534,130168102&fm=26&gp=0.jpg',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      }
-    ],
+    isAgree: true,
+    diaglo:true,
+    data: {},
+    note: [0,0,0],
+    first_img_show:false,
+    encryptedData:'',
+    iv:'',
+    shareLayer:false,
+    layerBanner:'',
+    layerLabel:'',
+    layerTips:'',
+    code:'',
+    me_loading_type:0,
+    meloadingvalue:'加载中...',
+    giftShow: false,
+	  activeShow: false,
+    giftLayerBanner: [],
+    noticeShow: false,
+    noticeLayerBanner: [],
+    activeInfo:{},
+    sex:1,
+	  param:'',
+    tabShowType:false,
+    templateNotice:'0',
+    now:0,
+    newYearTag:[],
+    templateNoticeTagsLabel:[],
   },
-  goToabout(){
-    wx.navigateTo({
-      url: '../about/about',
+  templateClick(e){
+    formIdPost(saveFormId,e.detail.formId, user_id, version, smallProgramNo);
+  },
+  templateNotice(e){
+    this.setData({
+      templateNotice:'1',
+      now:e.detail.now,
+      // now: 1549728000000,
+      templateNoticeTagsLabel: e.detail.templateNoticeTagsLabel.split(','),
+      newYearTag: e.detail.templateNoticeTags.split(',')
     })
   },
-  onLoad: function (options) {
-
-    var that = this;
-    var goOnload = true;
-    var scene = "";
-    if (options && options.scene) {
-      scene = decodeURIComponent(options.scene)
+  points(e){
+    if (delNull(e.detail.points.points.background) == '' ){
+      return false;
+    }
+    let banner_url = e.detail.points.points.background;
+    let _show;
+    if (wx.getStorageSync('signLayer') == 1) {
+      _show = false;
+    } else {
+      _show = true;
     }
     this.setData({
-      scene: scene,
-      goOnload: goOnload
+      shareLayer: _show,
+      layerBanner: `${banner_url}`,
+      layerLabel: e.detail.points.points.prompt,
+      layerTips: e.detail.points.points.points,
+      code: e.detail.points.points.code
     });
-    //请求系统是否处于工作状态
-    // this.requestSystemNotice();
-    // this.loadNext();
-    wx.getLocation({
-      success(res){
-        console.log(res);
-        wx.setStorage({
-          key: 'user_location',
-          data: {
-            latitude: res.latitude,
-            longitude: res.longitude
-          },
-        })
-      }
+  },
+	giftlayer(e){
+		this.setData({
+			giftShow:true,
+      giftLayerBanner:e.detail
+		})
+	},
+  noticelayer(e) {
+    this.setData({
+      noticeShow: true,
+      noticeLayerBanner: e.detail
     })
   },
-  //请求requestSystemNotice
-  requestSystemNotice: function () {
-    var that = this;
-    wx.showLoading({
-      title: '加载中',
-    })
-    var that = this;
-    var para = {
-      smallprogramNo: smallProgramNo
-    };
-    wx.request({
-      url: getSystemNotice,
-      data: para,
-      success: function (res) {
-        var code = res.data.code;
-        if (code == 0) {
-          wx.hideLoading();
-          that.loadNext();
-        } else if (code == 1002) {
-          var title = res.data.message || "亲！您是洗剪吹还是烫拉染啊？";
-          var notice = res.data.info.systemNotice.notice || "AI大乐正在设计新发型，请稍候再来~~";
-          wx.navigateTo({
-            url: '../../other_pages/error/error?title=' + title + "&notice=" + notice,
-          })
-          wx.hideLoading();
-          return;
-        } else {
-          var title = "亲！您是洗剪吹还是烫拉染啊？";
-          var notice = "AI大乐正在设计新发型，请稍候再来~~";
-          wx.navigateTo({
-            url: '../../other_pages/error/error?title=' + title + "&notice=" + notice,
-          })
-          wx.hideLoading();
-          return;
+	activelayer(e){
+		this.setData({
+		  activeShow: true,
+      activeInfo:e
+		})
+    },
+  gotomore(e){
+    const _this = this;
+    const _e = e.currentTarget.dataset;
+    let json = JSON.parse(_e.url);
+    if (json.type == 1) {
+      if (json.level == 1) {
+        if (json.param != undefined) {
+          wx.setStorageSync('active_once', json.param);
         }
-        // wx.hideLoading();
-      },
-      fail: function () {
-        var title = "系统通知";
-        var notice = "系统维护中";
-        wx.navigateTo({
-          url: '../../other_pages/error/error?title=' + title + "&notice=" + notice,
+        wx.switchTab({
+          url: json.page,
         })
-        wx.hideLoading();
-        return;
+      } else {
+        if (json.param != undefined) {
+          wx.navigateTo({
+            url: json.page + json.param,
+          })
+        } else {
+          wx.navigateTo({
+            url: json.page,
+          })
+        }
+      }
+    } else if (json.type == 2) {
+      wx.setStorageSync('goToH5', json);
+      wx.navigateTo({
+        url: json.page,
+      })
+    }else if( json.type == 3 ){
+      if (gotoxcxs) {
+        gotoxcxs = false;
+        wx.navigateToMiniProgram({
+          appId: json.appid,
+          extraData: json.param,
+          success() {
+            gotoxcxs = true;
+            console.log('小程序跳转成功');
+          },
+          fail() {
+            gotoxcxs = true;
+          },
+        })
+      }
+    }
+  },
+  active_goto(e){
+    /*
+      0.1活动链接式样书(根据此规则来判断)
+      先判断 interface 是否为空，若不为空则需要先调用接口，接口类型由 requestType 提供，默认get请求
+      先判断 type 若为1 则是跳转小程序页面 2为跳转webview 页面
+      然后判断 level 是否为一级菜单，若等于1则为一级菜单，以外都是一级菜单以外
+      最后根据以上判断来跳转链接和参数的存储
+    */
+    const _this = this;
+    const _e = e.currentTarget.dataset;
+    let json = JSON.parse(_e.url);
+
+    if (json.type == 1) {
+      if (json.level == 1) {
+        if (json.param != undefined) {
+          wx.setStorageSync('active_once', json.param);
+        }
+        wx.switchTab({
+          url: json.page,
+        })
+      } else {
+        if (json.param != undefined) {
+          wx.navigateTo({
+            url: json.page + json.param,
+          })
+        } else {
+          wx.navigateTo({
+            url: json.page,
+          })
+        }
+      }
+    } else if (json.type == 2) {
+      wx.setStorageSync('goToH5', json);
+      wx.navigateTo({
+        url: json.page,
+      })
+    } else if (json.type == 3) {
+      if (gotoxcxs) {
+        gotoxcxs = false;
+        wx.navigateToMiniProgram({
+          appId: json.appid,
+          extraData: json.param,
+          success() {
+            gotoxcxs = true;
+            console.log('小程序跳转成功');
+          },
+          fail() {
+            gotoxcxs = true;
+          },
+        })
+      }
+    }
+  },
+  colseFirstShow(){
+    this.setData({
+      first_img_show:false
+    })
+  },
+  gotoAi(e){
+    const that = this;
+    wx.removeStorageSync('detailtodesign');
+    wx.removeStorageSync('chooseHeart');
+    wx.removeStorageSync('back');
+    // 查看是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.camera']) {
+          //用户已经授权过
+          formIdPost(saveFormId, e.detail.formId, user_id, version, smallProgramNo);
+          wx.navigateTo({
+            url: '../../other_pages/takephoto/takephoto?ai=true&from=index',
+          })
+        } else {
+          //用户没有授权过 
+          wx.authorize({
+            scope: 'scope.camera',
+            success(res) {
+              that.setData({
+                showCameraDialog: false
+              });
+              formIdPost(saveFormId, e.detail.formId, user_id, version, smallProgramNo);
+              wx.navigateTo({
+                url: '../../other_pages/takephoto/takephoto?ai=true&from=index',
+              })
+            },
+            fail() {
+              that.setData({
+                showCameraDialog: true
+              });
+            }
+          })
+        }
       }
     })
   },
-  loadNext: function () {
-    console.log(9);
-    var that = this;
-    //请求轮播图
-    // this.requestBg();
-    //用户信息存在
-    console.log(app.globalData.userInfo);
-    if (app.globalData.userInfo) {
-      // wx.showModal({
-      //   title: 'aaa',
-      //   content: 'aaa',
-      // })
-      if (!that.data.hasUserInfo) {
-        wx.setStorageSync('userInfo', app.globalData.userInfo);
-        that.setData({
-          userInfo: app.globalData.userInfo,
-          hasUserInfo: true,
-        })
-      }
-      if (this.data.scene && this.data.scene.length > 0) {
-        var para = {
-          userId: this.data.userInfo.userId,
-          scene: this.data.scene,
-          smallProgramNo: smallProgramNo,
-          new_flag: "0",
-          version: version
-        };
-        console.log(para)
-        wx.request({
-          url: insertScanHistory,
-          data: para,
-          success: function (res) {
-            var code = res.data.code;
-            if (code == 0) {
-              that.setData({
-                scene: ""
-              })
-            } else {
-              wx.navigateTo({
-                url: '../../other_pages/error/error',
-              })
-            }
-          },
-          fail: function () {
-            wx.navigateTo({
-              url: '../../other_pages/error/error',
-            })
-          }
-        })
-
-      }
-    } else {
-      // wx.showModal({
-      //   title: 'bb',
-      //   content: 'bb',
-      // })
+  gotosj(e){
+    formIdPost(saveFormId, e.detail.formId, user_id, version, smallProgramNo);
+    wx.removeStorageSync('chooseHeart');
+    if( wx.getStorageSync('userInfo').newFlag == 1 ){
+      const that = this;
       // 查看是否授权
       wx.getSetting({
         success: function (res) {
-          if (res.authSetting['scope.userInfo']) {
-            that.setData({
-              showDialog: false
-            });
-            wx.getUserInfo({
-              success: function (res) {
-                console.log("用户已经授权过" + res)
-                //用户已经授权过
-                that.getCode(res);
-              },
+          if (res.authSetting['scope.camera']) {
+            wx.navigateTo({
+              url: '../../other_pages/takephoto/takephoto?ai=true&from=index',
             })
-          } else { //用户没有授权过
-            wx.getUserInfo({
-              success: res => {
+          } else {
+            //用户没有授权过 
+            wx.authorize({
+              scope: 'scope.camera',
+              success(res) {
                 that.setData({
-                  showDialog: false
+                  showCameraDialog: false
                 });
-                console.log("用户没有授权过" + res);
-                that.getCode(res);
+                wx.navigateTo({
+                  url: '../../other_pages/takephoto/takephoto?ai=true&from=index',
+                })
               },
-              fail: res => {
-                console.log("用户没有授权过" + res)
+              fail() {
                 that.setData({
-                  showDialog: true
+                  showCameraDialog: true
                 });
               }
             })
           }
         }
       })
-
+    }else{
+      wx.navigateTo({
+        url: '../heart_designs/heart_designs',
+      })
     }
+   
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    if (!this.data.goOnload && !app.globalData.userInfo) {
-      this.onLoad();
-      // wx.showModal({
-      //   title: 'cc',
-      //   content: 'cc',
-      // })
+  goToabout(){
+    wx.navigateTo({
+      url: '../about/about',
+    })
+  },
+  onLoad: function(options) {
+    wx.hideTabBar();
+    const that = this;
+    user_id = wx.getStorageSync('userInfo').userId;
+    if (user_id != undefined  ){
+      that.setData({
+        tabShowType:true,
+      },()=>{
+        template.tabbar("tabBar", 0, that)
+      })
     }
-  },
-  onHide: function () {
-    this.setData({
-      goOnload: false
+   
+    if ( options != undefined ){
+      that.setData({
+        param: JSON.stringify(options)
+      })  
+    }
+ 
+    if (wx.getStorageSync('userInfo').userId != undefined ){
+      user_id = wx.getStorageSync('userInfo').userId;
+      that.requestSystemNotice();
+    }else{
+    
+    }
+    var scene = "";
+    if (options && options.scene) {
+      scene = decodeURIComponent(options.scene)
+      app.globalData.scene = scene;
+    }
+    goOnload= true;
+    that.setData({
+      scene: scene,
+      
     });
   },
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    app.aldstat.sendEvent('首页', {
-      "btn": "用户点击右上角分享"
-    })
-    var shareObj = {
-      title: app.globalData.userInfo.showNick + '叫你一起来体验',
-      desc: '拍照就能造型，为你量身打造适合你的发型',
-      imageUrl: "/img/shareIndex.png",
-      path: '/pages/index/index',
-      success: function (res) { // 转发成功之后的回调
-        // 转发成功之后的回调
-        if (res.errMsg == 'shareAppMessage:ok') { }
-      },
-      fail: function () {　 // 转发失败之后的回调
-      },
-      complete: function () {　 // 转发结束之后的回调（转发成不成功都会执行）
-      }
+  onShow(){
+    // this.onLoad();
+    if (!goOnload ){
+      
+      this.onLoad();
     }
-    return shareObj;
+ 
+    if (wx.getStorageSync('active_tab')){
+      wx.removeStorageSync('active_tab');
+    }
+    if (wx.getStorageSync('we_points')) {
+      if (!wx.getStorageSync('wx_giftlayer')) {
+        this.points(wx.getStorageSync('we_points'));
+      }
+      wx.removeStorageSync('we_points');
+    }
+    if (wx.getStorageSync('wx_giftlayer') ){
+      this.giftlayer(wx.getStorageSync('wx_giftlayer'));
+      wx.removeStorageSync('wx_giftlayer');
+    };
+    if (wx.getStorageSync('wx_noticelayer')) {
+      this.noticelayer(wx.getStorageSync('wx_noticelayer'));
+      wx.removeStorageSync('wx_noticelayer');
+    };
+  	if (wx.getStorageSync('wx_activelayer')) {
+      this.activelayer(wx.getStorageSync('wx_activelayer'));
+      wx.removeStorageSync('wx_activelayer');
+    };
+    if (wx.getStorageSync('templateNotice') ){
+      this.templateNotice(wx.getStorageSync('templateNotice'));
+    }
+    if (wx.getStorageSync('userInfo').sex != undefined){
+      this.setData({
+        sex: wx.getStorageSync('userInfo').sex
+      })
+    }
+  },
+  gotouser_center(){
+    let data = this.data.userInfo.userId == undefined ? this.data.data.sHairUserStylist.userId : this.data.userInfo.userId;
+    wx.navigateTo({
+      url: `../../others_pages/heart_center/heart_center?id=${data}&isStylist=1`,
+    })
+  },
+  showLoading(){
+    _this.setData({
+      me_loading_type: 1,
+      meloadingvalue: '加载中...'
+    }) 
+  },
+  hidenLoading(){
+    _this.setData({
+      me_loading_type: 0,
+      meloadingvalue: '加载中...'
+    }) 
+  },
+  bindAgreeChange(e){
+    this.setData({
+      isAgree: !!e.detail.value.length
+    });
+    if (e.detail.value[0] == 'agree' ){
+      this.setData({
+        diaglo:true
+      })
+    }else{
+      this.setData({
+        diaglo: false
+      })
+    }
+  },
+  gotorzheartman(){
+    wx.navigateTo({
+      url: `../user_center/user_center?data=2&type=1&from=index`,
+    })
+  },
+  //请求requestSystemNotice
+  requestSystemNotice: function() {
+    var that = this;
+    // wx.showLoading({
+    //   title: '加载中',
+		// 	mask:true
+    // })
+    wx.stopPullDownRefresh();
+    let para = {
+      userId: user_id,
+      version: version,
+      smallprogramNo: smallProgramNo
+    };
+    util.get(`${getSystemNotice}`, para).then(res=>{
+			var code = res.code;
+			if (code == 0) {
+			  // wx.hideLoading();
+			  that.loadNext();
+			} else if (code == 1002) {
+        uploadErrorInfoFn(`${getSystemNoticeTitle}`, `event:进入页面请求;requestParameters:userId:${user_id},version:${version},smallprogramNo:${smallProgramNo};errorinfo:${JSON.stringify(res)}`);
+			  var title =  "系统维护中";
+			  var notice = "亲！您是洗剪吹还是烫拉染啊？<BR>AI大乐正在设计新发型，请稍候再来~~";
+			  var imgurl = 'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img32.png';
+			  wx.navigateTo({
+			    url: '../../other_pages/error/error?title=' + title + "&notice=" + notice + "&btnshow=false&imgurl=" + imgurl,
+			  })
+			  return;
+			} else {
+        uploadErrorInfoFn(`${getSystemNoticeTitle}`, `event:进入页面请求;requestParameters:userId:${user_id},version:${version},smallprogramNo:${smallProgramNo};errorinfo:${JSON(res)}`);
+			  var title = "系统维护中";
+			  var notice = "亲！您是洗剪吹还是烫拉染啊？<BR>AI大乐正在设计新发型，请稍候再来~~";
+			  var imgurl = 'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img32.png';
+			  wx.navigateTo({
+			    url: '../../other_pages/error/error?title=' + title + "&notice=" + notice + "&btnshow=false&imgurl=" + imgurl,
+			  })
+			  return;
+			}
+		}).catch(error=>{
+      uploadErrorInfoFn(`${getSystemNoticeTitle}`, `event:进入页面请求;requestParameters:userId:${user_id},version:${version},smallprogramNo:${smallProgramNo};errorinfo:${JSON.stringify(error)}`);
+			var title = "系统维护中";
+			var notice = "亲！您是洗剪吹还是烫拉染啊？<BR>AI大乐正在设计新发型，请稍候再来~~";
+			var imgurl = 'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img32.png';
+			wx.navigateTo({
+			  url: '../../other_pages/error/error?title=' + title + "&notice=" + notice + "&btnshow=false&imgurl=" + imgurl,
+			})
+			return;
+		})
+  },
+  loadNext: function() {
+    var that = this;
+    that.selectHomepageContents();
+  },
+  onHide: function() {
+    goOnload = false;
   },
 
-  //请求轮播图
-  requestBg: function () {
-    wx.showLoading({
-      title: '加载中',
-    })
-    var that = this;
-    wx.request({
-      url: getCarouselList,
-      data: {},
-      success: function (res) {
-        that.setData({
-          haveRequest: true
-        })
-        var code = res.data.code;
-        if (code == 0) {
-          var list = res.data.info.carouselList;
-          var interval = res.data.info.hariCarouselSpeed;
-          // list=[list[1]];
-          if (list.length == 1) {
-            that.setData({
-              indexBgImg: list[0]
-            });
-          }
-          that.setData({
-            backgroundImgs: list,
-            interval: interval
-          });
-        } else {
-          wx.hideLoading();
-          wx.navigateTo({
-            url: '../../other_pages/error/error',
-          })
-        } 
-        wx.hideLoading();
-      },
-      fail: function () {
-        wx.hideLoading();
-        wx.navigateTo({
-          url: '../../other_pages/error/error',
-        })
-      }
-    })
-  },
+
   //轮播图点击事件
-  bindLink: function (e) {
+  bindLink: function(e) {
     app.aldstat.sendEvent('首页', {
       "img": "用户点击轮播图链接"
     })
@@ -394,108 +472,74 @@ Page({
         url: '../thirdParty/thirdParty?url=' + link,
       })
     }
-
   },
-
-  //用户点击‘知道了’之后获取用户信息
-  getUserInfo: function (e) {
-    app.aldstat.sendEvent('首页', {
-      "btn": "用户点击获取用户信息知道了"
-    })
-    //当用户点击允许用户获取用户信息之后返回用户信息
-    console.log(e.detail.userInfo)
-    var that = this;
-    if (e.detail.userInfo) {
-      //用户按了允许授权按钮
-      that.setData({
-        showDialog: false
-      });
-      this.getCode(e.detail);
-    } else {
-      //用户按了拒绝按钮
-      that.setData({
-        showDialog: true
-      });
-    }
-  },
-  //通过后台请求用户信息
-  getCode: function (userInitData) {
-    wx.showLoading({
-      title: '加载中',
-    })
-
-    var iv = userInitData.iv;
-    var encryptedData = userInitData.encryptedData;
-    var that = this;
-
-    // 登录,获取code
-    wx.login({
-      success: res => {
-        // console.log(res);
-        var code = res.code;
-        var para = {
-          smallprogramNo: smallProgramNo,
-          organizationNo: organizationNo,
-          code: code,
-          iv: iv,
-          encryptedData: encryptedData,
-          version:version
-        }
-        if (that.data.scene && that.data.scene.length > 0) {
-          para.scene = that.data.scene;
-        }
-        //发送code，encryptedData，iv到后台解码，获取用户信息
-        wx.request({
-          url: login,
-          method: "POST",
-          data: para,
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success: res => {
-            var code = res.data.code;
-            if (code == 0) {
-              console.log(res);
-
-              if (res.data.info.personIcon.indexOf('https') <= -1) {
-                res.data.info.personIcon = res.data.info.personIcon.replace('http', 'https');
-              }
-
-              wx.setStorageSync('userInfo', res.data.info);
-              app.globalData.userInfo = res.data.info;
-              that.setData({
-                userInfo: res.data.info,
-                hasUserInfo: true,
-              })
-              wx.hideLoading();
-            } else {
-              wx.hideLoading();
-              console.log("getuserInfoError" + res);
-              wx.navigateTo({
-                url: '../../other_pages/error/error',
-              })
-            }
-          },
-          fail: function () {
-            wx.hideLoading();
-            wx.navigateTo({
-              url: '../../other_pages/error/error',
-            })
-          }
-        })
-      },
-      fail: function () {
-        wx.hideLoading();
-        wx.navigateTo({
-          url: '../../other_pages/error/error',
-        })
+  selectHomepageContents(){
+    const _this = this;
+    setInter = setInterval(function () {
+      if (wx.getStorageSync('userInfo') != '') {
+        user_id = wx.getStorageSync('userInfo').userId;
+        _this.selectHomepageContentss();
+      }else{
       }
-    })
+    }, 800);
+  },
+  selectHomepageContentss() {
+    const _this = this;
+    clearInterval(setInter);
+		let para={
+			userId: user_id,
+			version: version,
+			sex: wx.getStorageSync('userInfo').sex,
+		}
+		util.get(`${selectHomepageContents}`,para).then(res=>{
+			let _data = _this.data.info;
+			let data = res.info;
+			if (res.code == 0) {
+			  let list_data = [];
+			  if (data.resultList != undefined){
+			    data.resultList.forEach(function (x, y) {
+			      if( y < 3 ){
+			        list_data.push({
+			          name: x.showNick,
+			          heart_num: x.accessCount == null ? '0' : numto(x.accessCount),
+			          title: '',
+			          url: x.filePathSmall,
+			          avatar: x.personIcon,
+			          id: x.no,
+			          filePaths: x.filePaths.length,
+			          isTemplate: x.isTemplate == null ? 0 : x.isTemplate,
+			          new: delNull(x.newFlag) == 1 ? true : false,
+			          show:false
+			        })
+			      }
+			    })
+			  };
+			  _this.setData({
+			    data: data,
+			    note: list_data
+			  })
+			} else {
+        uploadErrorInfoFn(`${selectHomepageContentsTitle}`, `event:进入页面请求;requestParameters:userId:${user_id},version:${version},sex:${wx.getStorageSync('userInfo').sex};errorinfo:${JSON.stringify(res)}`);
+			  let title = "系统通知";
+			  let notice = '出错啦';
+			  wx.navigateTo({
+			  	url: '../../other_pages/error/error?title=' + title + "&notice=" + notice,
+			  })
+			}
+		}).catch(error=>{
+      uploadErrorInfoFn(`${selectHomepageContentsTitle}`, `event:进入页面请求;requestParameters:userId:${user_id},version:${version},smallprogramNo:${smallProgramNo};errorinfo:${JSON.stringify(error)}`);
+			var title = "系统通知";
+			var notice = "出错啦";
+			wx.navigateTo({
+			  url: '../../other_pages/error/error?title=' + title + "&notice=" + notice,
+			})
+			return;
+		})
+
   },
   //用户点击了“去设置”
-  openSetting: function (e) {
+  openSetting: function(e) {
     var that = this;
-    console.log(e.detail.authSetting.camera);
 
     if (e.detail.authSetting['scope.camera']) {
       that.setData({
@@ -510,95 +554,48 @@ Page({
       });
     }
   },
-  //跳转到拍照
-  bindHairDesign: function () {
-    var that = this;
-    app.aldstat.sendEvent('首页', {
-      "btn": "用户点击拍照"
-    })
-
-    // 查看是否授权
-    wx.getSetting({
-      success: function (res) {
-        if (res.authSetting['scope.camera']) {
-          //用户已经授权过
-          wx.navigateTo({
-            url: '../takePhoto/takePhoto',
-          })
-
-        } else {
-          //用户没有授权过 
-          wx.authorize({
-            scope: 'scope.camera',
-            success(res) {
-              that.setData({
-                showCameraDialog: false
-              });
-              wx.navigateTo({
-                url: '../takePhoto/takePhoto',
-              })
-            },
-            fail() {
-              that.setData({
-                showCameraDialog: true
-              });
-            }
-          })
-
-
-          // that.setData({
-          //   showCameraDialog:true
-          // });
-
-          // wx.showModal({
-          //   title: '提示',
-          //   content: '我们希望获取您的摄像头。',
-          //   showCancel: false,
-          //   confirmText: '去设置',
-          //   success: res => {
-          //     if (res.confirm) {
-          //       wx.authorize({
-          //         scope: 'scope.camera',
-          //         success(res) {
-          //           console.log('保存图片授权成功')
-          //           wx.navigateTo({
-          //             url: '../takePhoto/takePhoto',
-          //           })
-          //         },
-          //         fail() {
-          //           setTimeout(function() {
-          //             wx.openSetting({
-          //               success: (res) => {
-          //                 if (res.authSetting['scope.camera']) {
-          //                   // wx.navigateBack({
-          //                   // })
-          //                   console.log('开启权限成功');
-          //                   wx.navigateTo({
-          //                     url: '../takePhoto/takePhoto',
-          //                   })
-          //                 }
-          //               }
-          //             })
-          //           }, 300);
-          //         }
-          //       })
-
-
-          //     }
-          //   }
-          // })
-        }
-      }
-    })
-
+  onPullDownRefresh(){
+    user_id = wx.getStorageSync('userInfo').userId;
+    // this.requestSystemNotice();
   },
-  //跳转到我的
-  bindMy: function () {
-    app.aldstat.sendEvent('首页', {
-      "btn": "用户点击跳转到我的"
-    })
-    wx.navigateTo({
-      url: '../my/my',
-    })
-  }
+
+  onMyEvent () {
+    const _this = this;
+    user_id = wx.getStorageSync('userInfo').userId;
+    _this.setData({
+      sex:wx.getStorageSync('userInfo').sex
+    });
+    _this.setData({
+        tabShowType: true,
+      }, () => {
+        template.tabbar("tabBar", 0, _this)
+      })
+    _this.requestSystemNotice();
+  },
+  onShareAppMessage(res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+    }
+    wx.showShareMenu({
+      withShareTicket: false
+    });
+    const _this = this;
+    baseShare(_this);
+    let storageShareInfo = wx.getStorageSync('shareInfo');
+    let shareTitle = storageShareInfo.otherTitle.split('|');
+    let x = mathRandom(shareTitle);
+    let shareImageUrl = '';
+    if (storageShareInfo.otherFlag == '1') {
+      shareImageUrl = storageShareInfo.otherPicture;
+    } else {
+      shareImageUrl = '';
+    }
+    return {
+      title: shareTitle[x],
+      path: `/pages/index/index?shareUserId=${user_id}&share=true&scene=${getUrl()}`,
+      imageUrl: shareImageUrl,
+      success: (res) => {
+      }
+    }
+  },
 })

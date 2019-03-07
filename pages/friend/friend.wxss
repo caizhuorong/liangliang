@@ -1,0 +1,279 @@
+@import '../../app.wxss';
+page{
+  width: 100%;
+  height: 100%;
+  box-shadow:0rpx 6rpx 15rpx RGBA(165, 165, 165, 0.2) inset;
+}
+.top{
+  width: 670rpx;
+  height: 300rpx;
+  margin: 0 auto;
+  position: relative;
+   margin-top: 38rpx;
+}
+.can{
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx
+}
+.top_bj{
+  width: 670rpx;
+  height: 300rpx;
+   
+}
+.top_num{
+  position: absolute;
+  top: 14rpx;
+  right: 26rpx;
+}
+.top_num>text{
+  display: block;
+  text-align: left;
+  font-size: 24rpx;
+  color: #fff;
+  margin-bottom: 10rpx;
+}
+.top_content{
+  z-index: 6;
+  width: 100%;
+  margin-top: 37rpx;
+  text-align: center;
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+}
+
+.shang {
+  width: 1320rpx;
+  height: 123rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  animation: scroll 3s linear infinite;
+}
+@keyframes scroll {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: -660rpx;
+  }
+}
+.shang>image{
+  width: 660rpx;
+  height: 123rpx;
+  float: left;
+  display: block;
+  overflow: hidden;
+}
+.xia {
+  width: 1320rpx;
+  height:123rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  animation: scroll2 3s linear infinite;
+}
+
+@keyframes scroll2 {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: -660rpx;
+  }
+}
+.xia>image {
+  width:660rpx;
+  height: 123rpx;
+  float: left;
+  display: block;
+  overflow: hidden;
+}
+.text {
+  width: 100%;
+  z-index: 5;
+  text-align: center;
+  display: block;
+}
+.textb{
+  width: 100%;
+  font-size: 100rpx;
+  color: #fff;
+  display: block;
+  text-align: center;
+}
+.texts{
+  width: 100%;
+  font-size: 24rpx;
+  color: #fff;
+  display: block;
+  text-align: center;
+}
+.top_bottom{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  position:absolute;
+  bottom:5rpx;
+}
+.top_bottom>view{
+  width: 50%;
+  height: 110rpx;
+}
+.top_bottom>view>text{
+  display: block;
+  font-size: 28rpx;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+.scr_itme{
+  width: 686rpx;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 90rpx;
+  overflow: hidden;
+  box-shadow:0rpx 15rpx 15rpx -5rpx RGBA(165,165,165, .6);  
+}
+.scr_itme>image{
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 8rpx;
+}
+.vertical{
+  width: 100%;
+  height: 68rpx;
+  margin-top: 58rpx;
+  background-color: #f8f8f8;
+}
+.verticalls{
+  width: 100%;
+  height: 68rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.verticalls>image{
+  width: 29rpx;
+  height: 23rpx;
+  margin-left: 55rpx;
+}
+.verticalls>view{
+  margin-left: 30rpx;
+  font-size: 24rpx;
+  color: #BD7000;
+}
+.btn{
+  width:620rpx;
+  height: 82rpx;
+  position: fixed;
+  left: 65rpx;
+  bottom: 24rpx;
+  border-radius: 8rpx;
+}
+
+page{
+  height: 100%;
+}
+.btn>text{
+  font-size: 36rpx;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 82rpx;
+}
+.mask{
+  position: fixed;
+  z-index: 6;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.4);
+  top: 0rpx;
+  left: 0rpx;
+  overflow: hidden;
+}
+.content{
+  width: 551rpx;
+  height: 1024rpx;
+  background-color: #fff;
+  border-radius: 6rpx;
+  position: absolute;
+  left: 99.5rpx;
+  top: 40rpx;
+  overflow: hidden;
+}
+.content_big_img{
+  width: 100%;
+  height: 882rpx;
+  position: relative;
+  background-image: url('https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/sharehaibao_new.png');
+  background-size:100% 100%; 
+}
+.content_big_img>image{
+  width: 131rpx;
+  height: 131rpx;
+  position: absolute;
+  bottom:15rpx;
+  left: 213rpx;
+}
+.content_small_img{
+  position: absolute;
+  bottom: 157rpx;
+  left: 210rpx;
+  width: 135rpx;
+  height: 135rpx;
+}
+.content_small_img>image{
+  width: 135rpx;
+  height: 135rpx;
+  display: block;
+  border-radius: 50%;
+}
+.conent_btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 142rpx;
+}
+.share-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+  outline: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  opacity: 0;
+}
+.conent_btn>view{
+  width: 50%;
+  height: 142rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.conent_btn>view>image{
+  width: 44rpx;
+  height: 36rpx;
+  display: block;
+}
+.conent_btn>view>text{
+  color: #303030;
+  font-size:30rpx;
+  margin-top: 25rpx;
+}

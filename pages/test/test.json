@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "脸型分析",
+  "usingComponents": {
+    "meloading": "/component/meloading/meloading",
+    "transformComponent": "/component/transformComponent/transformComponent",
+    "sharelayer": "/component/share_layer/share_layer",
+    "giftlayer": "/component/gift_layer/gift_layer",
+    "getuserinfo": "/component/getuserinfo/getuserinfo",
+    "index": "/component/toindex/toindex",
+    "noticelayer": "/component/noticelayer/noticelayer"
+  }
+}

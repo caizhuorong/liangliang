@@ -1,0 +1,7 @@
+<view class='inputs'>
+  <input type='text' bindinput="ins" value="{{value}}" maxlength='24' placeholder='请输入店铺名称（2-24个字符）'></input>
+</view>
+<view class='btn theme_color' bindtap='btn'>
+  <text>确认</text>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

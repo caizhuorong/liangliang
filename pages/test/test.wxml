@@ -1,0 +1,121 @@
+<view class="img_bj"  style="background:url({{json.info.faceSmallUrl}});background-size:cover; ">
+  <!-- <view class="share_btn">
+  <button open-type="share" class='share-btn'></button>
+  </view> -->
+  <view class="img_content">
+    <image src="{{json.info.faceSmallUrl}}" mode='widthFix' style="margin-top:-{{marginTop}}rpx;" ></image>
+    <view class="tab1 {{line_x?'':'tab1_hide'}}">
+      <view class="line_x"></view>
+    </view>
+    <canvas style="width:400rpx;height:{{canvasHeight}}rpx;top:-{{marginTop}}rpx;" canvas-id='can' class="can"></canvas>
+  </view>
+  <view class="hair_top {{top1 ? 'hair_show':''}}">
+    <text>发际线{{json.info.hairLine}}</text>
+  </view>
+  <view class="hair_center {{top3 ? 'hair_show':''}}">
+    <text>五官{{json.info.beautyScore.totalScore}}分</text>
+  </view>
+  <view class="hair_bottom {{top2 ? 'hair_show':''}}">
+    <text>{{json.info.faceShape}}</text>
+  </view>
+</view>
+<view class="list_bnt">
+  <view class="list_bnt_noactive {{activeIng1 ? 'list_bnt_activeing':''}}  {{list_btn_active1? 'list_bnt_active':''}}">
+    <text>发际线分析</text>
+  </view>
+  <view class="list_jt1 {{list_jt1 ?'list_jt_2':''}}"></view>
+  <view class="list_bnt_noactive {{activeIng2 ? 'list_bnt_activeing':''}} {{list_btn_active2?'list_bnt_active':''}}">
+    <text>脸型分析</text>
+  </view>
+  <view class="list_jt1 {{list_jt2 ?'list_jt_2':''}}"></view>
+  <view class="list_bnt_noactive {{activeIng3 ? 'list_bnt_activeing':''}}  {{list_btn_active3? 'list_bnt_active':''}}" >
+    <text>五官分析</text>
+  </view>
+</view>
+<view class="card">
+  <view class="card1" style="margin-left:{{top1 ? '0rpx':'-1000rpx;'}}" >
+    <view class="trapezoid"></view>
+    <image class="trapezoid_img" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_26.png"></image>
+    <view class="trapezoid_title">发际线:{{json.info.hairLine}}</view>
+    <view class="trapezoid_line"></view>
+    <view class="card_content">
+      <text>{{json.info.hairLineMemo}}</text>
+    </view>
+    <view class="card_img">
+      <image src="{{json.info.faceSmallUrl}}" mode="widthFix" style="margin-top:-{{marginTop}}rpx;"></image>
+    <view  class="point" style="left:{{item.x/d_rpxs-2}}rpx;top:{{item.y/d_rpxs-2}}rpx;" wx:for="{{json.info.hairLinePoints}}" wx:for-item="item" wx:for-index="index" wx:key="index"></view>
+    </view>
+  </view>
+ <view class="card2" style="margin-left:{{top2 ? '0rpx':'-1000rpx;'}}" >
+    <view class="trapezoid"></view>
+    <image class="trapezoid_img" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_26.png"></image>
+    <view class="trapezoid_title">脸型:{{json.info.faceShape}}</view>
+    <view class="trapezoid_line"></view>
+    <view class="card_content">
+      <text>{{json.info.faceShapeMemo}}</text>
+      <text>　</text>
+      <text>{{json.info.threeCourtsInfo.threeCourtsMemo}}</text>
+    </view>
+    <view class="card_img">
+      <image src="{{json.info.faceSmallUrl}}" mode="widthFix" style="margin-top:-{{marginTop}}rpx;"></image>
+      <view  class="point" style="left:{{item.x/d_rpxs-2}}rpx;top:{{item.y/d_rpxs-2}}rpx;" wx:for="{{json.info.faceShapePoints}}" wx:for-item="item" wx:for-index="index" wx:key="index"></view>
+    </view>
+  </view>
+  <view class="card3" style="margin-left:{{top3 ? '0rpx':'-1000rpx;'}}" >
+    <view class="trapezoid"></view>
+    <image class="trapezoid_img" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_26.png"></image>
+    <view class="trapezoid_title">五官评分:{{json.info.beautyScore.totalScore}}分</view>
+    <view class="trapezoid_line"></view>
+    <view class="card_content">
+      <text>{{json.info.beautyScore.maleScoreMemo}}</text>
+      <text>{{json.info.beautyScore.femaleScoreMemo}}</text>
+    </view>
+    <view class="card_img">
+      <image src="{{json.info.faceSmallUrl}}" mode="widthFix" style="margin-top:-{{marginTop}}rpx;"></image>
+          <view  class="point" style="left:{{item.x/d_rpxs-2}}rpx;top:{{item.y/d_rpxs-2}}rpx;" wx:for="{{json.info.threeCourtsInfo.fiveSensePoints}}" wx:for-item="item" wx:for-index="index" wx:key="index"></view>
+    </view>
+  </view>
+  <view class="card4" style="margin-left:{{top4 ? '0rpx':'-1000rpx;'}}" >
+    <view class="trapezoid"></view>
+    <image class="trapezoid_img" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_26.png"></image>
+    <view class="trapezoid_title">明星脸</view>
+    <view class="trapezoid_line"></view>
+    <view class="card_img_start">
+      <view class="card_img_start_item" style="margin-right:90rpx;">
+        <image src="{{json.info.starInfoList[0].filePathDisp}}" mode='widthFix'></image>
+        <text>{{json.info.starInfoList[0].starName}}</text>
+      </view>
+      <view class="card_img_start_item">
+        <image src="{{json.info.starInfoList[1].filePathDisp}}" mode="widthFix"></image>
+        <text>{{json.info.starInfoList[1].starName}}</text>
+      </view>
+    </view>
+    <view class="card_start_text">{{json.info.matchStarMemo}}</view>
+  </view>
+</view>
+<view bindtap="gotouser_protocol" class="gotouser_protocol">
+  <official-account></official-account>
+</view>
+<view class="bottom_btn_bj"></view>
+<view class="share_and_take" hidden="{{bottomBtnType}}">
+  <view class="bottom_btn" >
+    <text>分享好友</text>
+     <button open-type="share" class='share-btn'></button>
+  </view>
+  <view class="bottom_btn" bindtap='look' >
+    <text>{{isme?from == ''?'查看效果':'我的专属发型' :'我也要测'}}</text>
+  </view>
+</view>
+
+<canvas style="width:400rpx;height:{{canvasHeight}}rpx;" canvas-id='clie' class="can2"></canvas>
+<view class='can2'>
+  <canvas  canvas-id="friends" style="width:500rpx;height:400rpx;" class='can2'></canvas>
+</view>
+<transformComponent tramsHidden="{{tramsHidden}}" sex="{{sex}}"></transformComponent>
+<index url="../../pages/index/index" show="{{shareshow}}"></index>
+<getuserinfo showDialog='{{showDialog}}' showDialogs='{{showDialogs}}' bindmyevent="onMyEvent" bindpoints="points" bindgiftlayer="giftlayer"  bindactivelayer="activelayer" bindnoticelayer="noticelayer"></getuserinfo>
+<meloading meloadingshow="{{me_loading_type}}" meloadingvalue="{{meloadingvalue}}"></meloading>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 
+<giftlayer giftShow="{{giftShow}}" giftLayerBanner="{{giftLayerBanner}}"></giftlayer>
+<noticelayer noticeShow="{{noticeShow}}" noticeLayerBanner="{{noticeLayerBanner}}"></noticelayer>
+<active_20181224_layer activeShow="{{activeShow}}" activeInfo="{{activeInfo}}"></active_20181224_layer>

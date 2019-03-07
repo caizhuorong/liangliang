@@ -1,0 +1,46 @@
+@import '../../app.wxss';
+.content_recommend{
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  height: 106rpx;
+  margin-top: 45rpx;
+}
+.tips_icon{
+  width: 10rpx;
+  height: 32rpx;
+  display: inline-block;
+}
+.title_nav{
+  height: 30rpx;
+  line-height: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.content_recommend>view>text{
+  font-size: 46rpx;
+  color: #292929;
+  margin-left: 16rpx;
+  font-weight:500 ;
+}
+.more_img{
+  width: 14rpx;
+  height: 25rpx;
+}
+.more_text{
+  font-size: 24rpx;
+  color: #292929;
+  margin-right: 15rpx;
+}
+.title_text{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+}

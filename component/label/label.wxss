@@ -1,7 +1,7 @@
 .label_content{
   width: 94%;
   margin: 0 auto;
-  height: 100rpx;
+  min-height: 100rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -10,6 +10,7 @@
 }
 .label_title{
   margin-left: 20rpx;
+  margin-top: 15rpx;
 }
 .label_title>text{
   font-size: 28rpx;
@@ -21,16 +22,18 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  margin-top: 15rpx;
 }
 .label_value>text{
   color: #959595;
   font-size: 28rpx;
   padding-right: 35rpx;
-  width: 350rpx;
   display: block;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  width:450rpx;
+  text-align:right;
 }
 .ava{
   width: 79rpx;

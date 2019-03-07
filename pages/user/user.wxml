@@ -1,80 +1,140 @@
+<import src="../../component/template/template.wxml"/>
 <view class='user'>
-  <view class='user_tips' style="display:{{tips_type ? 'flex':'none'}}">
-    <image class='tips_icon' src="../../img/my_icon_tips.png"></image>
-    <text class='tips_text'>号外号外！AI大乐为发型师量身定制了很多功能哦~</text>
-    <image bindtap='closeTips' class='tips_close' src='../../img/square_icon_delete.png'></image>
-  </view>
   <view class='user_content'>
     <view class='user_img'>
-      <image class='big_img' src='../../img/home_icon_five.png'></image>
-      <image class='small_img' src='../../img/home_icon_male.png'></image>
+      <image class='big_img' bindtap='gotocenter' src='{{info.sHairUserStylist.personIcon == null ? "https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_five.png":info.sHairUserStylist.personIcon }}'></image>
+      <image class='small_img' src='{{info.sHairUserStylist.sex == 0 ?"https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_male.png":"https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_female.png"}}'></image>
+      <view class="user_bottom_img" style="display:{{info.isStylist == 1 ? 'block':'none'}}" bindtap='gotocenters' >
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon2.png'></image>
+        <text>我的主页</text>
+      </view>
     </view>
     <view class='user_info'>
-      <view class='user_row' style='margin-bottom:30rpx;'>
+      <view class='user_row' style='margin-bottom:13rpx;'>
         <view class='user_name'>
-          <text>羊毛老师</text>
-           <image src='../../img/my_icon_edit.png'></image>
-        </view>
-        <view class='user_icon'>
-          <text>发型设计师</text>
+          <text bindtap='gotocenter'>{{info.sHairUserStylist.showNick}}</text>
+          <image wx:if="{{info.isStylist == 1 }}"  src='{{info.isStylist == 0 ? "":"https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_v.png"}}' style='width:25rpx;height:31rpx;margin-right:10rpx;'></image>
+          <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_edit.png' bindtap='gotocenter'></image>
         </view>
       </view>
-      <view class='user_row' style='margin-bottom:30rpx;'>
+      <view class='user_rosw' style='margin-bottom:25rpx;'>
         <view class='user_label_item'>
           <text>获赞</text>
-          <text>300w</text>
+          <text>{{praiseCount}}</text>
         </view>
-        <view class='user_label_item'>
+        <view class='user_label_item' bindtap='gotofans'>
           <text>粉丝</text>
-          <text>1002</text>
+          <text>{{fansCount}}</text>
         </view>
-        <view class='user_label_item'>
+        <view class='user_label_item' bindtap='gotofollow'>
           <text>关注</text>
-          <text>155</text>
+          <text>{{followCount}}</text>
         </view>
       </view>
-      <view  class='user_row'>
-        <text class='user_text'>添加个人描述，可以让大家更好地认识你</text>
+      <view  class='user_row' bindtap='gotocenter'>
+        <text class='user_text'>{{info.sHairUserStylist.sign == null || info.sHairUserStylist.sign == ''|| info.sHairUserStylist.sign == ' ' ? '添加个人描述，可以让大家更好地认识你':info.sHairUserStylist.sign}}</text>
       </view>
     </view>
   </view>
-  <view class='content_border'></view>
-  <view class='user_list'>
-    <view class='user_item'>
-      <view class='title'>
-        <image src='../../img/my_icon_result.png'></image>
-        <text>AI分析结果</text>
+   <view class='content_border'></view>
+    <view class='user_list' >
+    <view class='user_item' bindtap='gotoAi' wx:if="{{aishow}}">
+      <view class='title' >
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_2.png' s></image>
+        <text>脸型分析结果</text>
       </view>
       <view class='user_icon_jt'>
-        <image src='../../img/my_icon_more.png'></image>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png'></image>
       </view>
     </view>
-    <view class='user_item' bindtap='goTomyHeart'>
+    <view class='user_item' bindtap='goTomyHeart'   style="border-bottom:0rpx !important;">
       <view class='title'>
-        <image src='../../img/my_icon_hair.png'></image>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_8.png' ></image>
         <text>我的发型</text>
       </view>
       <view class='user_icon_jt'>
-        <image src='../../img/my_icon_more.png'></image>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png'></image>
+      </view>
+    </view>
+  </view>  
+    <view class='content_border' ></view>
+  <view class="user_list">  
+     <view class='user_item' bindtap='goToIntegral' >
+      <view class='title'>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_7.png' ></image>
+        <text>我的积分</text>
+      </view>
+      <view class='user_icon_jt'>
+      <text>{{info.points}}分</text>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png'></image>
+      </view>
+    </view>
+  <view class='user_list' >
+    <view class='user_item' bindtap='gotofriend' >
+      <view class='title' >
+        <image mode='widthFix' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_9.png' ></image>
+        <text>可用发型</text>
+      </view>
+      <view class='user_icon_jt'>
+        <text>{{info.totalCount - info.usedCount}}款</text>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png'></image>
+      </view>
+    </view>
+  </view>
+       <view class='user_item' bindtap='goToConsumption'>
+      <view class='title'>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_1.png' ></image>
+        <text>消费记录</text>
+      </view>
+      <view class='user_icon_jt'>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='user_list' >
+    <view class='user_item' bindtap='gotoCard' style="border-bottom:0rpx !important;">
+      <view class='title' >
+        <image mode='widthFix' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_3.png' ></image>
+        <text>我的券包</text>
+      </view>
+      <view class='user_icon_jt'>
+        <text>{{info.couponCount}}张</text>
+        <view class="user_icon_red" wx:if="{{info.couponIsRead == 0? true:false}}"></view>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png'></image>
+      </view>
+    </view>
+  </view>  
+  <view class='content_border'></view>
+  <view class='user_list'>
+  <view class='user_item' bindtap='goTosetting'>
+      <view class='title'>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_6.png' ></image>
+        <text>系统设置</text>
+      </view>
+      <view class='user_icon_jt'>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png'></image>
       </view>
     </view>
     <view class='user_item' bindtap='goTofeedback'>
       <view class='title'>
-        <image src='../../img/my_icon_advice.png'></image>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_4.png' ></image>
         <text>意见反馈</text>
       </view>
       <view class='user_icon_jt'>
-        <image src='../../img/my_icon_more.png'></image>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png'></image>
       </view>
     </view>
     <view class='user_item' bindtap='goToabout'>
       <view class='title' >
-        <image src='../../img/my_icon_us.png'></image>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_5.png'></image>
         <text>关于我们</text>
       </view>
       <view class='user_icon_jt'>
-        <image src='../../img/my_icon_more.png'></image>
+        <image mode="widthFix" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png'></image>
       </view>
     </view>
   </view>
 </view>
+<view class="tarb"></view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>

@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "工作日"
+  "navigationBarTitleText": "服务价格",
+    "usingComponents": {
+      "sharelayer": "/component/share_layer/share_layer"
+    }
 }

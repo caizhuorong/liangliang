@@ -1,98 +1,138 @@
-<!--pages/heart_detail/hear_detail.wxml-->
 <view>
-  <view class="tips_top">
-    <image src="{{info.thisStylist.personIcon}}"></image>
-    <text>{{info.thisStylist.nick}}</text>
-    <view bindtap='followType' style='background:{{!zg_type ? "#DCDCDC":"#ffbd5c"}}'>{{zg_type ? '关注':'已关注'}}</view>
+  <view class="tips_top" wx:if="{{info != ''}}">
+    <image bindtap='goheartCenter' src="{{info.personIcon?info.personIcon:'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png'}}"></image>
+    <text>{{info.showNick == null ? '':info.showNick }}</text>
+    <view wx:if="{{isme}}" class="{{!zg_type ? '':'theme_color'}}" bindtap='followType' >{{zg_type ? '关注':'已关注'}}</view>
   </view>
-  <view style='position:relative;'>
-    <swiper autoplay="true"  class="banner" bindchange="changeSwiper">
+  <view style='position:relative;background-color:#eee;overflow:hidden;height:{{imgheights[current]}}rpx;"'>
+    <swiper autoplay="true" style="height:{{imgheights[current]}}rpx;"  class="banner" bindchange="changeSwiper">
       <block wx:for="{{imgUrls}}" wx:for-index="x" wx:for-item="y" wx:key="x">
         <swiper-item>
-          <image src="{{y}}" class="slide_image"/>
+          <image mode='widthFix' bindload="imageLoad" style="height:{{imgheights[current]}}rpx;" src="{{y?y:'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png'}}" class="slide_image"/>
         </swiper-item>
       </block>
     </swiper > 
     <view class="swiper_position">
       <text>{{curret+1}}/{{imgUrls.length}}</text>
     </view>
-    <view class='icon_bj icon_left'>
-      <view class='icon_img_right {{ !zan_type ? "heartAnimation":"" }}' bindtap='zanfn'></view>
-    </view>
-    <view class='icon_bj icon_right'>
-      <view class='icon_img_right {{ !follow_type ? "heartAnimation":"" }}' bindtap='followfn'></view>
+    <view class='banner_opac'>
+      <view class='icon_bj icon_left'>
+        <view class='icon_img_right' bindtap='zanfn'>
+          <image src='{{!zan_type ?"https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/icon/like.gif?b="+asss:"https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon5.png"}}'></image>
+          <text>点赞</text>
+        </view>
+      </view>
+      <view class='icon_bj icon_right'>
+        <view class='icon_img_right' bindtap='followfn'>
+          <image src="{{!follow_type ? 'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/icon/collection.gif?b='+ass:'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon26.png'}}"></image>
+          <text>收藏</text>
+        </view>
+      </view>
     </view>
   </view>
-  <view class='tips_text' wx:if="{{isTemplate != 0}}">
+  <view class='tips_text' wx:if="{{isTemplate == 0}}">
     <view>
       <text>该发型暂不提供试发功能，我们会根据用户的需要提前安排制作。</text>
     </view>
-    <view>
-      <text>我想试发(123)</text>
+    <view bindtap='addProductionToTemplate' style="background-color:{{isClick == 0 ? '#ffbd5c':'#c6c6c6'}}">
+      <text>我想试发({{totalTryHairCount == null ?'0':totalTryHairCount}})</text>
     </view>
   </view>
   <view class="content_text">
-    <text>{{content}}</text>
+    <text>{{content?content:''}}</text>
   </view>
-  <view class='content_label'>
-    <block wx:for="{{labels}}" wx:for-index="x" wx:for-item="y" wx:key="x">
-      <text>#{{y.tagLabel}}</text>
-    </block>  
-  </view>                      
-  <view class='content_time' >
-    <image src='../../img/details_icon_time.png'></image>
-    <text>{{uploadtime}}</text>
+  <view class='content_label' wx:if="{{labels.length >0}}">
+    <text>风格:</text>
+    <view class="content_labels">
+      <block wx:for="{{labels}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+        <view class="theme_colors">/{{y == null ?'':y }}/</view>
+      </block>  
+    </view>
+  </view>     
+  <view class='content_label' wx:if="{{labelss.length >0}}">
+    <text>适合:</text>
+    <view class="content_labels">
+      <block wx:for="{{labelss}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+        <view class="theme_colors">/{{y == null ?'':y }}/</view>
+      </block>    
+    </view>
+  </view>               
+  <view class='content_time'>
+    <view class='content_times'>
+      <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/details_icon_time.png'></image>
+      <text>{{uploadtime == null ? '2018-10-1':uploadtime}}</text>
+    </view>
+    <view class='content_timess'>
+      <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/icon/btn_share.png'></image>
+      <button open-type="share" class='share-btn'></button>
+    </view>
   </view>
   <view class="content_border"></view>
-  <view class='content_imgs'>
-    <view class='tips_icon'></view>
-    <text>联系发型师</text>
-    <navigator url="../../other_pages/heart_man/heart_man?no={{no}}" open-type="navigate"  >
-      <view class='content_img_list'>
-        <block wx:for="{{content_imgs}}" wx:for-index="x" wx:for-item="y" wx:key="x">
-          <image src='{{y}}' wx:if="{{x < 11}}" ></image>
-        </block>
-      </view>
-      <image  class='content_imgs_more' src='../../img/details_icon_more_stylist.png' wx:if="{{content_imgs.length >= 11}}"></image>
-    </navigator>
-  </view>
-  <view class='content_border'></view>
-  <view>
-    <title text="相关推荐" />
+  <view wx:if="{{note.length == 0 || note.length == undefined ? false:true}}">
+    <title text="相关推荐"  url="../../others_pages/square_results/square_results?tag={{sHairTag}}&title=相关推荐&sex={{sex}}" more="{{shareshow? '0':'1'}}" condition="{{sHairTag}}"  />
     <view class="contents">
         <view class="left">
-          <block wx:for="{{note}}" wx:key="">
-            <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+          <block wx:for="{{note}}" wx:key="x" wx:for-index="x" wx:for-item="y">
+            <template  is="item" data="{{y}}" wx:if="{{x%2==0&& x < 6}}"></template>
           </block>
         </view>
         <view class="right">
-          <block wx:for="{{note}}" wx:key="">
-            <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+          <block wx:for="{{note}}" wx:key="x" wx:for-index="x" wx:for-item="y">
+            <template is="item" data="{{y}}" wx:if="{{x%2==1&& x<6 }}"></template>
           </block>
         </view>
       </view>
   </view>
-  <view class='content_btn_position'>
+  <view style='width:100%;height:120rpx;'></view>
+  <view class='content_btn_position theme_color'>
     <view class='content_btn_row'>
-      <view bindtap='goTotakephoto'>尝试发型</view>
-      <view wx:if="{{isTemplate != 0}}" style="color:#C6C6C6" bindtap='goTotakephoto'>暂不提供试发功能</view>
-      <view bindtap='ican'>我也能剪</view>
+      <view bindtap='goTotakephoto' style="width:{{meIsStylist == 1 ? '50%':'100%'}}" wx:if="{{isTemplate != 0}}">尝试发型</view>
+      <view wx:if="{{isTemplate == 0}}" style="color:#C6C6C6;width:{{meIsStylist == 1 ? '50%':'100%'}}">暂不提供试发功能</view>
+      <view bindtap='ican'  style="color:{{isCanClicked == 0 ? '#fff':'#C6C6C6'}}" wx:if="{{meIsStylist == 1}}">{{isCanClicked == 0 ? '我也能剪':'已收录' }}</view>
+    </view>
+  </view>
+</view>
+<view class="share_mask" hidden="{{shareType}}" bindtap='closeShare'>
+  <view class="share_content">
+    <view class="share_top">
+      <text class="share_top_title">提示</text>
+      <text class="share_top_content">剩余发型数0，是否解锁更多发型？</text>
+    </view>
+    <view class="share_bottom">
+      <view class="share_qx" bindtap='fxjs'>
+        分享解锁
+       <button open-type="share" class='share-btn'></button>
+      </view>
+      <view class="share_qd" bindtap='ffjs'>付费解锁</view>
     </view>
   </view>
 </view>
 <template name="item">
-  <navigator url="../heart_detail/hear_detail" open-type="navigate" >
+  <navigator url="../heart_detail/hear_detail?templateNo={{y.id}}&isTemplate={{y.isTemplate}}" open-type="navigate" >
     <view class="item" >
-      <image class="item-img" src="{{url}}" mode="widthFix"></image>
-      <image class="item-imgs" src='../../img/square_icon_more_pic.png' ></image>
-      <view class="name">
-        <image class="item-ava" src="{{avatar}}"></image>    
-        <text class="name-title">{{name}}</text>
-        <view class="heart_">
-          <image class="heart" src="../../img/square_icon_look.png"></image>
-          <text>{{heart_num}}</text>
+      <form  report-submit="true"  bindsubmit="templateClick" >
+        <image class="item-img" src="{{y.url == undefined || y.url == null? '':y.url}}" mode="widthFix"></image>
+        <image class="item-imgs" wx:if="{{y.filePaths >=2}}" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/square_icon_more_pic.png' ></image>
+        <image class="new" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon29.png" wx:if="{{y.new}}"></image>
+        <view class="name">
+          <image class="item-ava" src="{{y.avatar == null || y.avatar == undefrined ?'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png':y.avatar }}"></image>    
+          <text class="name-title">{{y.name == null ? '':y.name}}</text>
+          <view class="heart_">
+            <image class="heart" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/square_icon_look.png"></image>
+            <text>{{y.heart_num == null ? '':y.heart_num}}</text>
+          </view>
         </view>
-      </view>
+        <button class='getFormId' form-type="submit"></button>
+      </form>
     </view>
   </navigator>
 </template>
+
+<getuserinfo showDialog='{{showDialog}}' showDialogs='{{showDialogs}}' bindmyevent="onMyEvent" bindpoints="points" bindgiftlayer="giftlayer"  bindactivelayer="activelayer" bindnoticelayer="noticelayer"></getuserinfo>
+<index url="../../pages/index/index" show="{{shareshow}}"></index>
+<meloading meloadingshow="{{me_loading_type}}" meloadingvalue="{{meloadingvalue}}"></meloading>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 
+<giftlayer giftShow="{{giftShow}}" giftLayerBanner="{{giftLayerBanner}}"></giftlayer>
+<noticelayer noticeShow="{{noticeShow}}" noticeLayerBanner="{{noticeLayerBanner}}"></noticelayer>
+<active_20181224_layer activeShow="{{activeShow}}" activeInfo="{{activeInfo}}"></active_20181224_layer>
+<transformComponent tramsHidden="{{tramsHidden}}" sex="{{sex}}"></transformComponent>

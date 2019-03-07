@@ -1,0 +1,82 @@
+<!--pages/takePhoto/takePhoto.wxml-->
+<import src="../../we-cropper/we-cropper.wxml" />
+<view class='page-visible'>
+  <view class='page-container'>
+    <view class='camera'>
+      <camera device-position="{{devicePosition}}" flash="{{flash}}" class='camera-device' id="camera">
+          <cover-view class='take_photo_view'>
+            <cover-image class='mask' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/photo_mask_new.png'></cover-image>
+            <cover-image class='flash' src="{{flash=='off'?'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_flash_close.png':'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_flash.png'}}" bindtap='bindFlash'></cover-image>
+            <cover-image class='devicePosition' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_rotating.png' bindtap='bindDevicePosition'></cover-image>
+            <cover-view class="tips_list">
+              <cover-view class="tips_content">
+                <cover-view class="tips_content_num">1</cover-view>
+                <cover-view class="tips_content_text">请保证光线充足、均匀~</cover-view>
+              </cover-view>
+              <cover-view class="tips_content">
+                <cover-view class="tips_content_num">2</cover-view>
+                <cover-view class="tips_content_text">请露出全脸，正对镜头~</cover-view>
+              </cover-view>
+              <cover-view class="tips_content">
+                <cover-view class="tips_content_num">3</cover-view>
+                <cover-view class="tips_content_text">摘掉眼镜效果会更好哦~</cover-view>
+              </cover-view>
+            </cover-view>
+          </cover-view>
+            <cover-view class="last_photo" wx:if="{{last_img_hiden && last_img.length != 0 && nophone}}">
+              <cover-image class="last_photo_bjs" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/last_photo_bj.png"></cover-image>
+                <cover-view class="last_photo_bj">
+                  <cover-view class="last_text">最近使用的照片</cover-view>
+                  <cover-view class="lase_img"  >
+                    <cover-view class="lase_imgs"  wx:for="{{last_img}}" wx:for-index="x" wx:for-item="y" wx:key="x" bindtap='goToLook' data-url='{{y}}' data-faceid="{{y.faceId}}" data-filepath="{{y.filePath}}">
+                    <cover-image class="lase_imgss" src='{{y.fileUrl}}' mode='widthFix'></cover-image>
+                  </cover-view>
+                </cover-view>
+              </cover-view>
+            </cover-view>
+          <cover-view class='row footer'>
+            <cover-view class='row-flex' bindtap='goInstruction' >
+              <cover-view class="footer-text">拍照说明</cover-view>
+            </cover-view>
+            <cover-view class='row-flex'>
+              <cover-image class='takePhoto' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/hair_photo_take.png' bindtap='takePhoto'></cover-image>
+            </cover-view>
+            <cover-view class='row-flex' bindtap='goPhoto'>
+              <cover-view class="footer-text">相册</cover-view>
+            </cover-view>
+          </cover-view>
+          <cover-view class='masks' hidden="{{nophone}}">
+            <cover-view class='phone_content' style="top:{{maskTop}}rpx;">
+              <cover-view class='phone_content_img'>
+                <cover-image src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img12.png"></cover-image>
+              </cover-view>
+              <cover-view class='cheked' bindtap='remindChange'>
+                  <cover-view class="cheked_text">下次不再提醒</cover-view>
+                   <cover-image class="cheked_icon" src="{{!remind ? 'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon27.png':'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon28.png'}}"></cover-image>
+              </cover-view>
+              <cover-view class='phone_content_btn' catchtap='phone_content_btn'>
+              我知道了
+              </cover-view>
+            </cover-view>
+          </cover-view>
+         
+      </camera>
+    </view>
+  </view>
+</view>
+<cover-view class="share_mask" hidden="{{shareType}}" bindtap='closeShare'>
+  <cover-view class="share_content">
+    <cover-view class="share_top">
+      <cover-view class="share_top_title">提示</cover-view>
+      <cover-view class="share_top_content">剩余发型数0，是否解锁更多发型？</cover-view>
+    </cover-view>
+    <cover-view class="share_bottom">
+      <cover-view class="share_qx" bindtap='fxjs'>
+        分享解锁
+       <button open-type="share" class='share-btn'></button>
+      </cover-view>
+      <cover-view class="share_qd" bindtap='ffjs'>付费解锁</cover-view>
+    </cover-view>
+  </cover-view>
+</cover-view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

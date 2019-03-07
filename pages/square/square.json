@@ -2,6 +2,8 @@
   "navigationBarTitleText": "广场",
   "enablePullDownRefresh":true,
   "usingComponents": {
-    "divider": "/component/divider"
+    "title": "/component/title/title",
+    "divider": "/component/divider",
+    "sharelayer": "/component/share_layer/share_layer"
   }
 }

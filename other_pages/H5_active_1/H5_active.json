@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer",
+    "getuserinfo": "/component/getuserinfo/getuserinfo",
+    "giftlayer": "/component/gift_layer/gift_layer"
+  }
+}

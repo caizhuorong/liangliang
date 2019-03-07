@@ -1,0 +1,21 @@
+<view class="follow_bj" wx:if="{{list.length != 0}}">
+  <block wx:for="{{list}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+    <view class='follow_list' >
+      <image src='{{y.stylist.isStylist == 1 ? y.stylist.personIcon:y.user.personIcon}}' lazy-load="true" bindtap='goToHairMan' data-id="{{y.user.userId}}" data-isStylist="{{y.stylist.isStylist}}"></image>
+      <view class='follow_text' data-id="{{y.user.userId}}" data-isStylist="{{y.stylist.isStylist}}" bindtap='goToHairMan'>
+        <text class='follow_name' >{{y.stylist.isStylist == 1? y.stylist.nick == null ?'': y.stylist.nick:y.user.showNick  == null ? '':y.user.showNick}}</text>
+        <text class='follow_label'>{{y.stylist.isStylist == 1? y.stylist.sign == null ?'': y.stylist.sign:y.user.sign  == null ? '':y.user.sign}}</text>
+      </view>
+      <view bindtap="{{y.isFollowed == 0 ? 'changeFollow':'delFollow'}}" data-id="{{y.user.userId}}" data-ids="{{x}}" class="{{y.isFollowed ==  0? 'follow_staut theme_color':'follow_staut follow_nostaut'}}" >{{y.isFollowed == 0 ? '关注':'互相关注'}}</view>
+    </view>
+  </block>
+</view>
+<view class='nolength' wx:if="{{isnolist}}">
+  <view>
+    <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img19.png'></image>
+  </view>
+  <view>
+    <text>还没有人关注你哦</text>
+  </view>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

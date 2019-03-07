@@ -1,0 +1,50 @@
+<view class="trams_bj" hidden="{{tramsHidden}}">
+  <view class="trams">
+    <view class="trams_img">
+      <!-- <image class="trams_img" src="../../img/0d881aa72903b7fe6468fa4ca5db294f_13_swapnew_user.jpg"></image> -->
+      <image wx:if="{{sex ==0 ? false:true}}" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote{{num}}.png'></image>
+      <image wx:if="{{sex == 1 ? false:true}}" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote{{num}}s.png'></image>
+    </view>
+    <view class="trams_text">正在设计...</view>
+  </view>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote1.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote2.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote3.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote4.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote5.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote6.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote7.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote8.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote9.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote10.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote11.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote12.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote13.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote14.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote15.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote16.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote17.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote18.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote19.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/femalemote20.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote1s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote2s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote3s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote4s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote5s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote6s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote7s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote8s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote9s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote10s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote11s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote12s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote13s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote14s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote15s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote16s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote17s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote18s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote19s.png'></image>
+  <image class="trams_img_hidden" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/malemote20s.png'></image>
+</view>

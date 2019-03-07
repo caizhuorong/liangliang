@@ -1,0 +1,28 @@
+@import '../../app.wxss';
+.fexd_img{
+  width: 140rpx;
+  height: 60rpx;
+  position: fixed;
+  left: 0rpx;
+  top:170rpx;
+  box-shadow: #999 0 8px 30px -10px;
+  display: flex;
+  transform: rotate(180deg);
+  justify-content:space-around;
+  align-items: center;
+  border-top-left-radius: 90rpx;
+  border-bottom-left-radius: 90rpx;
+  z-index: 60
+}
+.fexd_img>image{
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+  margin-left: 10rpx;
+  transform: rotate(180deg);
+}
+.fexd_img>text{
+  font-size: 28rpx;
+  color: #fff;
+  transform: rotate(180deg);
+}

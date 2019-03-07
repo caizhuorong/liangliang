@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "2018图鉴",
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer",
+      "getuserinfo": "/component/getuserinfo/getuserinfo"
+  }
+}

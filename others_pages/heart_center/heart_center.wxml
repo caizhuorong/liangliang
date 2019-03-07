@@ -1,0 +1,160 @@
+<view class="bj">
+  <view class='card_bj'>
+    <view class='card'>
+      <view class='card_top'>
+        <view class='logo'>
+          <image src="{{user.personIcon ?user.personIcon:'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png'}}" ></image>
+        </view>
+        <view class='info'>
+          <view class='info_one'>
+            <text>{{user.showNick}}</text>
+            <image src="{{user.sex == 0 ? 'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_male.png':'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_female.png' }}"></image>
+          </view>
+          <view wx:if="{{isStylist != 0 }}" class='info_two'>{{stylist.headLevelTags[0] ?stylist.headLevelTags[0]:'' }} | 从业{{year}}年</view>
+          <view class='info_three' >{{user.sign == null ||  user.sign == '' || user.sign == ' ' ?'Ta还没有留下任何信息～':user.sign}}</view>
+        </view>
+      </view>
+      <view class='card_bottom'>
+        <view>
+          <text style="color:#292929;">{{data.praiseCount}}</text>
+          <text style="color:#898989;">获赞</text>
+        </view>
+        <view bindtap='goToFans'>
+          <text style="color:#292929;">{{data.fansCount}}</text>
+          <text style="color:#898989;">粉丝</text>
+        </view>
+        <view bindtap='goToFollow'>
+          <text style="color:#292929;">{{data.followCount}}</text>
+          <text style="color:#898989;">关注</text>
+        </view>
+      </view>
+    </view>
+  </view>
+     <view class='good' wx:if="{{isStylist == 0 && user.interest != null && user.interest != '' }}">
+    <title text="喜好" margintop="0" />
+    <view class='good_content'>
+      <block wx:for="{{user.interestTags}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+      <view class="good_list">
+        <text>{{y}}</text>
+      </view>
+      </block>
+    </view>
+  </view>
+    <view class='my_work' wx:if="{{data.triedTemplateList.length != 0}}">
+    <title text="浏览足迹" margintop="0" />
+    <view class="work_content">
+      <block wx:for="{{data.triedTemplateList}}"    wx:for-index="x" wx:for-item="y" wx:key="x">
+        <view class="work_content_item" wx:if="{{x < 3}}" bindtap='gotodetail' data-no="{{y.productionNo}}" data-isTemplate="{{y.isTemplate}}" style="background-image:url({{y.filePaths[0] ?y.filePaths[0]:'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png' }})" >
+          <image mode="widthFix" wx:if="{{y.filePaths.length > 1}}" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/square_icon_more_pic.png'></image>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='my_work' wx:if="{{data.productionsAndTemplatesList.length != 0}}">
+    <title text="TA的作品" margintop="0" />
+    <view class="work_content" >
+      <block wx:for="{{data.productionsAndTemplatesList}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+        <view class="work_content_item" bindtap='gotodetail' data-no="{{y.no}}" data-isTemplate="{{y.isTemplate}}" style="background-image:url({{y.filePaths[0] ?y.filePaths[0]:'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png' }})" >
+          <image mode="widthFix" wx:if="{{y.filePaths.length > 1}}" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/square_icon_more_pic.png'></image>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='good' wx:if="{{isStylist != 0 }}">
+    <title text="特长" margintop="0" />
+    <view class='good_content'>
+      <block wx:for="{{stylist.goodAtTags}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+      <view class="good_list">
+        <text>{{y}}</text>
+      </view>
+      </block>
+    </view>
+  </view>
+
+  <view class='good' wx:if="{{isStylist != 0 }}">
+    <title text="特长" margintop="0" />
+    <view class='good_content'>
+      <block wx:for="{{stylist.goodAtTags}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+      <view class="good_list">
+        <text>{{y}}</text>
+      </view>
+      </block>
+    </view>
+  </view>
+
+  <view class='good' wx:if="{{isStylist != 0 }}">
+    <title text="擅长风格" />
+    <view class='good_content'>
+      <block wx:for="{{stylist.goodStyleTags}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+        <view class="good_lists">
+          <text>{{y}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='good' wx:if="{{isStylist != 0 }}">
+    <title text="服务时间" />
+    <view class='service'>
+      <text>{{stylist.workDate}}</text>
+      <text>{{stylist.timeStart}}-{{stylist.timeEnd}}</text>
+    </view>
+  </view>
+  <view class='good' wx:if="{{isStylist != 0 }}">
+    <title text="服务价格" />
+    <view class='service'>
+      <block wx:for="{{stylist.sHairServiceResps}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+        <text wx:if="{{y.priceMax == 0 && y.priceMax == null }}">{{y.serviceLabel}}：{{y.priceMin}}元</text>
+        <text wx:if="{{y.priceMax != 0 && y.priceMax != null }}">{{y.serviceLabel}}：{{y.priceMin}}元 ~ {{y.priceMax}}元</text>
+      </block>
+    </view>
+  </view>
+  <view class='good' style='margin-bottom:120rpx;' wx:if="{{isStylist != 0 }}">
+    <title text="店铺信息" />
+    <view class='service'>
+      <text decode="true">店&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：{{stylist.sHairStore.storeName}}</text>
+      <view class='shop'>
+        <text decode="true">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：{{stylist.sHairStore.address}}</text>
+        <view data-latitude="{{stylist.sHairStore.latitude}}" data-longitude="{{stylist.sHairStore.longitude}}" data-name="{{stylist.sHairStore.storeName}}" data-address="{{stylist.sHairStore.address}}" bindtap='openlocation'>
+          <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_map.png' ></image>
+          <text>查看地图</text>
+        </view>
+      </view>
+      <text>特色服务：{{stylist.sHairStore.freeServiceTags}}</text>
+    </view>
+  </view>
+  <view style="width:100%;height:158rpx;background:#fff;"></view>
+  <view class='content_btn_position theme_color' wx:if="{{!show}}">
+    <view class='content_btn_row'>
+      <view bindtap='followType' style="width:{{isStylist!=0? '50%;':'100%'}}" class="{{!zg_type? 'oladfollow':''}}">{{!zg_type?'已关注':'关注'}}</view>
+      <view bindtap='callTo' wx:if="{{isStylist != 0 }}">联系TA</view>
+    </view>
+  </view>
+  <view class='layer_bj' style="display:{{teltype?'flex':'none'}}">
+    <view class='layer'>
+      <view class='layer_close' bindtap='closeTel'>
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_delete.png'></image>
+      </view>
+      <text class="layer_title">联系方式</text>
+      <image class='ewm' src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_square_select.png" ></image>
+      <text class='ewm_tips'>识别二维码，直接联系我</text>
+      <view class='ewm_line'></view>
+      <view class='tel'>
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_telephone.png'></image>
+        <text>电话：{{stylist.telephone}}</text>
+      </view>
+      <view class='call_tel' bindtap='callTel' data-tel='{{stylist.telephone}}'>
+        <text>拨打电话</text>
+      </view>
+    </view>
+  </view>
+</view> 
+<view class='btn theme_color' wx:if="{{show}}">
+  <text>分享</text>
+  <button open-type="share" class='share-btn'></button>
+</view>
+<getuserinfo showDialog='{{showDialog}}' showDialogs='{{showDialogs}}' bindmyevent="onMyEvent" bindpoints="points" bindgiftlayer="giftlayer"  bindnoticelayer="noticelayer"></getuserinfo>
+<index url="../../pages/index/index" show="{{shareshow}}"></index>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 
+<giftlayer giftShow="{{giftShow}}" giftLayerBanner="{{giftLayerBanner}}"></giftlayer>
+<noticelayer noticeShow="{{noticeShow}}" noticeLayerBanner="{{noticeLayerBanner}}"></noticelayer>
+<active_20181224_layer activeShow="{{activeShow}}" activeInfo="{{activeInfo}}"></active_20181224_layer>

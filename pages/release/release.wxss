@@ -9,6 +9,16 @@
 }
 .shbj{
   box-shadow: 0 10px 6px -8px RGBA(63, 63, 63, 0.1) inset;
+  
+  width:100%;
+  overflow: hidden;
+}
+.inputflag{
+  font-size: 22rpx;
+  color: red;
+}
+page{
+  height: 100%;
 }
 .upload_img{
   width: 600rpx;
@@ -25,7 +35,7 @@
   width: 180rpx;
   height: 180rpx;
   overflow: hidden;
-  z-index: 99
+  z-index: 10
 }
 .img_list>image{
   width: 180rpx;
@@ -62,13 +72,21 @@
 .texts{
   width: 650rpx;
   margin: 0 auto;
+  min-height: 300rpx;
   margin-top: 50rpx;
-  border-bottom: 2rpx solid #dadada;
   position: relative;
 }
 .texts>textarea{
   font-size: 28rpx;
   color: #292929;
+  min-height: 300rpx;
+}
+.textarea_line{
+  width: 650rpx;
+  height: 1rpx;
+  background-color: #eee;
+  margin: 0 auto;
+  margin-top: 30rpx;
 }
 .textsd{
   font-size: 28rpx;
@@ -77,14 +95,18 @@
 .texts>text{
   position: absolute;
   right: 15rpx;
-  bottom: 30rpx;
+  bottom: 5rpx;
   color: #959595;
   font-size: 20rpx;
+  display: block;
+  margin-top: 20rpx;
 }
 .radios{
   margin-left: 70rpx;
   margin-top: 58rpx;
   margin-bottom: 40rpx;
+  height: 45rpx;
+  line-height: 45rpx;
 }
 .checkbox{
   font-size: 28rpx;
@@ -93,7 +115,7 @@
 checkbox{
   transform:scale(0.7);
   float: left;
-  margin-top: 8rpx;
+  margin-top: -1rpx;
 }
 .bottom_layer_bj{
   width: 100%;
@@ -156,14 +178,7 @@ checkbox{
   color: #E33636;
   font-size: 24rpx;
 }
-.layer_label{
-  display: flex;
-  flex-direction:column;
-  justify-content: flex-start;
-  align-items: flex-start; 
-  margin-top: 40rpx;
-  margin-left: 80rpx;
-}
+
 .label_for{
   display: flex;
   flex-direction: row;
@@ -175,24 +190,82 @@ checkbox{
   font-size: 28rpx;
   color: #292929;
   display: block;
+  text-align: center;
 }
-.label{
+.label_active{
+  color: #05C4F0 !important;
+  background-color:#D2F7FF !important; 
+  font-weight: bold;
 }
-.label_list_for{
-  flex-wrap:wrap;
+.layer_label_main{
   display: flex;
-  width: 510rpx;
   flex-direction: row;
   justify-content: flex-start;
+  flex-wrap:wrap;
   align-items: center;
+  margin-top: 22rpx;
+}
+.layer_label_main>view{
+  width:170rpx;
+  height: 60rpx;
+  background-color: #f8f8f8;
+  margin-right: 48rpx;
+  margin-bottom: 33rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: #959595;
+  line-height: 60rpx;
+  border-radius: 6rpx;
+}
+.layer_label_main>view:nth-child(3n){
+  margin-right: 0rpx;
+}
+.layer_line{
+  width: 90%;
+  margin:  0 auto;
+  height: 1rpx;
+  background-color: #eee;
+}
+.label{
+font-size:28rpx;
+color:#292929;
+margin-top:48rpx;
+overflow:hidden;
+display:block;
+
+}
+.label_list_for{
+  display:flex;
+  flex-direction:row;
+  justify-content:flex-start;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-top:22rpx;
 }
 .label_list_for>view{
-  width: 130rpx;
-  height: 44rpx;
-  margin-left: 40rpx;
-  background-color: #F8F8F8;
-  margin-bottom: 40rpx;
-  border-radius: 6rpx;
+width:170rpx;
+height:60rpx;
+background-color:#f8f8f8;
+margin-right:82rpx;
+margin-bottom:33rpx;
+font-size:24rpx;
+text-align:center;
+color:#959595;
+line-height:60rpx;
+border-radius:6rpx;
+
+}
+.layer_label{
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.layer_label>text{
+  font-size: 28rpx;
+  color: #292929;
+  margin-top: 48rpx;
+  overflow: hidden;
+  display: block;
 }
 .label_list_for>view>text{
   font-size: 24rpx;
@@ -258,4 +331,69 @@ checkbox{
   color: #fff;
   text-align: center;
   font-size: 24rpx;
+}
+.mask{
+  position: fixed;
+  z-index: 11;
+  left: 0rpx;
+  top:0rpx;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.4);
+}
+.btn_content{
+  width: 90%;
+  height: 300rpx;
+  position: fixed;
+  z-index: 12;
+  left: 5%;
+}
+.btn_content>view{
+  font-size: 32rpx;
+  color: #292929;
+  text-align: center;
+  height: 90rpx;
+  width: 100%;
+  background-color: #fff;
+  line-height: 90rpx;
+  border-bottom:1rpx solid #eee; 
+}
+.btn_content>view:nth-child(1){
+  border-top-right-radius:8rpx;
+  border-top-left-radius: 8rpx; 
+}
+.btn_content>view:nth-child(2){
+  border-bottom-right-radius:8rpx;
+  border-bottom-left-radius: 8rpx; 
+}
+.btn_content>view:nth-child(3){
+  border-radius: 8rpx;
+}
+.hiden_content{
+ animation: scrollsss .3s linear forwards;
+}
+@keyframes scrollsss {
+  0% {
+    bottom:0rpx;
+  }
+  100% {
+    bottom:-390rpx;
+  }
+}
+.show_content{
+animation: scrollss .3s linear forwards;
+}
+@keyframes scrollss {
+  0% {
+    bottom:-390rpx;
+  }
+  100% {
+    bottom:0rpx;
+  }
+}
+.cancel{
+  margin-top: 20rpx;
+}
+.textarea{
+  width: 650rpx;
 }

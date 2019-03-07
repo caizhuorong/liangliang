@@ -1,0 +1,38 @@
+<view class="content" style="background-color:{{tips_show?'#f8f8f8':'#fff'}};">
+  <view class="follow_bj"  style="background-color:{{tips_show?'#f8f8f8':'#fff'}};">
+    <view class="contents" style="padding-top:0rpx;width:94%;" >
+      <view class="left">
+        <block wx:for="{{note}}" wx:key="{{x}}">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+        </block>
+      </view>
+      <view class="right">
+        <block wx:for="{{note}}" wx:key="{{x}}">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+        </block>
+      </view>
+    </view>
+    </view>
+  <divider text="{{loading_text}}" style="display:{{displaytype?'flex':'none'}}" />
+</view>
+<template name="item">
+  <navigator url="../../pages/heart_detail/hear_detail?templateNo={{id}}&isTemplate={{isTemplate}}" open-type="navigate" >
+    <view class="item" >
+      <form  report-submit="true"  bindsubmit="templateClick" >
+        <image class="item-img" lazy-load="true" src="{{url?url:'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png'}}" mode="widthFix"></image>
+        <image wx:if="{{type}}" lazy-load="true" class="item-imgs" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/square_icon_more_pic.png' ></image>
+        <image wx:if="{{new}}" lazy-load="true" class="new" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon29.png'></image>
+        <view class="name">
+          <image class="item-ava" lazy-load="true" src="{{avatar?avatar:'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png'}}"></image>    
+          <text class="name-title">{{name == null ? '':name}}</text>
+          <view class="heart_">
+            <image class="heart" lazy-load="true" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/square_icon_look.png"></image>
+            <text>{{heart_num == null ? '':heart_num }}</text>
+          </view>
+        </view>
+       <button class='getFormId' form-type="submit"></button>
+      </form>
+    </view>
+  </navigator>
+</template>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

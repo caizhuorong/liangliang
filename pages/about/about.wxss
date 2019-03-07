@@ -41,7 +41,7 @@
 .info>view{
   width: 100%;
   height: 120rpx;
-  border-bottom: 2rpx solid #dadada;
+  border-bottom: 1rpx solid #eee;
   text-align: left;
   line-height: 120rpx;
 }
@@ -63,7 +63,7 @@
 }
 .footer>view{
   width: 100%;
-  border-bottom: 2rpx solid #dadada;
+  border-bottom: 1rpx solid #eee;
   height: 120rpx;
   text-align: left;
   line-height: 120rpx;
@@ -79,4 +79,11 @@
   float: right;
   margin-right: 30rpx;
   margin-top: 47.5rpx;
+}
+.follow{
+  width: 100%;
+  height: 120rpx;
+  position: fixed;
+  bottom:0rpx;
+  left: 0rpx;
 }

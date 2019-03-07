@@ -1,0 +1,23 @@
+<view class='dialog-container' wx:if="{{showDialog}}">
+  <view class='dialog-mask'></view>
+  <view class='dialog-info'>
+    <view class='dialog-title'>登录提示</view>
+    <view class='dialog-content'>我们希望获取您的头像和昵称信息，以便记录您的发型设计记录。</view>
+     <view>
+      <checkbox-group bindchange="bindAgreeChange">
+            <label class="weui-agree" for="weuiAgree">
+                <view class="weui-agree__text">
+                    <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+                    <view class="weui-agree__checkbox-icon">
+                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+                    </view>
+                    阅读并同意<navigator catchtap='stop' url="../../others_pages/user_protocol/user_protocol" class="weui-agree__link">《用户协议》</navigator>
+                </view>
+            </label>
+        </checkbox-group>
+    </view>
+    <view class='dialog-footer'>
+      <button class='dialog-btn {{diaglo ? "":"whites"}}' data-is='{{diaglo}}' open-type="{{diaglo ? 'getUserInfo':''}}"   bindgetuserinfo='getUserInfo'>知道了</button>
+    </view>
+  </view>
+</view>

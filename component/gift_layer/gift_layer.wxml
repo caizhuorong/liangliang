@@ -1,0 +1,9 @@
+<view class="layer_mask" wx:if="{{giftShow}}" bindtap='closeLayer'>
+  <view class="layer" >
+    <image class="layer_banner" src='{{giftLayerBanner[0].background}}' bindtap='goToCard'></image>
+    <!-- <view class="layer_close" bindtap='closeLayer'>
+      <image class="layer_close_img" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_delete.png'></image>
+    </view> -->
+  </view>
+  
+</view>

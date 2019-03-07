@@ -1,0 +1,12 @@
+<view class='content'>
+  <text>本店提供特色服务</text>
+  <view class='layer_label_main'>
+    <block wx:for="{{label_list}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+      <view class="{{y.staut ? 'label_active':''}} " bindtap='changeChose' data-id="{{x}}" >{{y.label}}</view>
+    </block>
+  </view>
+</view>
+<view class='btn theme_color' bindtap='btn'>
+  <text>确认</text>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

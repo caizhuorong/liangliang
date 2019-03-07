@@ -1,0 +1,4 @@
+<!-- <web-view src="{{url}}&userId={{userId}}" bindload="bindloads" binderror="binderrors"></web-view> -->
+<web-view src="{{url}}&userId={{userId}}#wechat_redirect" bindload="bindloads" binderror="binderrors" bindmessage="bindmessages"></web-view> 
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 
+<getuserinfo showDialog='{{showDialog}}' showDialogs='{{showDialogs}}' bindmyevent="onMyEvent" bindpoints="points" bindgiftlayer="giftlayer" ></getuserinfo>

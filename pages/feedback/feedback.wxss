@@ -1,8 +1,8 @@
+@import '../../app.wxss';
 .textar{
   width: 650rpx;
-  height: 570rpx;
+  height: 530rpx;
   margin: 0 auto;
-  border-bottom: 2rpx solid #dadada;
   position: relative;
 }
 .textar>textarea{
@@ -11,12 +11,10 @@
   color: #292929;
   font-size: 28rpx;
 }
-.textar>view{
-  position: absolute;
-  right:25rpx;
-  bottom:25rpx;
+.nums{
+  margin-left: 620rpx;
 }
-.textar>view>text{
+.nums>text{
   font-size: 20rpx;
   color: #959595;
 }
@@ -36,7 +34,6 @@
   height: 82rpx;
   margin: 0 auto;
   box-shadow: #999 0 8px 15px -10px;
-   background:linear-gradient(to left, #05c4f0 , #3888f8);
    border-radius: 6rpx;
   margin-top: 80rpx;
 }
@@ -62,4 +59,11 @@
 .tips>text{
   font-size: 32rpx;
   color: #292929;
+}
+.line{
+  width: 650rpx;
+  height: 2rpx;
+  background: #eee;
+  margin: 0 auto;
+  margin-top: 10rpx;
 }

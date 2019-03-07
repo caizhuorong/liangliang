@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "休息日",
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer"
+  }
+}

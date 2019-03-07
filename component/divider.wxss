@@ -1,4 +1,3 @@
-/* component/divider.wxss */
 .divider{
   display: flex;
   flex-direction: row;
@@ -6,7 +5,7 @@
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;
-  margin-top: 30rpx;
+  margin-top: 40rpx;
   overflow: hidden;
 }
 .divider>text{
@@ -16,10 +15,10 @@
 .tips_left{
   width: 200rpx;
   height: 2rpx;
-  background-color: #999;
+  background-color: #eee;
 }
 .tips_right{
   width: 200rpx;
   height: 2rpx;
-  background-color: #999;
+  background-color: #eee;
 }

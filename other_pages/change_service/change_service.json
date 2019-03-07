@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "特色服务",
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer"
+  }
+}

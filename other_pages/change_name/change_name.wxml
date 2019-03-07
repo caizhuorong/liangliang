@@ -1,6 +1,7 @@
 <view class='inputs'>
-  <input type='text' placeholder='请输入昵称(2-24个字符)'></input>
+  <input type='text' value="{{value}}" placeholder='请输入昵称(2-24个字符)' bindinput='changvalue'></input>
 </view>
-<view class='btn'>
+<view class='btn theme_color' bindtap='btn'>
   <text>确认</text>
 </view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

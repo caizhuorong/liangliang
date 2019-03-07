@@ -1,0 +1,15 @@
+<view class="welcome">
+  <image mode='widthFix'  src='{{shareImgUrl}}'></image>
+</view>
+<form report-submit="true"  bindsubmit="getFormId">
+  <view class="bottom">
+    <view class='btn'>
+      <text>尝试发型</text>
+      <button  wx:if="{{canIUse}}" class='getUserInfoclass' form-type="submit"    open-type="getUserInfo" bindgetuserinfo='bindGetUserInfo'></button>
+    </view>
+  </view>
+</form>
+<transformComponent tramsHidden="{{tramsHidden}}" sex="{{info.sex}}"></transformComponent>
+<index url="../../pages/index/index" show="{{shareshow}}"></index>
+
+

@@ -1,29 +1,97 @@
-<label title="头像" value="http://newimg88.b0.upaiyun.com/newimg88/2017/12/30-seconds-of-code-b.png" type="1" url="" />
-<label title="昵称" value="Tony" type="2" url="" />
-<label title="性别" value="男" type="2" url="" />
-<label title="生日" value="1990-1-12" type="2" url="" />
-<label title="身高/体重" value="180cm/75kg" type="2" url="" />
-<label title="职业" value="发型师" type="2" url="" />
-<label title="喜好" value="学生、日韩、气质" type="2" url="" />
-<label title="个性签名" value="个性签名" type="2" url="" end='1' />
-<view class='line'></view>
-<title text="发型师认证" />
-<label title="头衔" value="首席设计师" type="2" url="" />
-<label title="入行时间" value="2010年" type="2" url="" />
-<label title="特长" value="创意剪发、短发匠人" type="2" url="" />
-<label title="擅长风格" value="日韩、欧美、复古、可爱" type="2" url=""  />
-<label title="联系电话" value="13012345678" type="2" url="" end='1' />
-<view class='line'></view>
-<title text="服务信息" />
-<label title="营业时间" value="10：00-20：00" type="2" url="" />
-<label title="工作日" value="周一至周五" type="2" url="" />
-<label title="服务价格" value="asdonasd\nasdasd\n" type="2" url=""  />
-<label title="服务价格" value="创意剪发、短发匠人" type="2" url=""  end="1" />
-
-<view class='line'></view>
-<title text="店铺信息" />
-<label title="店铺名称" value="南瓜马车" type="2" url="" />
-<label title="地址" value="很多很多很长很长" type="2" url="" />
-<label title="特色服务" value="免费WIFI、免费停车" type="2" url="" />
-<label title="微信二维码" value="已上传" type="2" url="" end="1" />
+<view wx:if="{{isStylist != 2}}">
+  <label title="头像" value="{{optionsIcon == '' ? user_info.personIcon:optionsIcon}}" type="1" url="../../other_pages/upload/upload?src={{optionsIcon == '' ? user_info.personIcon:optionsIcon}}&type=1&isStylist={{isStylist}}" />
+  <label title="昵称" value="{{user_info.showNick}}" type="2" url="../../other_pages/change_name/change_name?data={{user_info.showNick}}&isStylist={{isStylist}}" />
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{sex}}" range-key="tagLabel">
+    <view class='label_content' style="border-bottom: 1px solid #eee">
+      <view class='label_title'>
+        <text>性别</text>
+      </view>
+      <view class='label_value'>
+        <text >{{user_info.sex == '0' ? '男':'女'}}</text>
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png' class='more'></image>
+      </view>
+    </view>
+  </picker>
+  <picker mode="date" value="{{user_info.birthday == undefined || user_info.birthday == null ? '':user_info.birthday}}" start="1930-01-01" end="2020-12-30" bindchange="bindDateChange" fields="day" >
+    <view class='label_content' style="border-bottom: 1px solid #eee">
+      <view class='label_title'>
+        <text>生日</text>
+      </view>
+      <view class='label_value'>
+        <text >{{user_info.birthday == undefined || user_info.birthday == null ? '':user_info.birthday}}</text>
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png' class='more'></image>
+      </view>
+    </view>
+  </picker>
+  <label title="身高/体重" value="{{user_info.height == null || user_info.height == undefined || user_info.height==''||user_info.weight == null || user_info.weight == undefined || user_info.weight=='' ?'':user_info.height+'cm/'+user_info.weight+'kg'}}" type="2" url="../../other_pages/change_height/change_height?weight={{user_info.weight}}&height={{user_info.height}}&isStylist={{isStylist}}" />
+  <picker bindchange="bindPickerChangeoccupation" value="{{occupationTags}}" range="{{occupation}}" range-key="tagLabel">
+    <view class='label_content' style="border-bottom: 1px solid #eee">
+      <view class='label_title'>
+        <text>职业</text>
+      </view>
+      <view class='label_value'>
+        <text >{{occupationTags == undefined || occupationTags == null ? '':occupationTags}}</text>
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png' class='more'></image>
+      </view>
+    </view>
+  </picker>
+  <label title="喜好"  value="{{interestTags}}" type="2" url="../../other_pages/change_like/change_like?data={{interestTags}}&isStylist={{isStylist}}" />
+  <label title="个性签名" value="{{user_info.sign}}" type="2" url="../../other_pages/change_autograph/change_autograph?data={{user_info.sign}}&isStylist={{isStylist}}" end='1' />
+  <view class='line'></view>
+</view>
+<view wx:if="{{isStylist == 1 || isStylist == 2 }}">
+  <title text="职业信息" />
+  <picker bindchange="bindPickerChangeheadLevel" value="{{headLevelTags}}" range="{{headLevel}}" range-key="tagLabel">
+    <view class='label_content' style="border-bottom: 1px solid #eee">
+      <view class='label_title'>
+        <text>头衔</text>
+      </view>
+      <view class='label_value'>
+        <text >{{headLevelTags == undefined || headLevelTags == null ? '':headLevelTags}}</text>
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png' class='more'></image>
+      </view>
+    </view>
+  </picker>
+  <picker bindchange="startYears" value="{{yeardefault}}" range="{{startYears}}">
+    <view class='label_content' style="border-bottom: 1px solid #eee">
+      <view class='label_title'>
+        <text>入行年份</text>
+      </view>
+      <view class='label_value'>
+        <text >{{startYear == undefined || startYear == null ? '':startYear}}年</text>
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png' class='more'></image>
+      </view>
+    </view>
+  </picker>
+  <label title="特长" value="{{goodAtTags}}" type="2" url="../../other_pages/change_speciality/change_speciality?data={{goodAtTags}}" />
+  <label title="擅长风格" value="{{goodStyleTags}}" type="2" url="../../other_pages/change_style/change_style?data={{goodStyleTags}}"  />
+  <label title="联系电话" value="{{telephone}}" type="2" url="../../other_pages/change_tel/change_tel?data={{telephone}}" />
+  <label title="微信二维码" value="{{wechatQrcode == '' ||wechatQrcode == null  ?'未上传':'已上传' }}" type="2" url="../../other_pages/change_code/change_code?data={{wechatQrcode}}" end="1" />
+  <view class='line'></view>
+  <title text="服务信息" />
+  <label title="营业时间" value="{{start_time}}{{timeEnd}}" type="2" url="../../other_pages/change_time/change_time?start={{start_time}}&end={{timeEnd}}" />
+  <label title="休息日" value="{{workDate}}" type="2" url="../../other_pages/change_work/change_work?data={{workDate}}" />
+ <navigator url='../../other_pages/change_price/change_price?data={{stringifysHairServiceResps}}'>  
+  <view class='label_content'>
+    <view class='label_title'>
+      <text>服务价格</text>
+    </view>
+    <view class='label_value'>
+      <text>{{server_text}}</text>
+      <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png' class='more'></image>
+    </view>
+  </view>
+</navigator>
+  <view class='line'></view>
+  <title text="店铺信息" />
+  <label title="店铺名称" value="{{man_info.storeName}}" type="2" url="../../other_pages/change_title/change_title?data={{man_info.storeName}}&no={{man_info.no}}" />
+  <label title="地址" value="{{man_info.address}}" bindtap='choose_location' type="2" url="" />
+  <label title="特色服务" value="{{freeServiceTags}}" type="2" url="../../other_pages/change_service/change_service?data={{freeServiceTags}}&no={{man_info.no}}" end='1' />
+</view>
 <view style='width:100%;height:200rpx;'></view>
+<view class='btn' bindtap='sbmt' wx:if="{{type}}">
+  <text>提交审核</text>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 
+
+

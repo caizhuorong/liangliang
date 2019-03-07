@@ -1,0 +1,26 @@
+.guide{
+  width: 100%;
+  overflow: hidden;
+}
+.guide>image{
+  width: 100%;
+  display: block;
+}
+.btn{
+  width: 620rpx;
+  height: 82rpx;
+  margin:0 auto;
+  margin-top: 61rpx;
+  margin-bottom: 82rpx;
+  box-shadow: #999 0 8px 15px -10px;
+   background:linear-gradient(to left, #05c4f0 , #3888f8);
+   border-radius: 6rpx;
+
+}
+.btn>text{
+  font-size: 36rpx;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 82rpx;
+}

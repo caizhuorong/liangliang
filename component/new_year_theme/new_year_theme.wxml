@@ -1,0 +1,51 @@
+<view class="new_th_bj" bindtap='closeNew' hidden='{{!show}}' wx:if="{{ templateNotice == 1}}">
+</view>
+  <view class="new_th" hidden='{{!show}}' wx:if="{{ templateNotice == 1}}">
+    <view class="new_th_content">
+      <view class="new_th_item" bindtap="{{now >= 1549209600000 ? 'gotoSquare':'noto'}}" data-tag="{{newYearTag[0]}}" data-label="{{templateNoticeTagsLabel[0]}}" >
+        <image class="netop_img"src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_3.png"></image>
+        <image class="netop_imgs" wx:if="{{now < 1549209600000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_10.png"></image>
+        <image class="text_img" wx:if="{{now >= 1549209600000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_1.png"></image>
+        <image class="text_img" wx:if="{{now < 1549209600000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_8.png"></image>
+      </view>
+       <view class="new_th_item" bindtap="{{now >= 1549296000000 ? 'gotoSquare':'noto'}}" data-tag="{{newYearTag[1]}}" data-label="{{templateNoticeTagsLabel[1]}}">
+        <image class="netop_img" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_4.png"></image>
+        <image class="netop_imgs" wx:if="{{now < 1549296000000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_10.png"></image>
+        <image class="text_img" wx:if="{{now >= 1549296000000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_2.png"></image>
+        <image class="text_img" wx:if="{{now < 1549296000000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_9.png"></image>
+      </view>
+       <view class="new_th_item" bindtap="{{now >= 1549382400000 ? 'gotoSquare':'noto'}}" data-tag="{{newYearTag[2]}}" data-label="{{templateNoticeTagsLabel[2]}}">
+        <image class="netop_img"src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_5.png"></image>
+        <image class="netop_imgs"  wx:if="{{now < 1549382400000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_10.png"></image>
+        <image class="text_img" wx:if="{{now >= 1549382400000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_3.png"></image>
+        <image class="text_img"  wx:if="{{now < 1549382400000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_10.png"></image>
+      </view>
+       <view class="new_th_item" bindtap="{{now >= 1549468800000 ? 'gotoSquare':'noto'}}" data-tag="{{newYearTag[3]}}" data-label="{{templateNoticeTagsLabel[3]}}">
+        <image class="netop_img" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_6.png"></image>
+        <image class="netop_imgs" wx:if="{{now < 1549468800000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_10.png"></image>
+        <image class="text_img" wx:if="{{now >= 1549468800000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_4.png"></image>
+        <image class="text_img"  wx:if="{{now < 1549468800000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_11.png"></image>
+      </view>
+       <view class="new_th_item" bindtap="{{now >= 1549555200000 ? 'gotoSquare':'noto'}}" data-tag="{{newYearTag[4]}}" data-label="{{templateNoticeTagsLabel[4]}}">
+        <image class="netop_img" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_7.png"></image>
+        <image class="netop_imgs"  wx:if="{{now < 1549555200000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_10.png"></image>
+        <image class="text_img" wx:if="{{now >= 1549555200000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_5.png"></image>
+        <image class="text_img" wx:if="{{now < 1549555200000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_12.png"></image>
+      </view>
+       <view class="new_th_item" bindtap="{{now >= 1549641600000 ? 'gotoSquare':'noto'}}" data-tag="{{newYearTag[5]}}" data-label="{{templateNoticeTagsLabel[5]}}">
+        <image class="netop_img" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_8.png"></image>
+        <image class="netop_imgs" wx:if="{{now < 1549641600000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_10.png"></image>
+        <image class="text_img" wx:if="{{now >= 1549641600000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_6.png"></image>
+        <image class="text_img" wx:if="{{now < 1549641600000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_13.png"></image>
+      </view>
+       <view class="new_th_item" bindtap="{{now >= 1549728000000 ? 'gotoSquare':'noto'}}" data-tag="{{newYearTag[6]}}" data-label="{{templateNoticeTagsLabel[6]}}">
+        <image class="netop_img" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_9.png"></image>
+        <image class="netop_imgs" wx:if="{{now < 1549728000000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_10.png"></image>
+        <image class="text_img" wx:if="{{now >= 1549728000000}}"   src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_7.png"></image>
+        <image class="text_img" wx:if="{{now < 1549728000000}}" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_text_14.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="new_icon" bindtap='openNew' wx:if="{{ templateNotice == 1}}">
+    <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/newyearnotice/new_year_pic_2.png'></image>
+  </view>

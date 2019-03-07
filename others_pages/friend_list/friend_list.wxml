@@ -1,0 +1,17 @@
+<!-- <view class='tips'>
+  <text>已邀请的发型师:{{info.length}}人</text>
+</view> -->
+ <view class="follow_bj">
+  <block wx:for="{{info}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+    <view class='follow_list'>
+      <image src='{{y.user.personIcon ?y.user.personIcon:"https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/zwm26.png" }}' bindtap='gotocenter' data-userid="{{y.user.userId}}" data-isstylist="{{y.stylist.isStylist}}" ></image>
+      <view class='follow_text'>
+        <text class='follow_name' >{{y.user.showNick}}</text>
+        <text class='follow_label'>注册时间：{{y.invitedTime}}</text>
+      </view>
+      <view bindtap='followType' data-id="{{y.user.userId}}" data-ids="{{x}}" class="{{y.isFollowed != 1 ? 'follow_staut theme_color':'follow_staut follow_nostaut'}}" >{{y.isFollowed != 1 ? '关注':'已关注'}}</view>
+    </view>
+  </block>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 
+

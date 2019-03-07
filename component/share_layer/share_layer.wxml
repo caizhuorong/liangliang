@@ -1,0 +1,21 @@
+<view class="layer_mask" wx:if="{{show}}">
+  <view class="layer" >
+    <image class="layer_banner" src='{{layerBanner}}'></image>
+    <view class="layer_text">
+      <text class="layer_label">{{layerLabel}}</text>
+      <text class="layer_tips">送您{{layerTips}}积分奖励！</text>
+    </view>
+    <view class="layer_btn" style="{{code =='PT0003|PP00001' || code =='PT0001|PP00001' || code== 'PT0002|PP00001' ? 'border-radius: 8rpx;border-top-right-radius: 0rpx;border-top-left-radius: 0rpx;':'border-radius: 0rpx;'  }}">
+      <view class='btn theme_color' bindtap='btn'>
+        <text>更多积分</text>
+      </view>
+    </view>   
+    <view class="layer_rember" bindtap='layerRemberClick' wx:if="{{code =='PT0003|PP00001' || code =='PT0001|PP00001' || code== 'PT0002|PP00001' ?false:true  }}">
+      <image class="layer_radio" src='{{rember == 1 ?"https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon28.png":"https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon27.png"}}'></image>
+      <text class="layer_rember_text">下次不再提醒</text>
+    </view>
+    <view class="layer_close" bindtap='closeLayer'>
+      <image class="layer_close_img" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_delete.png'></image>
+    </view>
+  </view>
+</view>

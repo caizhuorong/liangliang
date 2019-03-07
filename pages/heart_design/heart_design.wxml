@@ -1,129 +1,52 @@
-<view class='shaow'>
-  <view class='pic' style='background-image:url({{heat_info.resultFileUrl}})' >
-    <image class='pic_url' src='{{heat_info.resultHairFileUrl}}'></image>
-    <view class='left_icon' >
-      <image src='../../img/home_icon_three.png'></image>
-      <image src='../../img/home_icon_three.png'></image>
-      <image src='../../img/home_icon_three.png'></image>
-    </view>
-    <view class='right_icon'>
-      <view>
-        <image src='../../img/design_icon_share.png'></image>
-        <text>分享</text>
+<import src="../../component/template/template.wxml"/>
+<view class="design_bj">
+  <view class='design_btn_item'>
+    <view>
+      <view class="theme_color btn_th"  bindtap='takePhoto'>
+        <image src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_21.png" mode="widthFix" ></image>
+        <text>拍摄</text>
       </view>
-      <view>
-        <image src='../../img/design_icon_photo.png'></image>
-        <text>换照片</text>
+    </view>
+    <view>
+      <view class="theme_color btn_th" bindtap='goPhoto'>
+        <image src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_22.png" mode="widthFix"></image>
+        <text>相册</text>
       </view>
     </view>
   </view>
-  <view class='pic_bottom' style="bottom:{{bottom_scroll ? '200rpx':'0rpx'}}">
-    <view class='icon_img_right {{ follow_type ? "heartAnimation":"" }}' bindtap='followfn'></view>
-    <view class='bottom_view'>
-      <view class='bottom_sex' bindtap='changSex'>
-        <image src='{{sex_type ? "../../img/home_icon_male.png":"../../img/design_icon_male_unselect.png"}}'></image>
-        <image src='{{sex_type ? "../../img/design_icon_female_unselect.png":"../../img/home_icon_female.png"}}'></image>
+  <text class="last_text_img" >TIP：使用美颜过的正脸照，效果更好!</text>
+</view>
+<view class="last_photo" wx:if="{{last_img.length != 0 }}">
+  <image class="last_photo_bjs" src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/last_photo_bj.png"></image>
+  <view class="last_photo_bj">
+    <view class="last_text">最近使用的照片</view>
+    <view class="lase_img"  >
+      <view class="lase_imgs"  wx:for="{{last_img}}" wx:for-index="x" wx:for-item="y" wx:key="x" bindtap='goToLook'  data-faceid="{{y.faceId}}" data-filepath="{{y.filePath}}">
+        <image  class="lase_imgss" mode='widthFix' src='{{y.fileUrl}}' ></image>
       </view>
-      <view class='dirvid'></view>
-      <scroll-view class="scroll-view_H" scroll-x style="width:538rpx;">
-        <block wx:for="{{head_img}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
-          <view class='scr_itme {{y.type ? "label_active":""}}' bindtap='labelChange' data-index="{{x}}">
-            <text>{{y.name}}</text>
-          </view>
-        </block>
-      </scroll-view>
     </view>
-    <view class='pic_content'>
-      <scroll-view class="scroll_s" scroll-y style="width:100%;" bindscroll="varilgun">
-        <view class="scroll_big">
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-        </view>
-        <view class="scroll_big">
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-        </view>
-        <view class="scroll_big">
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-        </view>
-        <view class="scroll_big">
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-          <view class="srcoll_s_item" style="background:#fff;" >
-            <view class="red_dian"></view>
-            <image  src="../../img/loading.gif"></image>               
-          </view>
-        </view>
-      </scroll-view>
+  </view>
+</view>  
+<view class="share_mask" hidden="{{shareType}}" bindtap='closeShare'>
+  <view class="share_content">
+    <view class="share_top">
+      <text class="share_top_title">提示</text>
+      <text class="share_top_content">剩余发型数0，是否解锁更多发型？</text>
+    </view>
+    <view class="share_bottom">
+      <view class="share_qx" bindtap='fxjs'>
+        分享解锁
+       <button open-type="share" class='share-btn'></button>
+      </view>
+      <view class="share_qd" bindtap='ffjs'>付费解锁</view>
     </view>
   </view>
 </view>
+<getuserinfo showDialog='{{showDialog}}' showDialogs='{{showDialogs}}' scene="{{scene}}" bindmyevent="onMyEvent" param="{{param}}" bindpoints="points" bindgiftlayer="giftlayer" bindactivelayer="activelayer"></getuserinfo>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer>
+<giftlayer giftShow="{{giftShow}}" giftLayerBanner="{{giftLayerBanner}}"></giftlayer>
+<active_20181224_layer activeShow="{{activeShow}}" activeInfo="{{activeInfo}}"></active_20181224_layer>
+<transformComponent tramsHidden="{{tramsHidden}}" sex="{{sex}}"></transformComponent>
+<!-- <meloading meloadingshow="{{me_loading_type}}" meloadingvalue="{{meloadingvalue}}"></meloading> -->
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
+<view class="tarb"></view>

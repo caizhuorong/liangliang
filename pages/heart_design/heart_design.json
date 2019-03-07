@@ -1,3 +1,10 @@
 {
-  "navigationBarTitleText": "发型设计"
+  "navigationBarTitleText": "发型设计",
+  "disableScroll":true,
+  "usingComponents": {
+    "getuserinfo": "/component/getuserinfo/getuserinfo",
+    "meloading": "/component/meloading/meloading",
+    "sharelayer": "/component/share_layer/share_layer",
+    "transformComponent": "/component/transformComponent/transformComponent"
+  }
 }

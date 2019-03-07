@@ -1,9 +1,10 @@
 <view class='inputs'>
-  <textarea placeholder="吸引人的个性签名会让更多的人关注你哦~"  maxlength="140" auto-focus bindinput="val" />
+  <textarea placeholder="吸引人的个性签名会让更多的人关注你哦~"  maxlength="140" value="{{value == null || value == ' ' || value=='null'  ? '':value}}" auto-focus bindinput="val" />
   <view class='num'>
     <text>{{num}}/140</text>
   </view>
 </view>
-<view class='btn'>
+<view class='btn theme_color' bindtap='btn'>
   <text>确认</text>
 </view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

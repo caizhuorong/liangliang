@@ -1,0 +1,8 @@
+<view class='guide'>
+  <image mode='widthFix' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img36.png'></image>
+  <view class='btn' bindtap='btn'>
+    <text>开始我的发型之旅</text>
+  </view>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 
+

@@ -1,0 +1,15 @@
+<view class="welcome">
+  <image mode='widthFix'  src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/img22_new.png'></image>
+</view>
+    <form report-submit="true"  bindsubmit="getFormId">
+  <view class='btn'>
+    <text>马上开始</text>
+    <button  wx:if="{{canIUse}}" class='getUserInfoclass' form-type="submit"    open-type="getUserInfo" bindgetuserinfo='bindGetUserInfo'></button>
+  </view>
+    </form>
+  <view class="chek">
+    <view class='cheked' >
+      <view class="cheked_text">开始即表示同意<text bindtap='gotouser'>《用户协议》</text></view>
+    </view>
+  </view>
+

@@ -1,0 +1,47 @@
+.content_recommend{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  height: 106rpx;
+  margin-top: 45rpx;
+}
+.tips_icon{
+  width: 6rpx;
+  height: 22rpx;
+  background-color: #05C4F0;
+  margin-left: 42rpx;
+  display: inline-block;
+}
+.title_nav{
+  height: 30rpx;
+  line-height: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.content_recommend>view>text{
+  font-size: 32rpx;
+  color: #292929;
+  margin-left: 10rpx;
+  font-weight: bold;
+}
+
+.more_img{
+  width: 14rpx;
+  height: 25rpx;
+  margin-right: 42rpx;
+}
+.more_text{
+  font-size: 24rpx;
+  color: #959595;
+  margin-right: 15rpx;
+}
+.title_text{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

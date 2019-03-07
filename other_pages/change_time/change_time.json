@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "营业时间",
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer"
+  }
+}

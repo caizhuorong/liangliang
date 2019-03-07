@@ -1,0 +1,10 @@
+<view class="content_recommend" style="margin-top:{{margintop}}rpx">
+  <view class='title_text'>
+    <view class="tips_icon"></view>
+    <text>{{text}}</text>
+  </view>
+  <navigator class='title_nav' url="{{url}}" open-type="navigate" hidden="{{more == 0}}" bindtap='svae_storage' >
+    <text class="more_text">更多</text>
+    <image class='more_img' src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png'></image>
+  </navigator>
+</view>

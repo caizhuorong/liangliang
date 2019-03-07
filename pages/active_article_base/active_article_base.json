@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "sharelayer": "/component/share_layer/share_layer",
+      "getuserinfo": "/component/getuserinfo/getuserinfo"
+  }
+}

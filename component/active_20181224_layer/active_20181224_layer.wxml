@@ -1,0 +1,10 @@
+<view class="layer_mask" wx:if="{{activeShow}}" bindtap='{{closeType ? "closeLayer":""}}'>
+  <view class="layer"  style="width:{{layerWidth}}rpx;height:{{layerHeight}}rpx;margin-left:-{{layerWidth/2}}rpx;.margin-top:-{{layerHeight/2}}rpx;">
+    <view class="active_com" style="width:{{imgWidth}}rpx;height:{{imgHeight}}rpx;" bindtap='goToCard'>
+      <image src="{{activeInfo.detail.showRaffleActive[0].background}}" bindload="img_load" style="width:{{imgWidth}}rpx;;height:{{imgHeight}}rpx;"></image>
+    </view>
+    <view class="layer_close" bindtap='closeLayer'>
+      <image class="layer_close_img" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_delete.png'></image>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+<view class="layer_mask" wx:if="{{noticeShow}}" bindtap='closeLayer'>
+  <view class="layer" style="height:{{heightImg}}rpx;margin-top:-{{topImg}}rpx;">
+    <image class="layer_banner" src='{{noticeLayerBanner[0].background}}' bindtap='goToCard' bindload="loadImg"></image>
+    <!-- <view class="layer_close" bindtap='closeLayer'>
+      <image class="layer_close_img" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_delete.png'></image>
+    </view> -->
+  </view>
+  
+</view>

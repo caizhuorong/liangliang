@@ -1,0 +1,19 @@
+<view class='content'>
+  <text>请选择你的营业时间</text>
+  <view class='price'>
+    <view class='price_content'>
+      <text>营业时间：</text>
+      <picker  mode="time" value="{{value1}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+        <text class="text">{{value1 == ''? '00:00':value1 }} - </text>
+      </picker>
+      <picker  mode="time" value="{{value2}}" start="00:00" end="23:59" bindchange="bindTimeChanges">
+        <text class="text"> {{value2== ''? ' 00:00':value2 }}</text>
+      </picker>
+    </view>
+  </view>
+</view>
+<view class='btn theme_color' bindtap='btn'>
+  <text>确认</text>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 
+    

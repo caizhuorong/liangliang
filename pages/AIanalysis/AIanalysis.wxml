@@ -1,0 +1,48 @@
+<view class='can2'>
+  <canvas  canvas-id="friends" style="width:500rpx;height:400rpx;" class='can2'></canvas>
+</view>
+<view class='top'>
+  <view class='top_right_img' >
+    <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/design_icon_share.png'></image>
+     <button open-type="share" class='share-btn'></button>
+  </view>
+  <view class='top_content'>
+    <view class='top_content_list'>
+      <image mode='widthFix' src='{{info.starInfoList[0].filePathDisp}}'></image>
+    </view>
+    <view class='top_content_list'>
+      <image mode='widthFix' src='{{info.starInfoList[1].filePathDisp}}'></image>
+    </view>
+  </view>
+  <view class='top_content' style='margin-top:15rpx;'>
+    <view class='top_content_list' style="border:none;height:30rpx;">
+      <text>{{info.starInfoList[0].starName}}</text>
+    </view>
+    <view class='top_content_list' style="border:none;height:30rpx;">
+      <text>{{info.starInfoList[1].starName}}</text>
+    </view>
+  </view>
+  <text class="tips_text">{{info.matchStarMemo}}</text>
+</view>
+<view class='bottom_text'>
+  <title text="分析结果" margintop="45" />
+  <view class='text_content'>
+    <text>发际线：{{info.hairLine}}</text>
+    <text>五官风格：{{info.fiveSense}}</text>
+    <text>脸型：{{info.faceShape}}</text>
+    <text>{{info.hairLineMemo}}</text>
+    <text>{{info.fiveSenseMemo}}</text>
+    <text>{{info.faceShapeMemo}}</text>
+  </view>
+</view>
+<view style='width:100%;height:150rpx;'></view>
+<view class='btn' bindtap='look' >
+    <text>{{isme?from == ''?'查看效果':'我的专属发型' :'我也要测'}}</text>
+  </view>
+<index url="../../pages/index/index" show="{{shareshow}}"></index>
+<getuserinfo showDialog='{{showDialog}}' showDialogs='{{showDialogs}}' bindmyevent="onMyEvent" bindpoints="points" bindgiftlayer="giftlayer"  bindactivelayer="activelayer" bindnoticelayer="noticelayer"></getuserinfo>
+<meloading meloadingshow="{{me_loading_type}}" meloadingvalue="{{meloadingvalue}}"></meloading>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 
+<giftlayer giftShow="{{giftShow}}" giftLayerBanner="{{giftLayerBanner}}"></giftlayer>
+<noticelayer noticeShow="{{noticeShow}}" noticeLayerBanner="{{noticeLayerBanner}}"></noticelayer>
+<active_20181224_layer activeShow="{{activeShow}}" activeInfo="{{activeInfo}}"></active_20181224_layer>

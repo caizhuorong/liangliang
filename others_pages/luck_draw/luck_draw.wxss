@@ -1,0 +1,658 @@
+@import "../../dialog.wxss";
+#container {
+  width: 703rpx;
+  height: 811rpx;
+  background: url('https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/active20181224/img82_12_21_new.png');
+  background-size:cover; 
+  margin:0 auto;
+  margin-top: 44rpx;
+  overflow: hidden;
+}
+ 
+#li, a {
+  background-size:cover; 
+  margin: 12rpx;
+  width: 182rpx;
+  height: 182rpx;
+  box-sizing: border-box;
+  display: block;
+  float: left;
+  text-align: center;
+  line-height: 100px;
+  position: relative;
+  border-radius: 5rpx;
+}
+ 
+a:hover {
+  cursor: pointer;
+  color: orange;
+  font-size: 18px;
+}
+ .dialog-btn{
+   position: absolute;
+   left: 0rpx;
+   top: 0rpx;
+   z-index: 2;
+   width: 100%;
+   height: 100%;
+   
+ }
+ .swipers{
+   position: fixed;
+   left: 0rpx;
+   top: 0rpx;
+    width: 100%;
+  height: 68rpx;
+  z-index: 99;
+  background-color: #f8f8f8;
+  box-shadow:0rpx 6rpx 15rpx RGBA(165, 165, 165, 0.1) inset; 
+ }
+.llk{
+  color: #E74435;
+  font-size: 30rpx;
+}
+ 
+#pp {
+  line-height: 32px;
+  color: #9a9a9a;
+  text-align: center;
+}
+ 
+page view .indexli {
+  width: 182rpx;
+  height: 182rpx;
+  margin-top: 0rpx;
+  margin-left: 0rpx;
+  margin-bottom: 0rpx;
+  margin-right: 0rpx;
+  box-sizing: border-box;
+}
+ 
+.indexli view {
+  position: absolute;
+  width: 182rpx;
+  height: 182rpx;
+  background: #e82400;
+  opacity: 0.5;
+  left: 0;
+  top: 0;
+}
+ 
+a {
+  position: relative;
+}
+ 
+a image {
+  width: 100%;
+  height: 100%;
+  border-radius: 5rpx;
+}
+ 
+a view {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  font-size: 40rpx;
+  color: #fff;
+  font-weight: 700;
+  line-height: 40rpx;
+  margin-left: -40rpx;
+  margin-top: -40rpx;
+  left: 50%;
+  top: 50%;
+ 
+}
+ 
+.c_title {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 20rpx;
+  padding-top: 30rpx;
+}
+ 
+.c_title2 {
+  color: #fff;
+  text-align: center;
+  font-size: 40rpx;
+}
+ 
+.c_title3 {
+  background: red;
+  width: 250rpx;
+  margin-left: 250rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #fff;
+  font-size: 20rpx;
+  text-align: center;
+}
+ page{
+  box-shadow:0rpx 6rpx 15rpx RGBA(165, 165, 165, 0.1) inset; 
+}
+.c_titlr4 {
+  background: gold;
+  color: red;
+  width: 400rpx;
+  border-radius: 500rpx;
+  text-align: center;
+  font-size: 20rpx;
+  margin-left: 175rpx;
+  margin-top: 10rpx;
+}
+ 
+.b1 {
+  margin-left: 20rpx;
+  }
+
+.verticalls{
+  width: 100%;
+  height: 68rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.verticalls>image{
+  width: 29rpx;
+  height: 23rpx;
+  margin-left: 55rpx;
+}
+.verticalls>view{
+  margin-left: 30rpx;
+  font-size: 24rpx;
+  color: #BD7000;
+}
+
+
+
+.user_icon{
+  width: 685rpx;
+  margin: 0 auto;
+  margin-top: 52rpx;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.user_icon>image{
+  width: 68rpx;
+  height: 68rpx;
+  display: block;
+  margin-right: 20rpx;
+  margin-bottom: 36rpx;
+  border-radius: 50%;
+  position: relative;
+}
+.user_icon>image:nth-child(8n){
+  margin-right: 0rpx;
+}
+.btn{
+  width: 620rpx;
+  height: 82rpx;
+  margin: 0 auto;
+  margin-top: 59rpx;
+  box-shadow: #243867 0 8px 15px -10px;
+  background:#FFE244;
+  border-radius: 6rpx;
+  position: relative;
+}
+.btn>text{
+  font-size: 36rpx;
+  color: #AD1001;
+  display: block;
+  text-align: center;
+  line-height: 82rpx;
+}
+.share_text{
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 26rpx;
+}
+.share_text>text{
+  font-size: 24rpx;
+  color:#fff;
+  text-align: center;
+  display: block;
+}
+
+
+.swiper{
+  height: auto;
+  overflow: hidden
+}
+.swiper-tab{
+width: 100%;
+border-bottom: 2rpx solid #FF7D6D;
+text-align: center;
+height: 88rpx;
+line-height: 88rpx;
+margin-top: 15rpx;
+}
+.swiper-tab-item{
+display: inline-block;
+width: 33.33%;
+color:#292929;
+position: relative;
+font-size: 28rpx;
+}
+.active{
+  color:#FFE244;
+}
+.active>view{
+    background: #FFE244;
+  border-radius: 10rpx;
+  width: 64rpx;
+  height: 6rpx;
+  position: absolute;
+  bottom: 10rpx;
+  left: 87rpx;
+  overflow: hidden;
+}
+
+.weui-grids {
+    position: relative;
+    overflow: hidden;
+}
+ 
+ .weui-grids:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #d9d9d9;
+    color: #d9d9d9;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+} 
+ 
+ .weui-grids:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    bottom: 0;
+    border-left: 1px solid #d9d9d9;
+    color: #d9d9d9;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+} 
+ 
+ 
+ 
+.weui-grid {
+    position: relative;
+    float: left;
+    padding: 20px 10px;
+    width: 33.33333333%;
+    box-sizing: border-box;
+}
+ 
+ .weui-grid:before {
+    content: " ";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    bottom: 0;
+    border-right: 1px solid #d9d9d9;
+    color: #d9d9d9;
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+} 
+ 
+ .weui-grid:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid #d9d9d9;
+    color: #d9d9d9;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+} 
+ 
+  .weui-grid:active {
+    background-color: #ECECEC;
+}  
+ 
+.weui-grid__bg {
+    position: relative;
+    float: left;
+    padding: 0px 0px;
+    width: 100%;
+    box-sizing: border-box;
+}
+ 
+.weui-grid__icon {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+}
+ 
+ 
+.weui-grid__icon image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+ 
+.weui-grid__icon + .weui-grid__label {
+    margin-top: 5px;
+}
+ 
+ 
+.weui-grid__label {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+    font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+.rules{
+  width: 690rpx;
+  margin: 0 auto;
+  height: 1040rpx;
+  margin-top: 60rpx;
+  background-image: url('https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/active20181224/img83_12_21.png');
+  background-size:cover; 
+  overflow: hidden;
+}
+.ruless{
+  width: 690rpx;
+  margin: 0 auto;
+  height: 502rpx;
+  margin-top: 60rpx;
+  background-image: url('https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/active20181224/img86_12_21.png');
+  background-size:cover; 
+  overflow: hidden;
+}
+.rules>text{
+  font-size: 24rpx;
+  color: #292929;
+  text-align: center;
+  display: block;
+}
+
+.ranking{
+  width: 690rpx;
+  height: 1100rpx;
+  background-image: url('https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/active20181224/img84_12_21.png');
+  background-size:cover; 
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  
+}
+.ranking_title:nth-child(1){
+  margin-top: 25rpx;
+}
+.ranking_title{
+  width: 85%;
+  height: 100rpx;
+  margin: 0 auto;
+  border-bottom:1rpx solid #EEEEEE;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.ranking_title>text{
+  color: #292929;
+  text-align: center;
+  font-size: 24rpx;
+  width: 33.33%;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.bj{
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0rpx;
+  top: 68rpx;
+  background-image: url('https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/active20181224/img81_12_21.png');
+  background-size:cover; 
+}
+.welcome{
+  font-size: 48rpx;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  margin-top: 100rpx;
+
+}
+.tips_text{
+  width: 100%;
+  display: block;
+  color: #fff;
+  font-size: 48rpx;
+  text-align: center;
+  margin-top: 80rpx;
+}
+.tips_text>text{
+  color:#FCE701 !important;
+  font-size: 48rpx;
+}
+.tips_texts{
+  width: 100%;
+  display: block;
+  color: #fff;
+  text-align: center;
+  margin-top: 80rpx;
+}
+.tips_texts>text{
+  color:#FCE701 !important;
+}
+.jp_tips{
+  position: absolute;
+  right: 16rpx;
+  top: 22rpx;
+  font-size: 30rpx;
+  color: #E74435;
+  line-height:30rpx;
+
+}
+.cj_content{
+  margin-left: 42rpx;
+  margin-top: 10rpx;
+}
+.rules_v{
+  width: 92%;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-bottom:30rpx;
+}
+.rules_r{
+  width: 26rpx;
+  height: 26rpx;
+  float: left;
+  color: #fff;
+  background: #E74435;
+  border-radius: 50%;
+  font-size: 22rpx;
+  text-align: center;
+  line-height: 26rpx;
+  margin-top:13rpx;
+margin-right:15rpx;
+
+}
+.no_ran{
+  text-align: center;
+  width: 100%;
+  font-size: 36rpx;
+  color: #292929;
+}
+.rules_t{
+  font-size: 24rpx;
+  color: #333;
+}
+.rules_ts{
+  display: block;
+  text-align: center;
+  font-size: 24rpx;
+  color: #333;
+}
+.rankimg_content{
+  width: 690rpx;
+  height: 244rpx;
+  background-image: url('https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/active20181224/img85_12_21.png');
+  background-size:cover; 
+  margin: 0 auto;
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.rankimg_contents{
+  width: 620rpx;
+  height: 244rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.ran_no{
+  font-size: 24rpx;
+  color: #C1BEC1;
+}
+.ran_img{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ran_img>image{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+}
+.ran_img>text{
+  font-size: 28rpx;
+  color: #292929;
+}
+.ran_user{
+  color: #E74435;
+  font-size: 28rpx;
+}
+.ran_num{
+  color: #FFAE00;
+  font-size: 28rpx;
+}
+.rans_no_img{
+  width: 46rpx;
+  height: 54rpx;
+}
+.rans_no_img>image{
+  width: 100%;
+  height: 100%;
+}
+.rans_no{
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background-color: #eee;
+  color: #C1BEC1;
+  font-size: 24rpx;
+  line-height: 44rpx;
+  text-align: center;
+}
+.rans_name{
+  width: 220rpx;
+  color: #292929;
+  font-size: 28rpx;
+  overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+}
+.rans_user{
+  color: #E74435;
+  font-size: 28rpx;
+  width: 135rpx;
+  text-align: left;
+}
+.rans_num{
+  color: #FFAE00;
+  font-size: 28rpx;
+  width: 135rpx;
+  text-align: left;
+}
+.layer_mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+  background-color: rgba(0,0,0,.6);
+}
+.layer_content{
+  position:absolute;
+  left:50%;
+  top: 40%;
+  margin-left: -270rpx;
+  margin-top: -236.5rpx;
+  width: 540rpx;
+  height: 473rpx;
+  background-image: url('https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/active20181224/img80_12_21.png');
+  background-size:cover; 
+}
+.layer_btn{
+  width: 280rpx;
+  height: 74rpx;
+  line-height: 74rpx;
+  text-align: center;
+  background-color: #FFE244;
+  border-radius: 8rpx;
+  color: #AD1001;
+  font-size: 30rpx;
+  position: absolute;
+  bottom: 40rpx;
+  left: 130rpx;
+}
+.layer_text{
+  width: 400rpx;
+  margin: 0 auto;
+  margin-top: 242rpx;
+  color: #fff;
+  font-size: 36rpx;
+  text-align: center;
+}
+.share-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+  outline: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  opacity: 0;
+}

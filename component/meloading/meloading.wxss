@@ -1,0 +1,34 @@
+.loading-mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+  background-color: rgba(0,0,0,.4);
+  z-index: 999
+}
+.loading-img{
+  width: 240rpx;
+  height: 160rpx;
+  margin: 0 auto;
+  display: block;
+  margin-top:11rpx; 
+}
+.loading_view{
+  width: 350rpx;
+  height: 280rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -175rpx;
+  margin-top: -140rpx;
+  background: #fff;
+  border-radius: 8rpx;
+}
+.loadgin_text{
+  color:#292929;
+  font-size: 28rpx;
+  display: block;
+  text-align: center;
+  margin-top: 35rpx;
+}

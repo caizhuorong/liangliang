@@ -1,6 +1,13 @@
 {
   "navigationBarTitleText": "首页",
   "usingComponents": {
-    "title": "/component/title/title"
+    "title": "/component/title/title",
+    "getuserinfo": "/component/getuserinfo/getuserinfo",
+    "meloading": "/component/meloading/meloading",
+    "sharelayer":"/component/share_layer/share_layer",
+    "giftlayer": "/component/gift_layer/gift_layer",
+	  "active_20181224_layer": "/component/active_20181224_layer/active_20181224_layer",
+    "noticelayer":"/component/noticelayer/noticelayer",
+    "new_year_theme":"/component/new_year_theme/new_year_theme"
   }
 }

@@ -1,0 +1,122 @@
+page{
+  box-shadow:0rpx 6rpx 15rpx RGBA(165, 165, 165, 0.1) inset; 
+  background: #f8f8f8;
+  overflow: hidden;
+}
+.btn{
+  width: 620rpx;
+  height: 82rpx;
+  position: fixed;
+  left: 65rpx;
+  bottom: 85rpx;
+  box-shadow: #999 0 8px 15px -10px;
+   border-radius: 6rpx;
+
+}
+.btn>text{
+  font-size: 36rpx;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 82rpx;
+}
+.order_top{
+  width: 100%;
+  height: 214rpx;
+  background: #fff;
+  margin-top: 5rpx;
+}
+.order_title{
+  width: 650rpx;
+  height: 92rpx;
+  margin: 0 auto;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.order_title>text{
+  color:#959595;
+  font-size: 28rpx;
+  padding-left: 10rpx;
+}
+.order_bj{
+  width: 100%;
+  height: 120rpx;
+  background-color: #fff;
+  margin-top: 14rpx;
+}
+.order_item{
+  width: 650rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 120rpx;
+}
+.order_item>text{
+  color: #292929;
+  font-size: 32rpx;
+  line-height: 120rpx;
+}
+.order_money{
+  width: 650rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 120rpx;
+}
+.order_money>text{
+  color: #292929;
+  font-size: 32rpx;
+  line-height: 120rpx;
+}
+
+.stepper {
+	width: 80px;
+	height: 26px;
+	/*给主容器设一个边框*/
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+ 
+/*加号和减号*/
+.stepper text {
+	width: 19px;
+	line-height: 26px;
+	text-align: center;
+	float: left;
+}
+ 
+/*数值*/
+.stepper input {
+	width: 40px;
+	height: 26px;
+	float: left;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 12px;
+	/*给中间的input设置左右边框即可*/
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+ 
+/*普通样式*/
+.stepper .normal{
+	color: black;
+}
+ 
+/*禁用样式*/
+.stepper .disabled{
+	color: #ccc;
+}
+.card_text{
+  color:#FF0808 !important;
+  font-size: 28rpx;
+  padding-right: 16rpx;
+}
+.card_img{
+  width: 14rpx;
+  height: 25rpx;
+}

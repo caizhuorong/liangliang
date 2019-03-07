@@ -1,0 +1,4 @@
+@import '../../pages/square/square.wxss';
+.contents{
+  margin-top: 30rpx 20rpx;
+}

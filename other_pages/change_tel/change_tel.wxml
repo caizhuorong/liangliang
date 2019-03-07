@@ -1,0 +1,7 @@
+<view class='inputs'>
+  <input type='number' bindinput="ins" value="{{value}}" maxlength='11' placeholder='联系电话是顾客跟你最有效的联系方式~'></input>
+</view>
+<view class='btn theme_color' bindtap='btn'>
+  <text>确认</text>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

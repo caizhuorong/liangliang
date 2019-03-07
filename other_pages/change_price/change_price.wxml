@@ -1,0 +1,23 @@
+<view class='content'>
+  <text>请输入你的服务价格区间</text>
+  <view class='price'>
+    <block wx:for="{{value}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+      <view class='price_content' wx:if="{{y.priceFlag == 1}}">
+        <text>{{y.serviceLabel}}:</text>
+        <input type="digit" bindinput="input" data-id="{{x}}"   value="{{y.priceMin}}"></input>
+        <text>元</text>
+      </view>
+      <view class='price_content' wx:if="{{y.priceFlag != 1}}">
+        <text>{{y.serviceLabel}}:</text>
+        <input type="digit" bindinput="inputs" data-id="{{x}}"  value="{{y.priceMin}}"></input>
+        <text>元 - </text>
+        <input type="digit" bindinput="inputss" data-id="{{x}}"  value="{{y.priceMax}}"></input>
+        <text>元</text>
+      </view>
+    </block>
+  </view>
+</view>
+<view class='btn theme_color' bindtap='btn'>
+  <text>确认</text>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

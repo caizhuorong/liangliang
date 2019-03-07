@@ -1,0 +1,47 @@
+<view class="order_top">
+  <view class="order_title">
+    <text>订单信息</text>
+  </view>
+  <view class="order_item">
+    <text>购买商品</text>
+    <text>{{name}}<text style="font-size:28rpx;color:#333;"  wx:if="{{name_label != ''}}">({{name_label}})</text></text>
+  </view>
+</view>
+<view class="order_bj">
+  <view  class="order_item">
+    <text>订单数量</text>
+    <view class="stepper">
+      <text class="{{minusStatus}}" bindtap="bindPlus" data-type="reduce">-</text>
+      <input type="number" bindchange="bindPlus" data-type="values" value="{{num}}" />
+      <text class="normal" bindtap="bindPlus" data-type="plus">+</text>
+    </view>
+  </view>
+</view>
+<view class="order_bj">
+  <view  class="order_item">
+    <text>支付方式</text>
+    <text>微信支付</text>
+  </view>
+</view>
+<view class="order_bj">
+  <view  class="order_item">
+    <text>优惠券</text>
+    <view bindtap='{{userNum != 0 ? "goTocard":"" }}' data-totalprice="{{totalPrice}}">
+      <text class="card_text" style="{{userNum == 0 ?'color:#959595 !important':''}}">{{label != '' ? label : userNum == 0 ? '无优惠券可用':userNum+'张优惠券可用'}}</text>
+      <image class="card_img" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/my_icon_more.png'></image></view>
+  </view>
+</view>
+<view class="order_bj">
+  <view  class="order_item">
+    <text>订单金额</text>
+    <text>{{totalPrice}}</text>
+  </view>
+</view>
+<view  class="order_money">
+  <text>应付金额：</text>
+  <text style="color:#FF0808">￥{{payable}}</text>
+</view>
+<view class='btn theme_color' bindtap='btn'>
+  <text>确认支付</text>
+</view>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer> 

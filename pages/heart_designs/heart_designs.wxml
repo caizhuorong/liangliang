@@ -1,0 +1,194 @@
+<view class="loadingimg">
+<image  bindload="imgLoad" mode="widthFix" src='{{heat_info.resultFileUrl}}' ></image>
+<!-- <image  bindload="imgLoad"   src='{{heat_info.resultHairFileUrl}}'></image> -->
+</view>
+<view class='shaow'>
+  <view class='pic'  >
+    <image  class='pic_url' style="height:{{imgheight+'rpx;'}}"  src='{{resultFileUrls}}' bindtap='pic_url' mode="widthFix"></image>
+    <!-- <image  mode="widthFix"  style="height:{{imgheight+'rpx;'}}"  class='pic_url' src='{{resultHairFileUrls}}' bindtap='pic_url'></image> -->
+    <view class="right_icon_long {{icon_right_switch?'':'right_icon_short'}}">
+      <image class="icon_right_img {{icon_right_switch ? '':'icon_right_imgs'}}" bindtap='icon_right_switch' src="{{icon_right_switch ? 'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon_haircolor_close_right.png':'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon_haircolor_open_right_new.png'}}" data-id="-1"></image>
+      <view bindtap='goSquare' style="clear:both">
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/design_icon_square.png' style="width:40rpx;height:40rpx;margin-left:25rpx;margin-top:30rpx;"></image>
+        <text class="icon_right_text">广场</text>
+      </view>
+      <view bindtap='followfn' style="clear:both;width:85rpx;height:120rpx;">
+        <image src='{{follow_type?"https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/icon/collection.gif?b="+ass:"https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon26.png"}}' style="width:100rpx;height:100rpx;margin-left:-5rpx;float:left;"></image>
+        <text class="icon_right_text" style="float:left;margin-top:-14px;width:100%;">收藏</text>
+      </view>
+      <view bindtap='gototake' style="clear:both;margin-top:-20rpx;">
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/design_icon_photo_new.png?v=1' style="width:44rpx;height:36rpx;margin-left:23rpx;margin-top:33rpx;"></image>
+        <text class="icon_right_text">换照片</text>
+      </view>
+    </view>
+    <view class="last_photo" hidden="{{!icon_right_switch}}" wx:if="{{last_img.length != 0}}" style="width:{{last_img.length < 3 ? '187rpx':''}};" >
+      <!-- <image class="last_photos"  src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_pic_5.png"></image> -->
+      <view class="last_photo_wl"></view>
+        <view class="last_photo_bj">
+          <view class="last_text">最近使用的照片</view>
+          <view class="lase_img" style="justify-content:{{last_img.length == 1 ? 'center':'flex-start'}}">
+            <view class="lase_imgs"  wx:for="{{last_img}}" wx:for-index="x" wx:for-item="y" wx:key="x" bindtap='goToLook' data-url='{{y}}' data-faceid="{{y.faceId}}" data-filepath="{{y.filePath}}">
+            <image class="lase_imgss" src='{{y.fileUrl}}' mode='widthFix'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="left_icon_long {{icon_left_switch?'':'left_icon_short'}}">
+        <image class="icon_left_img {{icon_left_switch ? '':'icon_left_imgs'}}" bindtap='icon_left_switch' src="{{icon_left_switch ? 'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon_haircolor_close_left.png':'https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon_haircolor_open_left_new.png'}}" data-id="-1"></image>
+        <scroll-view class="scroll_view_H" scroll-y>
+          <block wx:for="{{hair_color_list}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+           <image class="icon_left_img_list {{icon_left_switch ? '':'icon_left_imgs'}} {{y.active?'icon_left_active;':''}}" mode='widthFix' lazy-load src='{{y.templateUrl}}'  data-id="{{y.templateNo}}" data-type="{{y.type ? 1:0 }}" bindtap='works'></image>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="design_down" bindtap='btn' style="bottom:{{changeHeight+50+'rpx'}}">
+    <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_dowm.png'></image>
+  </view>
+  <view class="design_share" style="bottom:{{changeHeight+50+'rpx'}}">
+    <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img_new/new_icon_share.png'></image>
+    <button open-type="share" class='share-btn'></button>
+  </view>
+  <view animation="{{animationData}}"  class='pic_bottom' style="bottom:{{ bottom_scroll ? '300rpx;':'0rpx;'}}height:{{changeHeight+'rpx'}};">
+    <view class='bottom_view'>
+      <view class="scroll-view_H">
+        <block wx:for="{{head_img}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+          <view class='scr_itme  {{y.selFlag == 1 ? "label_active":""}}' data-id="{{y.hairType}}" bindtap='{{y.selFlag == 1 ? "":"labelChange"}}' data-index="{{x}}">
+            <text>{{y.tabName}}</text>
+          </view>
+        </block>
+      </view>
+      <view class='dirvid'></view>
+      <scroll-view class="scroll-view_Hs" scroll-x wx:if="{{head_img[2].selFlag == 1}}">
+        <block wx:for="{{heads_img}}" wx:for-index="x" wx:for-item="y" wx:key="x" >
+          <view class='scr_itme  {{y.selFlag == 1 ? "label_actives":""}}' data-id="{{y.hairType}}" bindtap='labelChanges' data-index="{{x}}">
+            <text style="font-size:28rpx;">{{y.tabName}}</text>
+          </view>
+        </block>
+      </scroll-view>
+      <view class="srcoll_sx" wx:if="{{head_img[1].selFlag == 1}}" bindtap='chooseType'>
+        <text>筛选</text>
+      </view>
+    </view>
+    <view class='pic_content'>
+      <scroll-view class="scroll_s" scroll-y bindscrolltolower="lower" style="height:{{changeHeight -120 +'rpx'}}">
+        <block wx:for="{{heart_template}}" wx:for-index="x" wx:for-item="y" wx:key="x">
+          <view class="srcoll_s_item" style="border:{{y.active?'2rpx solid #05C4F0;':'2rpx solid #fff;'}}"  data-id="{{y.templateNo}}" data-type="{{y.type ? 1:0 }}" bindtap='work'>
+           <image class='templateUrl' mode='widthFix' lazy-load src='{{y.templateUrl}}'></image>
+            <view class="red_dian" style="display:{{y.isUsed == 1 ? 'none':'block'}}" ></view>
+            <image style="display:{{y.loading?'block':'none'}}"  src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/loading.gif"></image>       
+            <image wx:if="{{y.isNew == 1}}" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon29.png' class="label_new"></image>   
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+<view class='mask' hidden='{{cantype}}' bindtap='close'>
+</view>  
+  <view class='content {{cantype?"":"contents"}} ' >
+    <view class='content_big_img'>
+      <canvas canvas-id="friend" style="width:550rpx;height:882rpx;" class='can' /> 
+    </view>
+    <view class='conent_btn'>
+      <view  catchtap='save_img'>
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon4.png'></image>
+        <text>生成海报</text>
+      </view>
+      <view>
+        <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/icon3.png'></image>
+        <text>转发给好友</text>
+        <button open-type="share" class='share-btn'></button>
+      </view>
+    </view>
+  </view>
+<view class='mask' hidden="{{nophone}}">
+  <view class='phone_content' style="top:{{maskTop}}rpx;">
+    <view class='phone_content_img'>
+      <image src="https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/heart_design_tips.png"></image>
+    </view>
+    <view class='phone_content_btn' catchtap='phone_content_btn'>
+    我知道了
+    </view>
+  </view>
+</view>
+<!-- <view class="masks" hidden='{{bottom_type}}'  bindtap='pic_url'></view> -->
+<view class='canvas-view' wx:if="{{isCanvas}}">
+  <canvas canvas-id="myCanvas" class='myCanvas'></canvas>
+  <view class='myCanvasImg-view'>
+    <!-- <image src="" class='myCanvasImg'></image> -->
+    <image src="{{shareImgUrl}}" class='myCanvasImg'></image>
+  </view>
+</view>
+<!--换发次数达到5次时提示-->
+<view class="five_tips {{fiveType ? 'five_show':'five_hide'}}" style="bottom:{{changeHeight+48+'rpx'}}" >
+  <view></view>
+  <text>{{sex == 0 ? '好帅啊，分享给朋友看看':'好美啊，分享给朋友看看'}}</text>
+</view>
+<view class='dialog-container' wx:if="{{showCameraDialog}}">
+  <view class='dialog-mask'></view>
+  <view class='dialog-info'>
+    <view class='dialog-title'>提示</view>
+    <view class='dialog-content'>我们希望获取保存图片到相册权限。</view>
+    <view class='dialog-footer'>
+      <button class='dialog-btn' open-type="openSetting" bindopensetting="openSetting" >去设置</button>
+    </view>
+  </view>
+</view>
+<!--筛选-->
+<view class="layer_bj" style="top:{{ choose_type ? '0rpx;':' 100%;'}}"  bindtap='chooseTypeLeft' >
+  <view class="layer_s">
+    <scroll-view class='layer_content' scroll-y="true">
+      <block wx:for="{{label_list}}"  wx:for-index="x" wx:for-item="y" wx:key="x">
+        <view class='layer_label' >
+          <text>{{y.title == null ? '':y.title}}</text>
+          <view class="layer_label_main">
+            <block wx:for="{{y.children}}" wx:for-index="xs" wx:for-item="ys" wx:key="xs" >
+              <view class="{{ys.staut ? 'label_activess':''}} " bindtap='changeChose' data-id="{{xs}}" data-ids="{{x}}">{{ys.label == null ?'':ys.label}}</view>
+            </block>
+          </view>
+        </view>
+      </block>
+    </scroll-view >
+  </view>
+  <view class="layer_btn"  >
+    <view class="layer_btn_cancel" bindtap='layer_cancel'>重置</view>
+    <view class="layer_btn_qd" bindtap='layer_qd'>确定</view>
+  </view>
+</view>
+<view class='can2'>
+  <canvas  canvas-id="friends" style="width:500rpx;height:400rpx;" class='can2'></canvas>
+</view>
+<view class="customer_mask"  hidden="{{custmoerType}}">
+  <view class="customer">
+    <text class="customer_label">感谢信</text>
+    <text class="customer_span">感谢你的驻足停留，如果你对【发型纪】有任何的吐槽或建议，欢迎联系我们，我们将不断优化产品，创造更好的体验。</text>
+     <button open-type='contact' session-from='' class="customer_btn" bindtap='kf'>立即前往</button>
+  </view>
+  <view class="custmoer_close" bindtap='custmoerCloser'>
+      <image class="custmoer_close_img" src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/img/home_icon_delete.png'></image>
+    </view>
+</view>
+<view class="share_mask" hidden="{{shareType}}" bindtap='closeShare'>
+  <view class="share_content">
+    <view class="share_top">
+      <text class="share_top_title">提示</text>
+      <text class="share_top_content">剩余发型数0，是否解锁更多发型？</text>
+    </view>
+    <view class="share_bottom">
+      <view class="share_qx" bindtap='fxjs'>
+        分享解锁
+       <button open-type="share" class='share-btn'></button>
+      </view>
+      <view class="share_qd" bindtap='ffjs'>付费解锁</view>
+    </view>
+  </view>
+</view>
+<getuserinfo showDialog='{{showDialog}}' showDialogs='{{showDialogs}}' scene="{{scene}}" bindmyevent="onMyEvent" param="{{param}}" bindpoints="points" bindgiftlayer="giftlayer" bindactivelayer="activelayer"></getuserinfo>
+<!-- <view wx:if='{{gif_type}}' class='gif'>
+  <image src='https://faceshapetemplate.lianglianglive.com/file/fixed/hair2/icon/collection.gif?b={{ass}}'></image>
+</view> -->
+<meloading meloadingshow="{{me_loading_type}}" meloadingvalue="{{meloadingvalue}}"></meloading>
+<sharelayer show="{{shareLayer}}" layerBanner="{{layerBanner}}" layerLabel="{{layerLabel}}" code="{{code}}"  layerTips="{{layerTips}}" ></sharelayer>
+<giftlayer giftShow="{{giftShow}}" giftLayerBanner="{{giftLayerBanner}}"></giftlayer>
+<transformComponent tramsHidden="{{tramsHidden}}" sex="{{sex}}"></transformComponent>

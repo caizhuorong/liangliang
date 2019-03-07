@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "title": "/component/title/title",
+    "getuserinfo": "/component/getuserinfo/getuserinfo",
+    "index": "/component/toindex/toindex",
+    "sharelayer": "/component/share_layer/share_layer",
+    "giftlayer": "/component/gift_layer/gift_layer",
+    "active_20181224_layer": "/component/active_20181224_layer/active_20181224_layer",
+    "noticelayer": "/component/noticelayer/noticelayer"
+  }
+}
